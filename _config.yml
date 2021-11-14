@@ -30,8 +30,6 @@ url: https://veedata.github.io
 twitter_username: TheViraj_T
 github_username:  veedata
 
-baseurl: /REPOSITORY-NAME/      # place folder name if the site is served in a subfolder
-
 # Build settings
 theme: minima
 plugins:
