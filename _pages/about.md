@@ -1,4 +1,6 @@
 ---
+# jekyll serve --watch
+
 layout: about
 title: about
 permalink: /
