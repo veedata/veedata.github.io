@@ -48,6 +48,10 @@ layout: default
       {% include profile_projects.html %}
     {% endif %}
 
+    {% if page.activities %}
+      {% include other_activities.html %}
+    {% endif %}
+
     {% if page.social %}
     <div class="social">
       <div class="contact-icons"">

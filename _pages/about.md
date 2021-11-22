@@ -14,6 +14,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 experience: true
 projects: true
+activities: true
 ---
 
 I am an inquisitive guy, savvy with tech, and with a will to enhance my knowledge and skills in the advanced domain of Natural Language Processing, Artificial Intelligence and Data Science!
