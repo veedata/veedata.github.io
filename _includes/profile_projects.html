@@ -1,3 +1,24 @@
-<div class="projects">
+<div class="news">
     <h2>projects</h2>
+
+    {% if site.data.projects %}
+    <div class="table-responsive">
+        <table class="table table-sm table-borderless">
+            {% assign projects = site.data.projects | reverse %}
+            {% for item in projects %}
+            <tr>
+                <th scope="row">{{ item.start_date }} - {{ item.end_date }}</th>
+                <td>
+                    {{ item.name | remove: '<p>' | remove: '</p>' | emojify }}
+                </td>
+                <td>
+                    {{ item.role | remove: '<p>' | remove: '</p>' | emojify }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% else %}
+    <p>No news so far...</p>
+    {% endif %}
 </div>

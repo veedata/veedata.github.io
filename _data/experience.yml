@@ -1,6 +1,17 @@
-- name: Place of Work
-  role: Junior Engineer
-  start_date: May, 2021
-  end_date: Dec, 2023
-  job_description: Well, was an intern?
+- name: CoView, Hospital management system
+  role: Developer (Intern)
+  start_date: May, 2020
+  end_date: Aug, 2020
+  job_description: Developed and deployed an application for KEM Hospital, Mumbai to monitor patients during the COVID-19 pandemic. The project focuses on data cleaning, data analysis on the dashboard, and patient management aspects.
 
+- name: Cyber Peace Foundation
+  role: Analyst (Intern)
+  start_date: Mar, 2020
+  end_date: Aug, 2020
+  job_description: Automation of investigation and analysis process by development of a crawler. Modules to analyze text, and media content were developed and used successfully
+
+- name: Children Investment Fund Foundation
+  role: Researcher
+  start_date: Oct, 2019
+  end_date: Feb, 2020
+  job_description: Work on the trends and different forms of Online Child Sexual Abuse and Exploitation (OCSA & OCSE) as the penetration of online technology has amplified
