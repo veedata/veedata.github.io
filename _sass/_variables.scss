@@ -26,6 +26,7 @@ $yellow-color:        #efcc00 !default;
 $grey-color:          #828282 !default;
 $grey-color-light:    lighten($grey-color, 40%);
 $grey-color-dark:     #1C1C1D;
+$card-dark-bg:        #23272a;
 
 $white-color: #ffffff !default;
 $black-color: #000000 !default;
@@ -35,3 +36,19 @@ $black-color: #000000 !default;
 
 $code-bg-color-light:     rgba($purple-color, 0.05);
 $code-bg-color-dark:      #2c3237 !default;
+
+
+// Progress bars
+
+$enable-transitions:                true !default;
+
+$font-size-base:                    1rem !default;
+$progress-height:                   1rem !default;
+$progress-font-size:                $font-size-base * .75 !default;
+$progress-bg:                       $grey-color !default;
+$progress-border-radius:            .25rem !default;
+$progress-box-shadow:               inset 0 .1rem .1rem rgba($black-color, .1) !default;
+$progress-bar-color:                $white-color !default;
+$progress-bar-bg:                   theme-color("primary") !default;
+$progress-bar-animation-timing:     1s linear infinite !default;
+$progress-bar-transition:           width .6s ease !default;
