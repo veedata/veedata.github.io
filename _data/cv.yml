@@ -75,20 +75,19 @@
         - Creation of an ML-based tool which employees resource crowdfunding for and amongst hospitals. 
         - The project extends as a patient & inventory management software.
 
-
 - title: Open Source Projects
   type: table
   contents:
-    - title: 'Memories'
-      year: '2021-now'
-      description: 
-        - Memories is an easy to use package that helps to seperate clustered images from files and helps add metadata to files.
-        - 'URL: <a href="https://github.com/veedata/memories" target="_blank">https://github.com/veedata/memories</a>'
     - title: 'Robot mechanisms physical simulation'
       year: 2018
       description: 
         - Simulation made while in Team KJSCE Robocon for mobile robots and their mechanisms. Simulations include path planning and projectile motion.
         - 'URL: <a href="https://github.com/veedata/Robocon2019-MATLAB" target="_blank">https://github.com/veedata/Robocon2019-MATLAB</a>'
+    - title: 'Memories'
+      year: '2021-now'
+      description: 
+        - Memories is an easy to use package that helps to seperate clustered images from files and helps add metadata to files.
+        - 'URL: <a href="https://github.com/veedata/memories" target="_blank">https://github.com/veedata/memories</a>'
 
 - title: Publications
   type: list
