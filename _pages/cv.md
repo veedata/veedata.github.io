@@ -6,9 +6,9 @@ nav: true
 ---
 
 <!-- Place PDF download link at the top right. -->
-<div class="row" style="margin-top: -3.5em;">
-	<a class="ml-auto mr-2" href="/assets/pdf/vitae.pdf" target="_blank">
-	  <img height="60px" src="/assets/img/pdf_icon.svg">
+<div class="row" style="margin-top: -4.5em; margin-right: 0.05em">
+	<a class="ml-auto mr-2" href="/assets/pdf/Viraj_resume.pdf" target="_blank">
+	  <i class="fas fa-file-download fa-2x"></i>
 	</a>
 </div>
 
@@ -24,14 +24,18 @@ nav: true
 				{% endfor %}
 				</ul>
 			{% elsif entry.type == "map" %}
-				<table class="table table-sm table-borderless">
-					{% for content in entry.contents %}
-						<tr>
-							<td class="p-0 pr-2 font-weight-bold text-right"><b>{{ content.name }}</b></td>
-							<td class="p-0 pl-2 font-weight-light text-left">{{ content.value }}</td>
-						</tr>
-					{% endfor %}
-				</table>
+				<div class="table-responsive">
+					<table class="table table-sm table-borderless">
+						<tbody>
+							{% for content in entry.contents %}
+								<tr>
+									<th class="p-0 pr-2 text-right"><b>{{ content.name }}</b></th>
+									<td class="p-0 pl-2 text-left">{{ content.value }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
 			{% elsif entry.type == "nested_list" %}
 				<ul class="card-text font-weight-light list-group list-group-flush">
 				{% for content in entry.contents %}
@@ -54,7 +58,7 @@ nav: true
 						<div class="row">
 							{% if content.year %}
 								<div class="col-xs-2 cl-sm-2 col-md-auto text-left" style="width: 75px;">
-									<span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="width: 75px;">
+									<span class="badge font-weight-bold text-uppercase align-middle" style="width: 75px;">
 										{{ content.year }}
 									</span>
 								</div>
