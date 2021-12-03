@@ -2,8 +2,8 @@
 layout: page
 title: CoView
 description: An application to assist in hospital & patient data summarisation and visualtisaion during COVID-19 pandemic.
-img: assets/img/1.jpg
-importance: 4
+img: assets/img/coview-thumbnail.jpg
+importance: 5
 category: fun
 ---
 

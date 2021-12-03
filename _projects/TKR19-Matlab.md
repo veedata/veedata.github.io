@@ -2,8 +2,8 @@
 layout: page
 title: Physical simulations for Mobile Robots
 description: Simulation made while in Team KJSCE Robocon for mobile robots and their mechanisms. Simulations include path planning and projectile motion.
-img: assets/img/1.jpg
-importance: 7
+img: assets/img/shagai-throwing-thumbnail.png
+importance: 2
 category: fun
 ---
 
