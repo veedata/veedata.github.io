@@ -414,6 +414,12 @@ footer.sticky-bottom {
   }
 }
 
+.news {
+  .badge {
+    background-color: var(--global-theme-color);
+  }
+}
+
 .cv {
   .badge {
     background-color: var(--global-theme-color);
