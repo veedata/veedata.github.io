@@ -44,10 +44,19 @@ jobs:
           echo "::set-output name=SRC_BRANCH::${GITHUB_REF#refs/heads/}"
         fi
         echo "::set-output name=DEPLOY_BRANCH::gh-pages"
-    - name: Deploy website 
-      with: 
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        run:  |
-          yes | bin/deploy --verbose ${{ steps.setup.outputs.NO_PUSH }}
-                          --src ${{ steps.setup.outputs.SRC_BRANCH }} 
-                          --deploy ${{ steps.setup.outputs.DEPLOY_BRANCH }} 
+    # - name: Deploy website 
+    #     run:  |
+    #       yes | bin/deploy --verbose ${{ steps.setup.outputs.NO_PUSH }}
+    #                       --src ${{ steps.setup.outputs.SRC_BRANCH }} 
+    #                       --deploy ${{ steps.setup.outputs.DEPLOY_BRANCH }} 
+      - name: Deploy Website
+        run: |
+          bundle exec jekyll build
+          find . -maxdepth 1 ! -name '_site' ! -name '.git' ! -name 'CNAME' ! -name '.gitignore' -exec rm -rf {} \;
+          mv _site/* .
+          rm -R _site/
+          git add -fA
+          git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]"
+          [[ --no-push ]] || git push -f -q origin --gh-pages
+          git checkout main
+          echo "Deployed successfully!"
