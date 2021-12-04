@@ -1,0 +1,182 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
+      value: Viraj Deven Thakkar
+    - name: Nationality
+      value: India
+    - name: Languages
+      value: Hindi (native), English (fluent), and Gujarati (advanced speaker)
+
+- title: Research Areas
+  type: list
+  contents:
+    - Machine learning and Artificial Intelligence with a keen interest in natural language processing, computer vision, robotics, and physical body simulations.
+
+- title: Education
+  type: table
+  contents:
+    - title: K. J. Somaiya College of Engineering – B. Tech in Information Technology.
+      year: 2017-2021
+      description:
+        - Bachelor of Technology degree awarded by Mumbai University
+        - 'CGPA: <b>8.56</b> (10.0 scale).'
+        - Head of Matlab & IP (2018-2019) of Team KJSCE Robocon where the Team was placed 5th nationally
+        - Vice Captain & Treasurer (2019-2020) of Team KJSCE Robocon where the Team was placed 8th nationally 
+        - title: Additonal/Elective courses
+          contents:
+            - Hands-on Introduction to Ethical Hacking (Sem. III)
+            - Game Programming (Sem. VI)
+            - Useability Engineering (Sem. VII)
+            - Internet of things (Sem. VIII)
+
+- title: Work Experience
+  type: table
+  contents:
+    - title: 'Analyst Intern at Cyber Peace Foundation'
+      year: 2020
+      description:
+        - Dark Web and Social Media Investigation Worked for the Advanced Methods Groups (AMG) in new machine learning-driven approaches for end-to-end algorithmic trading systems.
+    - title: 'Developer for K. J. Somaiya & KEM Hospital'
+      year: 2020
+      description:
+        - Developed and deployed an application for KEM Hospital, Mumbai to monitor patients during the COVID-19 pandemic. The project focuses on data cleaning, data analysis on the dashboard, and patient management aspects
+
+- title: Technical Projects
+  type: table
+  contents:
+    - title: 'Ingredient Recommendation Engine'
+      year: 2018
+      description: 
+        - ML based engine that recommends ingredients to existing reciepies, adding a new layer of flavour.
+        - <a href="http://istekjsce.org/Prakalpa/prakalpa18/winners.html#WTSJ1">Consolation winner</a> at Prakalp 2018
+    - title: 'TorChat'
+      year: 2019
+      description: Privacy centered chatting application that utilises the Tor Network to send and recieve messages and data.
+    - title: 'Landscape Analysis of OCSE and OCSA'
+      year: 2019
+      description: 
+        - Worked on the trends and different forms of Online Child Sexual Abuse and Exploitation (OCSA & OCSE) as the penetration of online technology has amplified.
+        - "Project funded by a grant of <b>USD 91,666.80</b> from Children's Investment Fund Foundation (CIFF) in the UK."
+    - title: 'CoView'
+      year: 2020
+      description: 
+        - An application to assist in hospital & patient data summarisation and visualtisaion during COVID-19 pandemic.  
+        - Created a custom algorithm suited to the hospital for data cleaning and normalization.
+        - Deployed and Maintained application for KEM Hospital, Mumbai.
+    - title: 'COVID-19 online scam detection'
+      year: 2020
+      description: 
+        - Designed architecture to discover malicious URLs, android applications & UPI IDs.
+        - 'Portions of data was <a href="https://www.cyberpeace.org/CyberPeace/Repository/Vulnerability-Website-Low-Res.pdf" target="_blank">published</a> by Cyberpeace Foundation' 
+    - title: 'COMRADE'
+      year: 2021
+      description: 
+        - Creation of an ML-based tool which employees resource crowdfunding for and amongst hospitals. 
+        - The project extends as a patient & inventory management software.
+
+- title: Open Source Projects
+  type: table
+  contents:
+    - title: 'Robot mechanisms physical simulation'
+      year: 2018
+      description: 
+        - Simulation made while in Team KJSCE Robocon for mobile robots and their mechanisms. Simulations include path planning and projectile motion.
+        - 'URL: <a href="https://github.com/veedata/Robocon2019-MATLAB" target="_blank">https://github.com/veedata/Robocon2019-MATLAB</a>'
+    - title: 'Memories'
+      year: '2021-now'
+      description: 
+        - Memories is an easy to use package that helps to seperate clustered images from files and helps add metadata to files.
+        - 'URL: <a href="https://github.com/veedata/memories" target="_blank">https://github.com/veedata/memories</a>'
+
+- title: Publications
+  type: list
+  contents:
+    - "A. Dalvi, I. Siddavatam, <b>V. Thakkar</b>, A. Vedpathak, and A. Patel, ‘Recognizing Child Unsafe Apps Through User Reviews on the Google Play Store’, in Advanced Computing and Intelligent Technologies, vol. 218. Available: <a href='https://link.springer.com/10.1007/978-981-16-2164-2_9' target='_blank'>https://link.springer.com/10.1007/978-981-16-2164-2_9</a>."
+    - "I. Siddavatam, A. Dalvi, A. Patel, A. Panchal, A. S. Vedpathak, and <b>V. Thakkar</b>, ‘ML-Enabled Informed Intervention for Crowdsourcing-Based Optimization of Medical Resources’:, in Advances in Healthcare Information Systems and Administration. Available: <a href='http://services.igi-global.com/resolvedoi/resolve.aspx?doi=10.4018/978-1-7998-7709-7.ch017' target='_blank'>http://services.igi-global.com/resolvedoi/resolve.aspx?doi=10.4018/978-1-7998-7709-7.ch017</a>."
+    - "I. Siddavatam, A. Dalvi, <b>V. Thakkar</b>, A. Vedpathak, S. Moradiya, and A. Jain, ‘Explainability using Decision Trees and Monte Carlo Simulations’, Social Science Research Network, Rochester, NY, SSRN Scholarly Paper ID 3868707, May 2021. Available: <a href='https://papers.ssrn.com/abstract=3868707' target='_blank'>https://papers.ssrn.com/abstract=3868707</a>."
+
+# - title: Teaching Experience
+#   type: table
+#   contents:
+#     - title: '<b>Provided support for an advanced graduate-level course on machine learning at Carnegie Mellon University.</b>'
+#       year: 2018
+#       description:
+#         - '<b>Class:</b> 10-812 Architectures for Never-Ending Learning.'
+#         - Taught by <b>Prof. Tom Mitchell</b>.
+#         - Gave a couple of lectures and helped with the organization of the class.
+#         - Designed and co-led the implementation of the software testbed used to support the course projects.
+#         - Mentored several students working on class projects.
+#     - title: '<b>Teaching Assistant for a graduate-level machine learning course at Carnegie Mellon University.</b>'
+#       year: 2014, 16
+#       description:
+#         - '<b>Class:</b> 10-701/15-781 Introduction to Machine Learning.'
+#         - Did this for two semesters (taught by <b>Prof. Geoff Gordon</b> and <b>Prof. Aarti Singh</b> in 2014, and <b>Prof. Tom Mitchell</b> in 2016).
+#         - Gave some lectures and some recitation lectures.
+#         - Mentored several groups of students working on class projects.
+#         - Wrote and graded homework assignments and exams.
+
+- title: Achievements
+  type: nested_list
+  contents:
+    # - title: 'Program Committees'
+    #   items: 'ACL (2020), ICML (2019), NeurIPS (2018-19), EMNLP (2018-19), PLOS-ONE (2018-19), IEEE-TPAMI (2018), and NIPS-AKBC (2016).'
+    # - title: 'Conference Workshops Organized'
+    #   items:
+    #     - '2019: ICML Adaptive & Multi-Task Learning.'
+    - title: 'University Committees'
+      items:
+        - '2018-19: Head of Matlab & IP for Team KJSCE Robocon.'
+        - '2019-20: Treasurer for Team KJSCE Robocon.'
+        - '2019-20: Vice Captian for Team KJSCE Robocon.'
+    - title: 'Major Events'
+      items:
+        - '2019: Research for NCPCR (National Commission for Protection of Child Rights).'
+        - '2019: Project presenter at 2nd Technology Marketplace by CIFF.'
+        - '2019: Attendee at International conference on cyberlaw, cybercrime & cybersecurity 2019 (ICCC 2019)'
+    - title: 'Technical Activities'
+      items:
+        - '2020: Organized and taught at workshop for 100+ College Students'
+        - '2020–21: Internship organizer and mentor for 200+ college students'
+        - '2020–21: Quantum Computing course by IBM Quantum & The Coding School'
+    # - title: 'Community Service'
+    #   items:
+    #     - '2009: Volunteer at the Lavrion refugee center, in Athens, Greece.'
+
+# - title: Major Talks
+#   type: table
+#   contents:
+#     - title: '<i>Competence-based Curriculum Learning for Neural Machine Translation</i>.'
+#       year: 2019
+#       description:
+#         - 'North American Chapter of the Association for Computational Linguistics (<b>NAACL</b>) conference.'
+#     - title: '<i>TensorFlow Scala</i>.'
+#       year: 2018
+#       description:
+#         - 'Invited talk at <b>Google</b>.'
+#     - title: '<i>Estimating Accuracy from Unlabeled Data</i>.'
+#       year: 2014-18
+#       description:
+#         - Neural Information Processing Systems (<b>NIPS</b>) conference.
+#         - International Conference in Machine Learning (<b>ICML</b>) conference.
+#         - Uncertainty in Artificial Intelligence (<b>UAI</b>) conference.
+#         - 'Invited talk at <b>Google</b>.'
+#         - AI Lunch at Stanford University.
+#         - ML Lunch at Carnegie Mellon University.
+
+- title: Software Development Skills
+  type: list
+  contents:
+    - '<b>GitHub:</b> <a href="https://github.com/veedata" target="_blank">https://github.com/veedata</a>'
+    - '<b>Stack Overflow:</b> <a href="https://stackoverflow.com/users/11215536/veedata" target="_blank">https://stackoverflow.com/users/11215536/veedata</a> (top 5% contributer in 2021).'
+    - '<b>Frameworks:</b> Tensorflow, SciPy, Pandas.'
+    - '<b>High Level Programming Languages:</b> Python, MATLAB, Simulink, Java, C, JavaScript, C++'
+    - '<b>Tools & Technologies:</b> Git, OpenCV, Django, Pandas, Simscape Multibody, Docker, Arduino, Basics of Azure/GCP/AWS'
+    - '<b>Programming Environments (IDEs):</b> Visual Studio, MATLAB, Eclipse'
+    - '<b>Database Systems:</b> PostgreSQL, MySQL'
+
+- title: Other Interests
+  type: list
+  contents:
+    - '<b>Sports & Games:</b> Tennis, Basketball, Chess, and Snake'
+    - '<b>Hobbies:</b> Writing, Travelling, Philosophy, and Movies'
