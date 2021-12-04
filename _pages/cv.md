@@ -7,7 +7,7 @@ nav: true
 
 <!-- Place PDF download link at the top right. -->
 <div class="row" style="margin-top: -4.5em; margin-right: 0.05em">
-	<a class="ml-auto mr-2" href="/assets/pdf/Viraj_resume.pdf" target="_blank">
+	<a class="ml-auto mr-2" href="/assets/pdf/Viraj_Resume.pdf" target="_blank">
 	  <i class="fas fa-file-download fa-2x"></i>
 	</a>
 </div>
