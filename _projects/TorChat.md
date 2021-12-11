@@ -3,7 +3,7 @@ layout: page
 title: TorChat
 description: Privacy centered chatting application that utilises the Tor Network to send and recieve messages and data.
 img: assets/img/torchat-thumbnail.jpg
-importance: 3
+importance: 7
 category: work
 ---
 

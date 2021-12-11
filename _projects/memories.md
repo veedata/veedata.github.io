@@ -3,7 +3,7 @@ layout: page
 title: Memories
 description: Memories is an easy to use package that helps to seperate clustered images from files and helps add metadata to files.
 img: assets/img/memories-thumbnail.jpg
-importance: 8
+importance: 4
 category: fun
 ---
 

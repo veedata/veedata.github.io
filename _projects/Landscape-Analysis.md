@@ -3,7 +3,7 @@ layout: page
 title: Landscape Analysis of OCSE and OCSA
 description: Reports the most prevalent online technologies, their reach and spread and the reported incidence of these technologies being an enabler for OCSA and OCSE.
 img: assets/img/landscape-analysis-thumbnail.jpg
-importance: 4
+importance: 1
 category: work
 ---
 

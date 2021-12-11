@@ -3,7 +3,7 @@ layout: page
 title: Ingredient Recommendation Engine
 description: ML based engine that recommends ingredients to existing reciepies, adding a new layer of flavour.
 img: assets/img/ingredient-recommender-thumbnail.png
-importance: 1
+importance: 8
 category: work
 ---
 

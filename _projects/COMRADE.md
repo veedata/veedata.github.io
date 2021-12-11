@@ -3,7 +3,7 @@ layout: page
 title: COMRADE
 description: Crowdsourcing based Optimisation of Medical Resources Attending Demand Equalisation.
 img: assets/img/comrade-thumbnail.jpg
-importance: 7
+importance: 5
 category: fun
 ---
 
