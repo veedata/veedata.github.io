@@ -4,7 +4,7 @@
 layout: about
 title: about
 permalink: /
-description: Incoming Computer Science Master's Student at Arizona State University
+description: Master's in Computer Science student at Arizona State University
 # profile:
 #   align: right
   # image: prof_pic.jpg
