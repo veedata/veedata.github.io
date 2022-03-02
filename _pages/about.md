@@ -10,6 +10,7 @@ description: Master's in Computer Science student at Arizona State University
   # image: prof_pic.jpg
 
 news: true  # includes a list of news items
+todo: true  # includes a list of todo items
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
