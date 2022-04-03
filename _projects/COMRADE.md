@@ -17,6 +17,6 @@ The concept for COMRADE has risen form the same problem. Starting with a dashboa
     </div>
 </div>
 
-This project allows for visualisation of patient data, management and addition of new patients and their reports. A patient trend spotter where every data about every patient in the hospital can be analysed and shown in interactive charts that will also show the progression of a disease in a patient.
+This project allows for visualization of patient data, management and addition of new patients and their reports. A patient trend spotter where every data about every patient in the hospital can be analyzed and shown in interactive charts that will also show the progression of a disease in a patient.
 
 Based on the progression of COVID in a patient, predictions for future inventory are made and the hospital personnel can take required steps to mitigate the issues.
