@@ -4,7 +4,7 @@ permalink: /publications/
 title: publications
 description: publications by categories in reversed chronological order
 years: [2021, 2022]
-nav: false
+nav: true
 ---
 
 <div class="publications">
