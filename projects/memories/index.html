@@ -12,7 +12,7 @@
   Viraj Thakkar
 
 
-  | blog
+  | Memories
 
 </title>
 <meta name="description" content="Inquisitive, tech-savvy, click this to know more about me :)
@@ -24,8 +24,8 @@
 " />
 <meta property="og:type" content="object" />
 <meta property="og:title" content="" />
-<meta property="og:url" content="https://veedata.github.io/blog/index.html" />
-<meta property="og:description" content="blog" />
+<meta property="og:url" content="https://veedata.github.io/projects/memories/" />
+<meta property="og:description" content="Memories" />
 <meta property="og:image" content="/assets/img/vdt_website_main.png" />
 
 
@@ -46,7 +46,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/projects/memories/">
 
 
 <!-- Dark Mode -->
@@ -110,8 +110,6 @@
           
           
           
-          
-          
           <li class="nav-item ">
               <a class="nav-link" href="/cv/">
                 curriculum vitae
@@ -148,8 +146,8 @@
           
           
           
-            <div class = "toggle-container">
-              <a id = "light-toggle">
+            <div class="toggle-container">
+              <a id="light-toggle">
                   <i class="fas fa-moon"></i>
                   <i class="fas fa-sun"></i>
               </a>
@@ -174,18 +172,133 @@
     <div class="container mt-5">
       <div class="post">
 
-  <div class="header-bar">
-    <h1></h1>
-    <h2>a simple whitespace theme for academics</h2>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">Memories</h1>
+    <p class="post-description">Memories is an easy to use package that helps to seperate clustered images from files and helps add metadata to files.</p>
+  </header>
+
+  <article>
+    <h5><b>Installation and Features</b></h5>
+
+<p>Install the Python package::</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install memories
+</code></pre></div></div>
+
+<p>There are 8 functions at the time being:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">open_image</code>: Open an image as a numpy array</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">divided_crop</code>: Takes 3 inputs, the path to the image, the path where the outful folder should be and the number of images present in the input file. It performs the task of dividing a single image into multiple smaller ones.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">add_date</code>: Takes input as the image path and the datetime to be added. it will add date when the image was originally taken.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">bulk_add_date</code>: Same as addDate, except it will add date to all images in a folder. The inputs are the folder path and datetime.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">save_image</code>: Converts a single image into another format</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">make_page</code>: Creates a year book like page in HTML</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">make_border</code>: Creates a border around the image</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">rotate_image</code>: Returns a rotated image</li>
+</ul>
+
+<h5><b>Using memories</b></h5>
+
+<p><b>Importing memories</b></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import memories as mem
+</code></pre></div></div>
+
+<p><b>Divide Images</b></p>
+
+<div class="row">
+    <div class="col-sm-7 mt-3 mb-3 mt-md-0 text-justify">
+    Converting hard copies of images into their soft copies usually leads to more than a single image being scanned on the same page. And while many devices have an inbuilt option to divide that scan into multiple images, some don't. The module divides a scan into it's member images based on background color also if provided.
+    </div>
+    <div class="col-sm-5 mt-3 mb-3 mt-md-0">
+        
 
 
-  <ul class="post-list">
+<picture>
     
-  </ul>
+    <source media="(max-width: 480px)" srcset="/assets/resized/divider-480x156.jpg"></source>
+    
+    <img class="img-fluid rounded z-depth-1 p-2" src="/assets/img/divider.jpg" title="image division example">
+</picture>
 
-  
+    </div>
+</div>
 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>image = mem.open_image("./image.png")
+mem.divided_crop(image, image_quantity = 6, bgr_value = [255, 255, 255])
+</code></pre></div></div>
+
+<p><b>Add Metadata</b></p>
+
+<p>Allows the addition of metadata to images (only jpg supported). The feature currently only provides addition of Date metadata but will be updated in the future with more options.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Add date to a single image using image path
+mem.addDate("./image-1.jpg", "27/04/2021 12:00:03")
+# Add date to images in bulk using folder path
+mem.bulkAddDate("./", "27/04/2021 12:00:03")
+</code></pre></div></div>
+
+<p><b>Save Images</b></p>
+
+<p>Easy conversion of an image into other formats. Currently supported input and output formats can be found <a href="https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html" target="_blank" rel="noopener noreferrer">here</a>. Additionally saving to pdf can be performed, where pdf saves multiple input images in a single pdf file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>image1 = mem.open_image("./image.png")
+image2 = mem.open_image("./image.png")
+image3 = mem.open_image("./image.png")
+
+mem.save_image(image1, "path/to/save_folder/file.extention")
+# Save multiple images at once
+mem.save_image([image1, image2, image3], "path/to/save_folder/file.extention")
+# Save multiple images as a pdf
+mem.save_image(["img-1.png", "img-1.jpg", "img-2.jpg"], "path/to/save_folder/file.pdf")
+</code></pre></div></div>
+
+<p><b>Scrapbook page</b></p>
+
+<p>On input of name, short line and image, this function generates a year-book like webpage.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mem.makePage(["./source_folder/image1.png", "./random/another_source_folder/image2.jpg"], ["CSS", "Larry"], ["SASS", "That one got to you, didnt it"], "./save_folder")
+</code></pre></div></div>
+
+<p><b>Add borders</b></p>
+
+<div class="row">
+    <div class="col-sm-7 mt-3 mb-3 mt-md-0 text-justify">
+    Make a border around an image. While support is limited over here, it is slated to increase over time, adding new options and developments to the same.
+    <br>
+    <br>
+    Currently, you can add a normal border to the image and also a curved border. In both options, users can fine tune the width (normal) and radius (curved edges) of the borders. 
+    </div>
+    <div class="col-sm-5 mt-3 mb-3 mt-md-0">
+        
+
+
+<picture>
+    
+    <img class="img-fluid rounded z-depth-1 p-2" src="/assets/img/border.jpg" title="image division example">
+</picture>
+
+    </div>
+</div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>image = mem.open_image("./image.png")
+
+# Squared borders
+mem.make_border(image, "normal", bgr_value = [255, 255, 255], border_dimensions = [100, 100, 100, 100])
+# Curved borders
+mem.make_border(image, "curved", bgr_value = [255, 255, 255], border_dimensions = [100, 100, 100, 100], radius_dimensions = [100, 100, 100, 100])
+</code></pre></div></div>
+
+  </article>
 
 </div>
 
@@ -196,7 +309,7 @@
     
 <footer class="fixed-bottom">
   <div class="container mt-0">
-    &copy; Copyright 2022 Viraj  Thakkar.
+    © Copyright 2022 Viraj  Thakkar.
     
     
     

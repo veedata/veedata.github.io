@@ -12,7 +12,7 @@
   Viraj Thakkar
 
 
-  | blog
+  | Physical simulations for Mobile Robots
 
 </title>
 <meta name="description" content="Inquisitive, tech-savvy, click this to know more about me :)
@@ -24,8 +24,8 @@
 " />
 <meta property="og:type" content="object" />
 <meta property="og:title" content="" />
-<meta property="og:url" content="https://veedata.github.io/blog/index.html" />
-<meta property="og:description" content="blog" />
+<meta property="og:url" content="https://veedata.github.io/projects/TKR19-Matlab/" />
+<meta property="og:description" content="Physical simulations for Mobile Robots" />
 <meta property="og:image" content="/assets/img/vdt_website_main.png" />
 
 
@@ -46,7 +46,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/projects/TKR19-Matlab/">
 
 
 <!-- Dark Mode -->
@@ -110,8 +110,6 @@
           
           
           
-          
-          
           <li class="nav-item ">
               <a class="nav-link" href="/cv/">
                 curriculum vitae
@@ -148,8 +146,8 @@
           
           
           
-            <div class = "toggle-container">
-              <a id = "light-toggle">
+            <div class="toggle-container">
+              <a id="light-toggle">
                   <i class="fas fa-moon"></i>
                   <i class="fas fa-sun"></i>
               </a>
@@ -174,18 +172,122 @@
     <div class="container mt-5">
       <div class="post">
 
-  <div class="header-bar">
-    <h1></h1>
-    <h2>a simple whitespace theme for academics</h2>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">Physical simulations for Mobile Robots</h1>
+    <p class="post-description">Simulation made while in Team KJSCE Robocon for mobile robots and their mechanisms. Simulations include path planning and projectile motion.</p>
+  </header>
+
+  <article>
+    <p>Simulations made at Team KJSCE Robocon for Robocon-2019 competition. Simulations include path planning for a swerve drive system and a projectile mechanism.</p>
+
+<p><b>Path Planning</b></p>
+
+<p>The idea was to be able to approximate the actual path to be traversed with our input equation. This helped us find minute violations and errors that Robot could make such as touching the poles, running into the fence.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        
 
 
-  <ul class="post-list">
+<picture>
     
-  </ul>
+    <source media="(max-width: 480px)" srcset="/assets/resized/SinePath_Real_World_Case-480x264.gif"></source>
+    
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/SinePath_Real_World_Case.gif" title="example image">
+</picture>
 
-  
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        
 
+
+<picture>
+    
+    <source media="(max-width: 480px)" srcset="/assets/resized/SinePath_Sim_All-480x263.gif"></source>
+    
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/SinePath_Sim_All.gif" title="example image">
+</picture>
+
+    </div>
+</div>
+<div class="caption">
+    This image can also have a caption. It's like magic.
+</div>
+
+<p><b>Projectile Mechanism</b></p>
+
+<p>Fine Tuning was done for the Model to exactly replicate the Robot’s Throw. The Score obtained after each throw, mass of Shagai and Angle of projection was noted. After physically testing the collected data, the model correctly identified the outcome in at least 95% of the cases.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        
+
+
+<picture>
+    
+    <source media="(max-width: 480px)" srcset="/assets/resized/Shagai_Pistons_Real_World_Case-480x264.gif"></source>
+    
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/Shagai_Pistons_Real_World_Case.gif" title="example image">
+</picture>
+
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        
+
+
+<picture>
+    
+    <source media="(max-width: 480px)" srcset="/assets/resized/Shagai_Throwing_Sim_Iso-480x264.gif"></source>
+    
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/Shagai_Throwing_Sim_Iso.gif" title="example image">
+</picture>
+
+    </div>
+</div>
+<div class="caption">
+    This image can also have a caption. It's like magic.
+</div>
+
+<p>The purpose of the Shagai Throwing Model was to predict the outcome for any giving variation in the conditions. The goal was to ensure that the Shagai lands with the Golden Side on top and thus obtain 50 pts, the maximum score.</p>
+
+<p>The data was collected from a loop based program which would change the angle of projection from 8.0 to 14.2. After every loop the mass of the Shagai is changed (the Shagai mass can vary from 600g to 800g as mentioned in Robocon 2019 Rulebook).</p>
+
+<p>Data Collected reflected the Shagai Landing Orientation for Various Angles for Shagai of different masses. Analyzing it helped us find the ideal conditions to throw the Shagai which would result in 50 points.</p>
+
+<p>In order to Visualize this data a graph was created with the outcome of the Shagai throw (20, 40, 50 points) on the Y-axis against the Angle in the X-axis. Multiple lines were drawn, each representing a Shagai of a different mass. The range of angles most suitable for the projection was then selected.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        
+
+
+<picture>
+    
+    <source media="(max-width: 480px)" srcset="/assets/resized/Graph_AngleJustification-480x225.jpg"></source>
+    
+    <source media="(max-width: 800px)" srcset="/assets/resized/Graph_AngleJustification-800x374.jpg"></source>
+    
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/Graph_AngleJustification.jpg" title="example image">
+</picture>
+
+    </div>
+</div>
+<div class="caption">
+    This image can also have a caption. It's like magic.
+</div>
+
+<p>The purpose of this graph was to decide the Angle at which we were to throw the shagai from, the problems here were the variation of weights, now with the help of our Simscape model of Shagai projection, we were able to determine the appropriate angle to launch the Shagai at.</p>
+
+<p><b>What the Graph means:</b></p>
+
+<p>The x-axis denotes the angle at which we launched the shagai, the y-axis denotes the result attained after falling in the landing zone.
+The graph has 5 different lines, each being a shagai of different mass.</p>
+
+<p>We then deduce for observation that the safe zone to launch the shagai is the period 11.4 to 13.2 degrees, since, it is the point wherin the Shagai lands on 50 irrespective of the weight.</p>
+
+<p>Link to repository: <a href="https://github.com/veedata/Robocon2019-MATLAB" target="_blank" rel="noopener noreferrer">https://github.com/veedata/Robocon2019-MATLAB</a></p>
+
+  </article>
 
 </div>
 
@@ -196,7 +298,7 @@
     
 <footer class="fixed-bottom">
   <div class="container mt-0">
-    &copy; Copyright 2022 Viraj  Thakkar.
+    © Copyright 2022 Viraj  Thakkar.
     
     
     
