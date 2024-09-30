@@ -15,10 +15,10 @@ The idea was to be able to approximate the actual path to be traversed with our 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% responsive_image path: assets/img/SinePath_Real_World_Case.gif title: "example image" class: "img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/SinePath_Real_World_Case.gif" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% responsive_image path: assets/img/SinePath_Sim_All.gif title: "example image" class: "img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/SinePath_Sim_All.gif" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -31,10 +31,10 @@ Fine Tuning was done for the Model to exactly replicate the Robot’s Throw. The
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% responsive_image path: assets/img/Shagai_Pistons_Real_World_Case.gif title: "example image" class: "img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/Shagai_Pistons_Real_World_Case.gif" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% responsive_image path: assets/img/Shagai_Throwing_Sim_Iso.gif title: "example image" class: "img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/Shagai_Throwing_Sim_Iso.gif" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -51,7 +51,7 @@ In order to Visualize this data a graph was created with the outcome of the Shag
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% responsive_image path: assets/img/Graph_AngleJustification.jpg title: "example image" class: "img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/Graph_AngleJustification.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

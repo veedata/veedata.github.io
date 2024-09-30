@@ -39,7 +39,7 @@ There are 8 functions at the time being:
     Converting hard copies of images into their soft copies usually leads to more than a single image being scanned on the same page. And while many devices have an inbuilt option to divide that scan into multiple images, some don't. The module divides a scan into it's member images based on background color also if provided.
     </div>
     <div class="col-sm-5 mt-3 mb-3 mt-md-0">
-        {% responsive_image path: assets/img/divider.jpg title: "image division example" class: "img-fluid rounded z-depth-1 p-2" %}
+        {% include figure.liquid path="assets/img/divider.jpg" title="example image" class="img-fluid rounded z-depth-1 p-2" %}
     </div>
 </div>
 
@@ -86,7 +86,7 @@ On input of name, short line and image, this function generates a year-book like
     Currently, you can add a normal border to the image and also a curved border. In both options, users can fine tune the width (normal) and radius (curved edges) of the borders. 
     </div>
     <div class="col-sm-5 mt-3 mb-3 mt-md-0">
-        {% responsive_image path: assets/img/border.jpg title: "image division example" class: "img-fluid rounded z-depth-1 p-2" %}
+        {% include figure.liquid path="assets/img/border.jpg" title="example image" class="img-fluid rounded z-depth-1 p-2" %}
     </div>
 </div>
 

@@ -14,7 +14,7 @@
     - Machine learning and Artificial Intelligence with a keen interest in natural language processing, computer vision, robotics, and physical body simulations.
 
 - title: Education
-  type: table
+  type: time_table
   contents:
     - title: K. J. Somaiya College of Engineering – B. Tech in Information Technology.
       year: 2017-2021
@@ -31,7 +31,7 @@
             - Internet of things (Sem. VIII)
 
 - title: Work Experience
-  type: table
+  type: time_table
   contents:
     - title: 'Analyst Intern at Cyber Peace Foundation'
       year: 2020
@@ -44,7 +44,7 @@
         - Developed and deployed an application for KEM Hospital, Mumbai to monitor patients during the COVID-19 pandemic. The project focuses on data cleaning, data analysis on the dashboard, and patient management aspects
 
 - title: Technical Projects
-  type: table
+  type: time_table
   contents:
     - title: 'Ingredient Recommendation Engine'
       year: 2018
@@ -77,7 +77,7 @@
         - The project extends as a patient & inventory management software.
 
 - title: Open Source Projects
-  type: table
+  type: time_table
   contents:
     - title: 'Robot mechanisms physical simulation'
       year: 2018
@@ -98,7 +98,7 @@
     - "I. Siddavatam, A. Dalvi, <b>V. Thakkar</b>, A. Vedpathak, S. Moradiya, and A. Jain, ‘Explainability using Decision Trees and Monte Carlo Simulations’, Social Science Research Network, Rochester, NY, SSRN Scholarly Paper ID 3868707, May 2021. Available: <a href='https://papers.ssrn.com/abstract=3868707' target='_blank'>https://papers.ssrn.com/abstract=3868707</a>."
 
 # - title: Teaching Experience
-#   type: table
+#   type: time_table
 #   contents:
 #     - title: '<b>Provided support for an advanced graduate-level course on machine learning at Carnegie Mellon University.</b>'
 #       year: 2018
@@ -145,7 +145,7 @@
     #     - '2009: Volunteer at the Lavrion refugee center, in Athens, Greece.'
 
 # - title: Major Talks
-#   type: table
+#   type: time_table
 #   contents:
 #     - title: '<i>Competence-based Curriculum Learning for Neural Machine Translation</i>.'
 #       year: 2019

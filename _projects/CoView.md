@@ -24,7 +24,7 @@ category: fun
         </ul>
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% responsive_image path: assets/img/CoView_KJSCE.jpeg title: "example image" class: "img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/CoView_KJSCE.jpeg" title="example image" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             CoView mentioned in the <a href="https://www.mumbailive.com/en/health/kem-hospital-becomes-the-first-govt-hospital-to-digitize-covid-19-records-52849" target="_blank">local news</a>.
         </div>

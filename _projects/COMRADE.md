@@ -13,7 +13,7 @@ The concept for COMRADE has risen form the same problem. Starting with a dashboa
 
 <div class="row">
     <div class="col-sm mt-3 mb-3 text-center">
-        {% responsive_image path: assets/img/COMRADE_Poster.jpg title: "COMRADE poster" class: "img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/COMRADE_Poster.jpg" title="COMRADE poster" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
