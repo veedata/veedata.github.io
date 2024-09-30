@@ -67,3 +67,66 @@
 	keywords = {Uniform resource locators, Text recognition, IEEE Sections, Crawlers, Web pages, Data collection, Information age, Hyperlink Extraction, Dark Web, Web Scraping, Link Harvesting},
 	pages = {1--5},
 }
+
+@techreport{thakkar2023optimizing,
+	bibtex_show={true},
+  title={Optimizing Consistency and Performance Trade-off in Distributed Log-Structured Merge-Tree-based Key-Value Stores},
+  author={Thakkar, Viraj Deven},
+  year={2023},
+  institution={Arizona State University},
+  abbr={ASU}
+}
+
+@article{dalvi2023flash,
+	bibtex_show={true},
+  title={FLASH: Web-Form's Logical Analysis \& Session Handling Automatic Form Classification and Filling on Surface and Dark Web},
+  author={Dalvi, Ashwini and Thakkar, Viraj and Moradiya, Smit and Vedpathak, Aditya and Siddavatam, Irfan and Kazi, Fark and Bhirud, SG},
+  journal={Robotic Process Automation},
+  pages={61--100},
+  year={2023},
+  publisher={Wiley Online Library},
+  abbr={Wiley}
+}
+
+@inproceedings{10.1145/3655038.3665954,
+	bibtex_show={true},
+  selected={true},
+  author = {Thakkar, Viraj and Sukumar, Madhumitha and Dai, Jiaxin and Singh, Kaushiki and Cao, Zhichao},
+  title = {Can Modern LLMs Tune and Configure LSM-based Key-Value Stores?},
+  year = {2024},
+	month = jun,
+  isbn = {9798400706301},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3655038.3665954},
+  doi = {10.1145/3655038.3665954},
+  abstract = {Log-Structured-Merge tree-based Key-Value Stores (LSM-KVSs) are important data storage building blocks in modern IT infrastructure. However, tuning their performance involves configuring over 100 parameters, a task typically done manually or with limited parameters in auto-tuning mechanisms. This paper explores and answers the following question: can we leverage LLM's understanding of the system and LSM-KVS components for unrestricted parameter-pool tuning of LSM-KVS?LLMs are trained on readily available LSM-KVS source code, research papers, and open materials enabling the machines to have human-like understanding. We investigate integrating Large-Language Models (LLMs) into an automated tuning framework for LSM-KVS to enhance the tuning capability and interactivity. Our framework utilizes LLMs to recommend tailored configurations with calibrated prompts based on hardware, system, and workload information. Initial results demonstrate upto 3X throughput improvements and an upto 9X reduction in p99 latency across various hardware and workloads compared to the out-of-box configuration for the LSM-KVS.},
+  booktitle = {Proceedings of the 16th ACM Workshop on Hot Topics in Storage and File Systems},
+  pages = {116–123},
+  numpages = {8},
+  keywords = {Automatic Tuning and Configuration, LSM-KVS, Large Language Models},
+  location = {Santa Clara, CA, USA},
+  series = {HotStorage '24},
+  abbr={HotStorage}
+}
+
+@article{10.1145/3654927,
+	bibtex_show={true},
+	author = {Yu, Qiaolin and Guo, Chang and Zhuang, Jay and Thakkar, Viraj and Wang, Jianguo and Cao, Zhichao},
+	title = {CaaS-LSM: Compaction-as-a-Service for LSM-based Key-Value Stores in Storage Disaggregated Infrastructure},
+	year = {2024},
+	issue_date = {June 2024},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	volume = {2},
+	number = {3},
+	url = {https://doi.org/10.1145/3654927},
+	doi = {10.1145/3654927},
+	abstract = {Optimizing LSM-based Key-Value Stores (LSM-KVS) for disaggregated storage is essential to achieve better resource utilization, performance, and flexibility. Most of the existing studies focus on offloading the compaction to the storage nodes to mitigate the performance penalties caused by heavy network traffic between computing and storage. However, several critical issues are not addressed including the strong dependency between offloaded compaction and LSM-KVS, resource load-balancing, compaction scheduling, and complex transient errors.To address the aforementioned issues and limitations, in this paper, we propose CaaS-LSM, a novel disaggregated LSM-KVS with a new idea of Compaction-as-a-Service. CaaS-LSM brings three key contributions. First, CaaS-LSM decouples the compaction from LSM-KVS and achieves stateless execution to ensure high flexibility and avoid coordination overhead with LSM-KVS. Second, CaaS-LSM introduces a performance- and resource-optimized control plane to guarantee better performance and resource utilization via an adaptive run-time scheduling and management strategy. Third, CaaS-LSM addresses different levels of transient and execution errors via sophisticated error-handling logic. We implement the prototype of CaaS-LSM based on RocksDB and evaluate it with different LSM-based distributed databases (Kvrocks and Nebula). In the storage disaggregated setup, CaaS-LSM achieves up to 8X throughput improvement and reduces the P99 latency up to 98\% compared with the conventional LSM-KVS, and up to 61\% of improvement compared with state-of-the-art LSM-KVS optimized for disaggregated storage.},
+	journal = {Proc. ACM Manag. Data},
+	month = may,
+	articleno = {124},
+	numpages = {28},
+	keywords = {LSM-tree, disaggregated infrastructure, key-value store},
+  abbr={SIGMOD}
+}

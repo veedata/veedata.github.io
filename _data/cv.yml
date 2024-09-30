@@ -1,34 +1,45 @@
 - title: General Information
   type: map
   contents:
-    - name: Full Name
-      value: Viraj Deven Thakkar
-    - name: Nationality
-      value: India
+    - name: Name
+      value: Viraj Thakkar
     - name: Languages
       value: Hindi (native), English (fluent), and Gujarati (advanced speaker)
+    - name: Pursuing
+      value: Ph.D. in Computer Science
+    - name: Current Degree
+      value: M.S. in Computer Science
 
-- title: Research Areas
+- title: Research Interests
   type: list
   contents:
-    - Machine learning and Artificial Intelligence with a keen interest in natural language processing, computer vision, robotics, and physical body simulations.
+    - LSM-KVS, RocksDB, Optimization and Tuning, Security, (maybe) Quantum Computing.
 
 - title: Education
   type: time_table
   contents:
-    - title: K. J. Somaiya College of Engineering – B. Tech in Information Technology.
+    - title: Arizona State University - Ph.D. in Computer Science
+      year: 2023-
+      description:
+        - 'Currently pursuing a Doctor of Philosophy degree in Computer Science.'
+    - title: Arizona State University – M.S. in Computer Science
+      year: 2021-2023
+      description:
+        - 'Currently pursuing a Master of Science degree in Computer Science.'
+        - 'GPA: <b>3.71</b> (4.0 scale).'
+        - 'Courses: Data Prpcessing at Scale, Machine Learning, Artificial Intelligence, Data Mining, and Software Engineering.'
+    - title: K. J. Somaiya College of Engineering – B. Tech in Information Technology (Mumbai University).
       year: 2017-2021
       description:
-        - Bachelor of Technology degree awarded by Mumbai University
         - 'CGPA: <b>8.56</b> (10.0 scale).'
         - Head of Matlab & IP (2018-2019) of Team KJSCE Robocon where the Team was placed 5th nationally
         - Vice Captain & Treasurer (2019-2020) of Team KJSCE Robocon where the Team was placed 8th nationally 
-        - title: Additonal/Elective courses
-          contents:
-            - Hands-on Introduction to Ethical Hacking (Sem. III)
-            - Game Programming (Sem. VI)
-            - Useability Engineering (Sem. VII)
-            - Internet of things (Sem. VIII)
+        # - title: Additonal/Elective courses
+        #   contents:
+        #     - Hands-on Introduction to Ethical Hacking (Sem. III)
+        #     - Game Programming (Sem. VI)
+        #     - Useability Engineering (Sem. VII)
+        #     - Internet of things (Sem. VIII)
 
 - title: Work Experience
   type: time_table
@@ -90,12 +101,12 @@
         - Memories is an easy to use package that helps to seperate clustered images from files and helps add metadata to files.
         - 'URL: <a href="https://github.com/veedata/memories" target="_blank">https://github.com/veedata/memories</a>'
 
-- title: Publications
-  type: list
-  contents:
-    - "A. Dalvi, I. Siddavatam, <b>V. Thakkar</b>, A. Vedpathak, and A. Patel, ‘Recognizing Child Unsafe Apps Through User Reviews on the Google Play Store’, in Advanced Computing and Intelligent Technologies, vol. 218. Available: <a href='https://link.springer.com/10.1007/978-981-16-2164-2_9' target='_blank'>https://link.springer.com/10.1007/978-981-16-2164-2_9</a>."
-    - "I. Siddavatam, A. Dalvi, A. Patel, A. Panchal, A. S. Vedpathak, and <b>V. Thakkar</b>, ‘ML-Enabled Informed Intervention for Crowdsourcing-Based Optimization of Medical Resources’:, in Advances in Healthcare Information Systems and Administration. Available: <a href='http://services.igi-global.com/resolvedoi/resolve.aspx?doi=10.4018/978-1-7998-7709-7.ch017' target='_blank'>http://services.igi-global.com/resolvedoi/resolve.aspx?doi=10.4018/978-1-7998-7709-7.ch017</a>."
-    - "I. Siddavatam, A. Dalvi, <b>V. Thakkar</b>, A. Vedpathak, S. Moradiya, and A. Jain, ‘Explainability using Decision Trees and Monte Carlo Simulations’, Social Science Research Network, Rochester, NY, SSRN Scholarly Paper ID 3868707, May 2021. Available: <a href='https://papers.ssrn.com/abstract=3868707' target='_blank'>https://papers.ssrn.com/abstract=3868707</a>."
+# - title: Publications
+#   type: list
+#   contents:
+#     - "A. Dalvi, I. Siddavatam, <b>V. Thakkar</b>, A. Vedpathak, and A. Patel, ‘Recognizing Child Unsafe Apps Through User Reviews on the Google Play Store’, in Advanced Computing and Intelligent Technologies, vol. 218. Available: <a href='https://link.springer.com/10.1007/978-981-16-2164-2_9' target='_blank'>https://link.springer.com/10.1007/978-981-16-2164-2_9</a>."
+#     - "I. Siddavatam, A. Dalvi, A. Patel, A. Panchal, A. S. Vedpathak, and <b>V. Thakkar</b>, ‘ML-Enabled Informed Intervention for Crowdsourcing-Based Optimization of Medical Resources’:, in Advances in Healthcare Information Systems and Administration. Available: <a href='http://services.igi-global.com/resolvedoi/resolve.aspx?doi=10.4018/978-1-7998-7709-7.ch017' target='_blank'>http://services.igi-global.com/resolvedoi/resolve.aspx?doi=10.4018/978-1-7998-7709-7.ch017</a>."
+#     - "I. Siddavatam, A. Dalvi, <b>V. Thakkar</b>, A. Vedpathak, S. Moradiya, and A. Jain, ‘Explainability using Decision Trees and Monte Carlo Simulations’, Social Science Research Network, Rochester, NY, SSRN Scholarly Paper ID 3868707, May 2021. Available: <a href='https://papers.ssrn.com/abstract=3868707' target='_blank'>https://papers.ssrn.com/abstract=3868707</a>."
 
 # - title: Teaching Experience
 #   type: time_table
