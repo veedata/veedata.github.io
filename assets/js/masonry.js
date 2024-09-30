@@ -1,9 +1,8 @@
 $(document).ready(function () {
   // Init Masonry
-  var $grid = $(".grid").masonry({
-    gutter: 10,
+  var $grid = $(".projects").masonry({
     horizontalOrder: true,
-    itemSelector: ".grid-item",
+    itemSelector: ".col",
   });
   // Layout Masonry after each image loads
   $grid.imagesLoaded().progress(function () {

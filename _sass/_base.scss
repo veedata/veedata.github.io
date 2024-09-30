@@ -646,6 +646,11 @@ footer.sticky-bottom {
 
 // Publications
 
+.news-badge {
+    color: var(--global-card-bg-color) !important;
+    background-color: var(--global-theme-color) !important;
+}
+
 .publications {
   margin-top: 2rem;
 
