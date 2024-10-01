@@ -61,7 +61,7 @@
       year: 2018
       description: 
         - ML based engine that recommends ingredients to existing reciepies, adding a new layer of flavour.
-        - <a href="http://istekjsce.org/Prakalpa/prakalpa18/winners.html#WTSJ1">Consolation winner</a> at Prakalp 2018
+        - <a href="http://istekjsce.com/Prakalpa/prakalpa18/winners.html#WTSJ1">Consolation winner</a> at Prakalp 2018
     - title: 'TorChat'
       year: 2019
       description: Privacy centered chatting application that utilises the Tor Network to send and recieve messages and data.
