@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Master's in Computer Science student at Arizona State University.
+subtitle: Computer Science Ph.D. Student at Arizona State University.
 
 # profile:
 #   align: right
@@ -18,4 +18,4 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am an inquisitive guy, savvy with tech, and with a will to enhance my knowledge and skills in the advanced domain of Natural Language Processing, Artificial Intelligence and Data Science!
+I am an inquisitive guy, savvy with tech, and with a will to enhance my knowledge and skills in the domains of LSM-KVS, Disaggregated Infrastructure, and Storage Systems for AI/ML applications!
