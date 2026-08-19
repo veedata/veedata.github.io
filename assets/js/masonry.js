@@ -1,1 +1,0 @@
-$(document).ready(function(){var o=$(".projects").masonry({horizontalOrder:!0,itemSelector:".col"});o.imagesLoaded().progress(function(){o.masonry("layout")})});

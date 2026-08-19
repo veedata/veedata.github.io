@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><title>Projects · Viraj Thakkar</title><meta name="description" content="Things I have built and researched.">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><title>Physical simulations for mobile robots · Viraj Thakkar</title><meta name="description" content="Simulation made while in Team KJSCE Robocon for mobile robots and their mechanisms. Simulations include path planning and projectile motion.">
   <meta name="author" content="Viraj Thakkar"><meta name="keywords" content="viraj thakkar, asu, hpe, lsm-kvs, storage systems, rocksdb, phd">
-  <link rel="canonical" href="https://veedata.github.io/projects/"><!-- Open Graph -->
+  <link rel="canonical" href="https://veedata.github.io/projects/tkr19-matlab/"><!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Projects · Viraj Thakkar">
-  <meta property="og:description" content="Things I have built and researched.">
-  <meta property="og:url" content="https://veedata.github.io/projects/">
+  <meta property="og:title" content="Physical simulations for mobile robots · Viraj Thakkar">
+  <meta property="og:description" content="Simulation made while in Team KJSCE Robocon for mobile robots and their mechanisms. Simulations include path planning and projectile motion.">
+  <meta property="og:url" content="https://veedata.github.io/projects/tkr19-matlab/">
   <meta name="twitter:card" content="summary">
 
   <!-- Emoji favicon, no image asset needed -->
@@ -103,68 +103,58 @@
     <main class="content" id="main">
       <div class="container">
         <div class="page-header">
-  <h1>Projects</h1>
-  <p class="lead">Things I have built and researched.</p>
-</div><div class="cards"><a class="card" href="/projects/landscape-analysis/"><div class="card__media">
-      <img src="/assets/img/landscape-analysis-thumbnail.jpg" alt="Landscape Analysis of OCSE and OCSA" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">Landscape Analysis of OCSE and OCSA</h3>
-    <p class="card__desc">Reports the most prevalent online technologies, their reach and spread and the reported incidence of these technologi...</p>
-  </div>
-</a>
-<a class="card" href="/projects/coview/"><div class="card__media">
-      <img src="/assets/img/coview-thumbnail.jpg" alt="CoView" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">CoView</h3>
-    <p class="card__desc">An application to assist in hospital & patient data summarization and visualization during COVID-19 pandemic.</p>
-  </div>
-</a>
-<a class="card" href="/projects/memories/"><div class="card__media">
-      <img src="/assets/img/memories-thumbnail.jpg" alt="Memories" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">Memories</h3>
-    <p class="card__desc">Memories is an easy to use package that helps to seperate clustered images from files and helps add metadata to files.</p>
-  </div>
-</a>
-<a class="card" href="/projects/tkr19-matlab/"><div class="card__media">
-      <img src="/assets/img/shagai-throwing-thumbnail.png" alt="Physical simulations for Mobile Robots" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">Physical simulations for Mobile Robots</h3>
-    <p class="card__desc">Simulation made while in Team KJSCE Robocon for mobile robots and their mechanisms. Simulations include path planning...</p>
-  </div>
-</a>
-<a class="card" href="/projects/comrade/"><div class="card__media">
-      <img src="/assets/img/comrade-thumbnail.jpg" alt="COMRADE" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">COMRADE</h3>
-    <p class="card__desc">Crowdsourcing based Optimisation of Medical Resources Attending Demand Equalisation.</p>
-  </div>
-</a>
-<a class="card" href="/projects/covid-cpf/"><div class="card__media">
-      <img src="/assets/img/covid-19-scam-thumbnail.jpg" alt="COVID-19 online scam detection" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">COVID-19 online scam detection</h3>
-    <p class="card__desc">Designed architecture to discover malicious URLs, android applications & UPI IDs.</p>
-  </div>
-</a>
-<a class="card" href="/projects/torchat/"><div class="card__media">
-      <img src="/assets/img/torchat-thumbnail.jpg" alt="TorChat" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">TorChat</h3>
-    <p class="card__desc">Privacy centered chatting application that utilises the Tor Network to send and recieve messages and data.</p>
-  </div>
-</a>
-<a class="card" href="/projects/ingredient-recommender/"><div class="card__media">
-      <img src="/assets/img/ingredient-recommender-thumbnail.png" alt="Ingredient Recommendation Engine" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">Ingredient Recommendation Engine</h3>
-    <p class="card__desc">ML based engine that recommends ingredients to existing recipes, adding a new layer of flavour.</p>
-  </div>
-</a>
+  <h1>Physical simulations for mobile robots</h1><p class="lead">Simulation made while in Team KJSCE Robocon for mobile robots and their mechanisms. Simulations include path planning and projectile motion.</p></div>
+
+<div class="prose">
+  <p>Simulations made at Team KJSCE Robocon for the Robocon-2019 competition. Simulations include path planning for a swerve drive system and a projectile mechanism.</p>
+
+<h3 id="path-planning">Path Planning</h3>
+
+<p>The idea was to be able to approximate the actual path to be traversed with our input equation. This helped us find minute violations and errors that the robot could make, such as touching the poles or running into the fence.</p>
+
+<div class="figs">
+  <img src="/assets/img/SinePath_Real_World_Case.gif" alt="Swerve drive following a sine path in the real world" loading="lazy" />
+
+  <img src="/assets/img/SinePath_Sim_All.gif" alt="Simulated sine path for the swerve drive" loading="lazy" />
+
 </div>
+<p class="caption">The real-world run (left) against the simulated path (right).</p>
 
+<h3 id="projectile-mechanism">Projectile Mechanism</h3>
 
+<p>Fine tuning was done for the model to exactly replicate the robot’s throw. The score obtained after each throw, mass of the Shagai and angle of projection were noted. After physically testing the collected data, the model correctly identified the outcome in at least 95% of the cases.</p>
 
+<div class="figs">
+  <img src="/assets/img/Shagai_Pistons_Real_World_Case.gif" alt="Piston-driven Shagai throw in the real world" loading="lazy" />
+
+  <img src="/assets/img/Shagai_Throwing_Sim_Iso.gif" alt="Isometric view of the simulated Shagai throw" loading="lazy" />
+
+</div>
+<p class="caption">The physical throwing mechanism (left) and its Simscape model (right).</p>
+
+<p>The purpose of the Shagai throwing model was to predict the outcome for any given variation in the conditions. The goal was to ensure that the Shagai lands with the golden side on top and thus obtain 50 pts, the maximum score.</p>
+
+<p>The data was collected from a loop-based program which would change the angle of projection from 8.0 to 14.2. After every loop the mass of the Shagai is changed (the Shagai mass can vary from 600g to 800g as mentioned in the Robocon 2019 rulebook).</p>
+
+<p>Data collected reflected the Shagai landing orientation for various angles, for Shagai of different masses. Analyzing it helped us find the ideal conditions to throw the Shagai which would result in 50 points.</p>
+
+<p>In order to visualize this data a graph was created with the outcome of the Shagai throw (20, 40, 50 points) on the Y-axis against the angle on the X-axis. Multiple lines were drawn, each representing a Shagai of a different mass. The range of angles most suitable for the projection was then selected.</p>
+
+<div class="figs">
+  <img src="/assets/img/Graph_AngleJustification.jpg" alt="Throw outcome plotted against launch angle for five Shagai masses" loading="lazy" />
+
+</div>
+<p class="caption">Outcome against launch angle, one line per Shagai mass.</p>
+
+<p>The purpose of this graph was to decide the angle at which we were to throw the Shagai from. The problem here was the variation of weights; with the help of our Simscape model of Shagai projection, we were able to determine the appropriate angle to launch at.</p>
+
+<p><strong>What the graph means:</strong> the x-axis denotes the angle at which we launched the Shagai, the y-axis denotes the result attained after it fell in the landing zone. The graph has 5 different lines, each being a Shagai of a different mass.</p>
+
+<p>We then deduce from observation that the safe zone to launch the Shagai is the period 11.4 to 13.2 degrees, since it is the point wherein the Shagai lands on 50 irrespective of the weight.</p>
+
+<p>Link to repository: <a href="https://github.com/veedata/Robocon2019-MATLAB">veedata/Robocon2019-MATLAB</a></p>
+
+</div>
 
       </div>
     </main>
