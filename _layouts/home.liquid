@@ -1,19 +1,88 @@
 ---
 layout: default
 ---
+{%- comment -%}
+  Home-page order is deliberate and reads top-to-bottom as an argument:
+
+    identity  → who this is
+    thesis    → what they work on, scannable
+    proof     → why you should keep reading
+    substance → what the work actually asks - research threads
+    evidence  → the receipts - selected publications
+    new(s)    → that it is still happening
+    onward    → where to go next
+{%- endcomment -%}
 <section class="home-hero">
   <p class="eyebrow">Ph.D. Student · Arizona State University</p>
   <h1>{{ site.title }}</h1>
   <p class="home-hero__lead">{{ page.hero | default: site.subtitle }}</p>
+
+  <ul class="research-areas" aria-label="Research areas">
+    {%- for area in site.research_areas -%}<li>{{ area }}</li>{%- endfor -%}
+  </ul>
+
   <div class="bio">{{ content }}</div>
   {% include social.liquid %}
 </section>
 
+<ul class="highlights" aria-label="Highlights">
+  {%- for h in site.data.highlights -%}
+  <li class="highlights__item">
+    <span class="highlights__label">{{ h.label }}</span>
+    <span class="highlights__detail">{{ h.detail }}</span>
+  </li>
+  {%- endfor -%}
+</ul>
+
+<section class="section">
+  <div class="section__head">
+    <h2>What I Work On</h2>
+    <a href="{{ '/publications/' | relative_url }}">the papers →</a>
+  </div>
+  <div class="threads">
+    {%- for t in site.data.research -%}
+    <article class="thread">
+      <span class="thread__icon" aria-hidden="true">{% include icon.liquid name=t.icon %}</span>
+      <div class="thread__body">
+        <h3 class="thread__name">{{ t.name }}</h3>
+        <p class="thread__q">{{ t.question }}</p>
+      </div>
+      <ul class="thread__evidence">
+        {%- for e in t.evidence -%}<li>{{ e }}</li>{%- endfor -%}
+      </ul>
+    </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__head">
+    <h2>Selected Publications</h2>
+    <a href="{{ '/publications/' | relative_url }}">all publications →</a>
+  </div>
+  {% include pub-list.liquid selected=true %}
+</section>
+
+<section class="section">
+  <div class="section__head">
+    <h2>Recent news</h2>
+    <a href="{{ '/news/' | relative_url }}">all news →</a>
+  </div>
+  {%- comment -%}
+    Three, not six. The home page is a selection; /news/ is the archive. Six
+    entries reached back to 2023 and turned the section into a changelog.
+  {%- endcomment -%}
+  {% include news-list.liquid limit=3 %}
+</section>
+
+<div class="section__head">
+  <h2>Explore</h2>
+</div>
 <nav class="quicklinks" aria-label="Explore the site">
   <a class="quicklink" href="{{ '/publications/' | relative_url }}">
     {% include icon.liquid name="doc" %}
     <span class="quicklink__title">Publications</span>
-    <span class="quicklink__desc">Papers, workshops & theses</span>
+    <span class="quicklink__desc">Papers out of the mill</span>
   </a>
   <a class="quicklink" href="{{ '/projects/' | relative_url }}">
     {% include icon.liquid name="grid" %}
@@ -26,21 +95,4 @@ layout: default
     <span class="quicklink__desc">The long-form story</span>
   </a>
 </nav>
-
-{%- if site.data.news and site.data.news.size > 0 -%}
-<section class="section">
-  <div class="section__head">
-    <h2>Recent news</h2>
-    <a href="{{ '/news/' | relative_url }}">all news →</a>
-  </div>
-  {% include news-list.liquid limit=6 %}
-</section>
-{%- endif -%}
-
-<section class="section">
-  <div class="section__head">
-    <h2>Selected publications</h2>
-    <a href="{{ '/publications/' | relative_url }}">all publications →</a>
-  </div>
-  {% include pub-list.liquid selected=true %}
 </section>

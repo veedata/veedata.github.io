@@ -15,7 +15,7 @@
 {%- if include.selected -%}
   <div class="pubs">
     {%- for p in pubs -%}
-      {%- if p.selected -%}{% include pub-item.liquid p=p %}{%- endif -%}
+      {%- if p.selected -%}{% include pub-item.liquid p=p compact=true %}{%- endif -%}
     {%- endfor -%}
   </div>
 
@@ -54,7 +54,7 @@
   <div class="pubs" id="pub-list">
     {%- for p in pubs -%}
       {%- if p.year != last_year -%}
-        <div class="pub-year" data-year="{{ p.year }}">{{ p.year }}</div>
+        <h2 class="pub-year" data-year="{{ p.year }}">{{ p.year }}</h2>
         {%- assign last_year = p.year -%}
       {%- endif -%}
       {% include pub-item.liquid p=p %}

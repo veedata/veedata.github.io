@@ -12,6 +12,13 @@ keywords: viraj thakkar, asu, hpe, lsm-kvs, storage systems, rocksdb, phd
 lang: en
 icon: 📄
 
+# Shown as a compact label row in the home-page hero, ABOVE the bio.
+research_areas:
+  - Key-Value Stores
+  - Filesystems & Caching
+  - Disaggregated Infrastructure
+  - Storage for AI/ML
+
 url: https://veedata.github.io
 baseurl: ""
 

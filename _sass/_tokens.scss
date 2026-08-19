@@ -7,13 +7,16 @@
   // --- Palette: 4 roles ---------------------------------------------------
   --bg: #f5f1ea; // page background (warm cream)
   --ink: #1f1b16; // body text (brown-black)
-  --muted: #7c7367; // secondary text (AA on --bg)
-  --accent: #b4531f; // links, active state, marks (terracotta)
+  --muted: #736a5c; // secondary text 
+  --accent: #a94a19; // links, active state, marks (terracotta)
 
   // --- Surfaces derived from the palette (not new hues) -------------------
   --card: #fbf8f2; // raised panels: cards, code, popovers
-  --line: #e4dbcd; // hairline borders and rules
-  --accent-soft: rgba(180, 83, 31, 0.1); // accent wash for chips/hovers
+  --line: #e4dbcd; // hairline rules BETWEEN content (decorative, 1.2:1)
+  // Border for controls whose outline is their ONLY visual boundary — filter
+  // chips, social circles, the theme toggle. Decorative rules keep using --line.
+  --line-strong: #8f8477; // 3.25:1 on bg
+  --accent-soft: rgba(169, 74, 25, 0.1); // accent wash for chips/hovers
   --shadow: rgba(31, 27, 22, 0.16);
 
   // --- Type ---------------------------------------------------------------
@@ -28,6 +31,8 @@
   --radius: 12px;
   --radius-sm: 8px;
 
+  --h2-section: 1.4rem;
+
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
@@ -40,6 +45,7 @@
 
   --card: #201b14;
   --line: #33291d;
+  --line-strong: #6f6556;
   --accent-soft: rgba(224, 122, 69, 0.14);
   --shadow: rgba(0, 0, 0, 0.45);
 }
