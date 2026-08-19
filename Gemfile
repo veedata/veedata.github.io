@@ -1,29 +1,22 @@
 source 'https://rubygems.org'
+
+# Minimal plugin set for the v1 theme.
+#
+# Jekyll auto-requires EVERY gem in the :jekyll_plugins group at boot
+# (Bundler.require), so anything listed here is loaded whether or not it's in
+# _config.yml's `plugins:`. Keep it lean — this is the whole dependency budget.
 group :jekyll_plugins do
-    gem 'classifier-reborn'
-    gem 'jekyll'
-    gem 'jekyll-archives'
-    gem 'jekyll-email-protect'
-    gem 'jekyll-feed'
-    gem 'jekyll-get-json'
-    gem 'jekyll-imagemagick'
-    gem 'jekyll-jupyter-notebook'
-    gem 'jekyll-link-attributes'
-    gem 'jekyll-minifier'
-    gem 'jekyll-paginate-v2'
-    gem 'jekyll-regex-replace'
-    gem 'jekyll-scholar'
-    gem 'jekyll-sitemap'
-    gem 'jekyll-tabs'
-    gem 'jekyll-toc'
-    gem 'jekyll-twitter-plugin'
-    gem 'jemoji'
-    gem 'mini_racer'
-    gem 'unicode_utils'
-    gem 'webrick'
+  gem 'jekyll'
+  gem 'jekyll-feed'
+  gem 'jekyll-sitemap'
+  gem 'webrick'
 end
-group :other_plugins do
-    gem 'css_parser'
-    gem 'feedjira'
-    gem 'httparty'
-end
+
+# Ruby 4.0.0 dropped these from the default gems, but Jekyll 4.3.x and its deps
+# still `require` them (e.g. jekyll.rb requires 'logger'). List them explicitly
+# so Bundler installs them and the requires resolve.
+gem 'logger'
+gem 'csv'
+gem 'base64'
+gem 'bigdecimal'
+gem 'ostruct'
