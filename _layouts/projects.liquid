@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<div class="page-header">
+  <h1>Projects</h1>
+  <p class="lead">{{ page.description | default: 'Selected things I have built and researched.' }}</p>
+</div>
+
+{%- assign projects = site.projects | sort: 'importance' -%}
+<div class="cards">
+  {%- for project in projects -%}
+    {% include project-card.liquid project=project index=forloop.index0 %}
+  {%- endfor -%}
+</div>
+
+{{ content }}

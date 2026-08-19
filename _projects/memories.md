@@ -3,11 +3,10 @@ layout: page
 title: Memories
 description: Memories is an easy to use package that helps to seperate clustered images from files and helps add metadata to files.
 img: assets/img/memories-thumbnail.jpg
-importance: 4
-category: fun
+importance: 8
 ---
 
-<h5><b>Installation and Features</b></h5>
+### Installation and Features
 
 Install the Python package::
 
@@ -25,29 +24,27 @@ There are 8 functions at the time being:
 - ``rotate_image``: Returns a rotated image
 
 
-<h5><b>Using memories</b></h5>
+### Using memories
 
-<b>Importing memories</b>
+**Importing memories**
 
     import memories as mem
 
 
-<b>Divide Images</b>
+**Divide Images**
 
-<div class="row">
-    <div class="col-sm-7 mt-3 mb-3 mt-md-0 text-justify">
-    Converting hard copies of images into their soft copies usually leads to more than a single image being scanned on the same page. And while many devices have an inbuilt option to divide that scan into multiple images, some don't. The module divides a scan into it's member images based on background color also if provided.
-    </div>
-    <div class="col-sm-5 mt-3 mb-3 mt-md-0">
-        {% include figure.liquid path="assets/img/divider.jpg" title="example image" class="img-fluid rounded z-depth-1 p-2" %}
-    </div>
+<div class="split" markdown="1">
+<div markdown="1">
+Converting hard copies of images into their soft copies usually leads to more than a single image being scanned on the same page. And while many devices have an inbuilt option to divide that scan into multiple images, some don't. The module divides a scan into its member images, based on background color if provided.
+</div>
+{% include figure.liquid path="assets/img/divider.jpg" alt="A scanned page split into its member images" %}
 </div>
 
     image = mem.open_image("./image.png")
     mem.divided_crop(image, image_quantity = 6, bgr_value = [255, 255, 255])
 
 
-<b>Add Metadata</b>
+**Add Metadata**
 
 Allows the addition of metadata to images (only jpg supported). The feature currently only provides addition of Date metadata but will be updated in the future with more options.
 
@@ -56,7 +53,7 @@ Allows the addition of metadata to images (only jpg supported). The feature curr
     # Add date to images in bulk using folder path
     mem.bulkAddDate("./", "27/04/2021 12:00:03")
 
-<b>Save Images</b>
+**Save Images**
 
 Easy conversion of an image into other formats. Currently supported input and output formats can be found [here](https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html). Additionally saving to pdf can be performed, where pdf saves multiple input images in a single pdf file.
 
@@ -70,24 +67,21 @@ Easy conversion of an image into other formats. Currently supported input and ou
     # Save multiple images as a pdf
     mem.save_image(["img-1.png", "img-1.jpg", "img-2.jpg"], "path/to/save_folder/file.pdf")
 
-<b>Scrapbook page</b>
+**Scrapbook page**
 
 On input of name, short line and image, this function generates a year-book like webpage.
 
     mem.makePage(["./source_folder/image1.png", "./random/another_source_folder/image2.jpg"], ["CSS", "Larry"], ["SASS", "That one got to you, didnt it"], "./save_folder")
 
-<b>Add borders</b>
+**Add borders**
 
-<div class="row">
-    <div class="col-sm-7 mt-3 mb-3 mt-md-0 text-justify">
-    Make a border around an image. While support is limited over here, it is slated to increase over time, adding new options and developments to the same.
-    <br>
-    <br>
-    Currently, you can add a normal border to the image and also a curved border. In both options, users can fine tune the width (normal) and radius (curved edges) of the borders. 
-    </div>
-    <div class="col-sm-5 mt-3 mb-3 mt-md-0">
-        {% include figure.liquid path="assets/img/border.jpg" title="example image" class="img-fluid rounded z-depth-1 p-2" %}
-    </div>
+<div class="split" markdown="1">
+<div markdown="1">
+Make a border around an image. While support is limited here, it is slated to increase over time, adding new options and developments to the same.
+
+Currently, you can add a normal border to the image and also a curved border. In both options, users can fine tune the width (normal) and radius (curved edges) of the borders.
+</div>
+{% include figure.liquid path="assets/img/border.jpg" alt="An image with a plain border and a curved border" %}
 </div>
 
 

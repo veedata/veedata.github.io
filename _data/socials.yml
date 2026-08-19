@@ -1,0 +1,7 @@
+# Social links rendered by _includes/social.liquid as inline SVGs.
+# Order here is the order shown.
+- { name: email,          icon: email,    url: "mailto:viraj.online@asu.edu" }
+- { name: Google Scholar, icon: scholar,  url: "https://scholar.google.com/citations?user=0tSjYZkAAAAJ" }
+- { name: GitHub,         icon: github,   url: "https://github.com/veedata" }
+- { name: LinkedIn,       icon: linkedin, url: "https://www.linkedin.com/in/veedata" }
+- { name: Stack Overflow, icon: stackoverflow, url: "https://stackoverflow.com/users/11215536/veedata" }

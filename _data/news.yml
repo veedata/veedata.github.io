@@ -1,0 +1,45 @@
+# Site news — hand-maintained (replaces the _news collection).
+# Each entry:
+#   date : YYYY-MM-DD  (used for sorting + display)
+#   text : markdown allowed (links, emoji, **bold**)
+#   link : optional URL → renders a small "→" at the end
+# Newest-first here is just for readability; the template sorts by date.
+
+- date: 2026-07-13
+  text: 'Our paper "TellyTune: Exploring the Limits of LLM-Driven Tuning for LSM-Based Key-Value Stores" was accepted to SYSTOR 2026! 📄'
+
+- date: 2026-04-21
+  text: 'Honored to be ASU''s nominee for the Google PhD Fellowship Award! 🎉'
+
+- date: 2025-06-26
+  text: 'Presented "SHIELD: Encrypting Persistent Data of LSM-KVS from Monolithic to Disaggregated Storage" at ACM SIGMOD 2025! 🔐'
+
+- date: 2025-05-26
+  text: 'Joined HPE Labs'' Systems Architecture Lab as a System Software Research Associate Intern! 🧪'
+
+- date: 2024-07-08
+  text: 'Won the Best Paper Award at HotStorage ''24 for our paper "Can Modern LLMs Tune and Configure LSM-based Key-Value Stores?"! 🏆'
+
+- date: 2023-08-01
+  text: 'Graduated from ASU with an M.S. in Computer Science Degree! 🎓'
+
+- date: 2023-08-01
+  text: 'Started my Ph.D. journey under the guidance of [Dr. Zhichao Cao](https://search.asu.edu/profile/4082902) at Arizona State University!'
+
+- date: 2023-05-21
+  text: 'Started my Summer Internship at Amazon as a Software Development Engineer Intern! 🚀'
+
+- date: 2022-08-01
+  text: 'Working on redesign of website!'
+
+- date: 2022-02-01
+  text: 'Working on a research project with Prof. Zhichao Cao.'
+
+- date: 2021-12-03
+  text: 'Personal website finally live 😄'
+
+- date: 2021-11-20
+  text: 'Paper "Link Harvesting on the Dark Web" presented at [IBSSC](https://ieeexplore.ieee.org/xpl/conhome/9673135/proceeding).'
+
+- date: 2021-11-04
+  text: 'First release for a stable version of [memories](https://pypi.org/project/memories/).'

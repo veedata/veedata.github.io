@@ -1,0 +1,34 @@
+{%- comment -%}
+  Project card. Expects include.project, and optionally include.index (used to
+  rotate the generated-cover hue so adjacent cards don't look identical).
+{%- endcomment -%}
+{%- assign proj = include.project -%}
+<a class="card" href="{{ proj.url | relative_url }}">
+  {%- if proj.img -%}
+    <div class="card__media">
+      <img src="{{ proj.img | relative_url }}" alt="{{ proj.title }}" loading="lazy">
+    </div>
+  {%- else -%}
+    {%- comment -%}
+      No image file: draw the cover in CSS. `monogram:` in front matter wins,
+      otherwise use the initials of the first two words of the title.
+    {%- endcomment -%}
+    {%- if proj.monogram -%}
+      {%- assign mark = proj.monogram -%}
+    {%- else -%}
+      {%- assign mark = '' -%}
+      {%- assign words = proj.title | split: ' ' -%}
+      {%- for w in words limit: 2 -%}
+        {%- assign initial = w | slice: 0 -%}
+        {%- assign mark = mark | append: initial -%}
+      {%- endfor -%}
+    {%- endif -%}
+    <div class="card__media card__media--generated" style="--i: {{ include.index | default: 0 }}" aria-hidden="true">
+      <span>{{ mark | upcase }}</span>
+    </div>
+  {%- endif -%}
+  <div class="card__body">
+    <h3 class="card__title">{{ proj.title }}</h3>
+    <p class="card__desc">{{ proj.description | strip_html | truncate: 120 }}</p>
+  </div>
+</a>

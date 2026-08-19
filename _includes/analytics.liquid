@@ -1,0 +1,14 @@
+{%- comment -%}
+  Cronitor RUM. Loads only when `cronitor_analytics` is set in _config.yml AND
+  the build is a production one, so local dev and PR previews stay out of the
+  numbers. The client key is public by design (it ships in the page source).
+{%- endcomment -%}
+{%- if site.cronitor_analytics and jekyll.environment == 'production' -%}
+<script async src="https://rum.cronitor.io/script.js"></script>
+<script>
+  window.cronitor = window.cronitor || function () {
+    (window.cronitor.q = window.cronitor.q || []).push(arguments);
+  };
+  cronitor('config', { clientKey: '{{ site.cronitor_analytics }}' });
+</script>
+{%- endif -%}

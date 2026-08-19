@@ -1,0 +1,46 @@
+---
+layout: default
+---
+<section class="home-hero">
+  <p class="eyebrow">Ph.D. Student · Arizona State University</p>
+  <h1>{{ site.title }}</h1>
+  <p class="home-hero__lead">{{ page.hero | default: site.subtitle }}</p>
+  <div class="bio">{{ content }}</div>
+  {% include social.liquid %}
+</section>
+
+<nav class="quicklinks" aria-label="Explore the site">
+  <a class="quicklink" href="{{ '/publications/' | relative_url }}">
+    {% include icon.liquid name="doc" %}
+    <span class="quicklink__title">Publications</span>
+    <span class="quicklink__desc">Papers, workshops & theses</span>
+  </a>
+  <a class="quicklink" href="{{ '/projects/' | relative_url }}">
+    {% include icon.liquid name="grid" %}
+    <span class="quicklink__title">Projects</span>
+    <span class="quicklink__desc">Things I've built &amp; broken</span>
+  </a>
+  <a class="quicklink" href="{{ '/cv/' | relative_url }}">
+    {% include icon.liquid name="file" %}
+    <span class="quicklink__title">CV</span>
+    <span class="quicklink__desc">The long-form story</span>
+  </a>
+</nav>
+
+{%- if site.data.news and site.data.news.size > 0 -%}
+<section class="section">
+  <div class="section__head">
+    <h2>Recent news</h2>
+    <a href="{{ '/news/' | relative_url }}">all news →</a>
+  </div>
+  {% include news-list.liquid limit=6 %}
+</section>
+{%- endif -%}
+
+<section class="section">
+  <div class="section__head">
+    <h2>Selected publications</h2>
+    <a href="{{ '/publications/' | relative_url }}">all publications →</a>
+  </div>
+  {% include pub-list.liquid selected=true %}
+</section>

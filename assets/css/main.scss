@@ -1,25 +1,22 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
+# Compiled to /assets/css/main.css by Jekyll. The empty front matter is required.
 ---
-@charset "utf-8";
 
-// Dimensions
-$max-content-width: {{ site.max_width }};
+// Load order matters: tokens define the custom properties everything else uses.
+// @use (not @import) — @import is deprecated and goes away in Dart Sass 3.
+// Each partial is self-contained plain CSS, so no namespacing is needed.
+@use "tokens"; // colours, fonts, sizes — the only place to re-theme
+@use "base"; // reset + element defaults + .prose
+@use "layout"; // shell, container, page header, footer
+@use "nav"; // top bar (desktop) + floating island (mobile)
+@use "components"; // hero, cards, publications, news, CV, code
 
-@import
-  "variables",
-  "themes",
-  "layout",
-  "base",
-  "distill",
-  "cv",
-  "tabs",
-  "typograms",
-  "font-awesome/fontawesome",
-  "font-awesome/brands",
-  "font-awesome/solid",
-  "font-awesome/regular",
-  "tabler-icons/tabler-icons.scss",
-  "tabler-icons/tabler-icons-filled.scss",
-  "tabler-icons/tabler-icons-outline.scss"
-;
+// Rouge syntax highlighting, restricted to the palette (no new hues).
+.highlight {
+  .c, .c1, .cm, .cp, .cs { color: var(--muted); font-style: italic; }
+  .k, .kd, .kn, .kp, .kr, .kt, .nb, .bp { color: var(--accent); }
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr { color: var(--ink); }
+  .m, .mi, .mf, .mh, .mo { color: var(--ink); }
+  .o, .ow { color: var(--muted); }
+  .err { color: #c0392b; }
+}

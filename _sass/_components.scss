@@ -1,0 +1,548 @@
+// ===========================================================================
+// COMPONENTS — one block per UI piece, in the order you meet them on the site.
+//   1. Home hero + quicklinks      5. Project cards
+//   2. Buttons, badges, socials    6. Figures (used by project markdown)
+//   3. News list                   7. CV
+//   4. Publications + filters      8. Code blocks & TOC
+// ===========================================================================
+
+// --- 1. Home hero ---------------------------------------------------------
+.home-hero {
+  margin: 1.5rem 0 2.5rem;
+}
+.home-hero h1 {
+  margin: 0.4rem 0 0.9rem;
+  font-size: clamp(2.4rem, 7vw, 3.6rem);
+}
+.home-hero__lead {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 3.4vw, 1.75rem);
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0 0 1.4rem;
+}
+.home-hero .bio {
+  font-size: 1.08rem;
+  color: var(--muted);
+}
+.home-hero .bio strong {
+  color: var(--ink);
+}
+
+.quicklinks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.9rem;
+  margin: 2.75rem 0;
+}
+.quicklink {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 0.85rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--ink);
+  transition:
+    transform 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+.quicklink:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px var(--shadow);
+  text-decoration: none;
+}
+.quicklink svg {
+  grid-row: 1 / 3;
+  width: 26px;
+  height: 26px;
+  color: var(--accent);
+}
+.quicklink__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.quicklink__desc {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+// --- 2. Buttons, badges, socials -----------------------------------------
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.btn:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+.btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.badge--tag {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--muted);
+  cursor: pointer;
+}
+.badge--tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+// Highlights on a publication row. `--flag` is hand-set per entry (tags:) and
+// shouts a little; `--status` is derived from `status:` and only murmurs.
+.badge--flag {
+  background: var(--accent);
+  color: var(--bg);
+}
+.badge--status {
+  background: transparent;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.75rem 0 0;
+}
+.socials a {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+}
+.socials a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.socials svg {
+  width: 20px;
+  height: 20px;
+}
+
+// --- 3. News list ---------------------------------------------------------
+.news {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.news__item {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--line);
+}
+.news__item:first-child {
+  border-top: 0;
+}
+.news__date {
+  padding-top: 0.15rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.news__body p:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 480px) {
+  .news__item {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+}
+
+// --- 4. Publications ------------------------------------------------------
+.pub-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.5rem;
+}
+.pub-filter {
+  // inline-flex + explicit gap: the label/count spacing comes from the gap, not
+  // from whitespace in the markup, so the text can't drift inside the chip.
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.4rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.88rem;
+  // Weight is CONSTANT across states on purpose. Bolding only the pressed chip
+  // changes its measured width, which reflows every chip after it — the row
+  // visibly shifts each time you pick a different filter.
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    color 0.15s var(--ease),
+    border-color 0.15s var(--ease),
+    background-color 0.15s var(--ease);
+}
+.pub-filter:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.pub-filter[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+}
+.pub-filter__count {
+  opacity: 0.65;
+  font-variant-numeric: tabular-nums;
+}
+
+.pub-year {
+  margin: 2rem 0 0.75rem;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.pub {
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--line);
+}
+.pub__title {
+  margin: 0 0 0.2rem;
+  font-size: 1.06rem;
+  font-weight: 600;
+}
+.pub__title a {
+  color: var(--ink);
+}
+.pub__title a:hover {
+  color: var(--accent);
+}
+.pub__authors {
+  margin: 0 0 0.15rem;
+  font-size: 0.92rem;
+}
+.pub__meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.pub__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.4rem 0 0;
+}
+.pub__bibtex {
+  margin: 0.7rem 0 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+.pub__bibtex code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+// Hidden by the filter script; `hidden` alone loses to `display: flex` etc.
+[hidden] {
+  display: none !important;
+}
+
+// --- 5. Project cards -----------------------------------------------------
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  overflow: hidden;
+  transition:
+    transform 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px var(--shadow);
+  text-decoration: none;
+}
+.card__media {
+  aspect-ratio: 16 / 10;
+  background: var(--accent-soft);
+  overflow: hidden;
+}
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Cover drawn in CSS for projects with no image file. The monogram sits on a
+// warm gradient whose hue is nudged per card via --i (set inline by the
+// include), so a grid of generated covers reads as a set, not a repeat.
+.card__media--generated {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      color-mix(in srgb, var(--accent) 34%, var(--card)),
+      var(--card) 70%
+    ),
+    var(--card);
+  filter: hue-rotate(calc(var(--i, 0) * 14deg));
+}
+.card__media--generated span {
+  font-family: var(--font-serif);
+  font-size: 2.6rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--accent) 80%, var(--ink));
+  opacity: 0.9;
+}
+.card__body {
+  padding: 1rem 1.1rem 1.2rem;
+}
+.card__title {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.card__desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+// --- 6. Figures (project markdown) ---------------------------------------
+// One or more images side by side, wrapping on narrow screens.
+.figs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.figs img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 12px var(--shadow);
+}
+.caption {
+  margin: -0.75rem 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+// Prose on one side, a figure on the other; stacks below 640px.
+.split {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin: 1.5rem 0;
+}
+.split img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 12px var(--shadow);
+}
+.split .caption {
+  margin: 0.5rem 0 0;
+}
+@media (max-width: 640px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
+
+// --- 7. CV ----------------------------------------------------------------
+.cv-download {
+  margin: 0 0 2rem;
+}
+.cv-block {
+  margin: 2.2rem 0;
+}
+.cv-block > h2 {
+  margin: 0 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.4rem;
+}
+.cv-map {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1.5rem;
+}
+.cv-map dt {
+  color: var(--muted);
+}
+.cv-map dd {
+  margin: 0;
+}
+
+.timeline {
+  margin: 0;
+  padding: 0 0 0 1.4rem;
+  border-left: 2px solid var(--line);
+  list-style: none;
+}
+.timeline__item {
+  position: relative;
+  padding: 0 0 1.6rem 0.6rem;
+}
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.4rem - 6px);
+  top: 0.45rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+.timeline__title {
+  margin: 0;
+  font-weight: 600;
+}
+.timeline__year {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+.timeline__desc {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+// --- 8. Code blocks & TOC -------------------------------------------------
+div.highlight,
+figure.highlight {
+  position: relative;
+  margin: 1.5rem 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.highlight pre,
+.prose > pre {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  background: var(--card);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+.prose > pre {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  margin: 1.5rem 0;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s var(--ease);
+}
+div.highlight:hover .copy-btn,
+figure.highlight:hover .copy-btn,
+.copy-btn:focus-visible {
+  opacity: 1;
+}
+.copy-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.toc {
+  padding-left: 1rem;
+  border-left: 2px solid var(--line);
+  font-size: 0.9rem;
+}
+.toc a {
+  display: block;
+  padding: 0.15rem 0;
+  color: var(--muted);
+}
+.toc a.is-active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+// --- Article (blog, dormant) ---------------------------------------------
+.article-header {
+  margin-bottom: 2rem;
+}
+.article-header .meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}

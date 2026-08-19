@@ -1,14 +1,6 @@
 ---
-layout: page
+layout: publications
 permalink: /publications/
 title: publications
-nav: true
-nav_order: 4
+description: Papers, Posters, and Preprints.
 ---
-
-<!-- _pages/publications.md -->
-<div class="publications">
-
-{% bibliography %}
-
-</div>
