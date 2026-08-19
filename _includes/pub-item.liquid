@@ -1,0 +1,41 @@
+{%- comment -%}
+  A single publication row. Expects include.p.
+  data-cat drives the filter buttons — see the mapping in pub-list.liquid.
+{%- endcomment -%}
+{%- assign p = include.p -%}
+{%- assign st = p.status | default: '' | downcase -%}
+{%- if p.category -%}{% assign cat = p.category %}
+{%- elsif p.type == 'preprint' or st contains 'under review' -%}{% assign cat = 'preprint' %}
+{%- elsif p.type == 'workshop' -%}{% assign cat = 'workshop' %}
+{%- elsif p.type == 'poster' or p.type == 'abstract' -%}{% assign cat = 'abstract' %}
+{%- else -%}{% assign cat = 'conference' %}{%- endif -%}
+<div class="pub" data-cat="{{ cat }}" data-year="{{ p.year }}">
+  <p class="pub__title">
+    {%- if p.url -%}<a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.title }}</a>
+    {%- else -%}{{ p.title }}{%- endif -%}
+  </p>
+  <p class="pub__authors">{{ p.authors }}</p>
+  <p class="pub__meta">
+    {%- if p.venue -%}{{ p.venue }}{%- endif -%}
+    {%- if p.year %} · {{ p.year }}{% endif -%}
+    {%- comment -%}
+      "Under review" becomes a badge below, so it is not repeated here as an
+      italic note. Any other status (e.g. "To appear") still shows inline.
+    {%- endcomment -%}
+    {%- unless st contains 'under review' -%}
+      {%- if p.status %} · <em>{{ p.status }}</em>{% endif -%}
+    {%- endunless -%}
+  </p>
+  <p class="pub__links">
+    {%- if p.type -%}<span class="badge">{{ p.type }}</span>{%- endif -%}
+    {%- if st contains 'under review' -%}<span class="badge badge--status">Under review</span>{%- endif -%}
+    {%- comment -%} Hand-set highlights, e.g. tags: ["Best Paper"]. {%- endcomment -%}
+    {%- for t in p.tags -%}<span class="badge badge--flag">{{ t }}</span>{%- endfor -%}
+    {%- if p.doi -%}<a class="badge badge--tag" href="{{ p.url | default: p.doi }}" target="_blank" rel="noopener">DOI</a>
+    {%- elsif p.url -%}<a class="badge badge--tag" href="{{ p.url }}" target="_blank" rel="noopener">link</a>{%- endif -%}
+    {%- if p.bibtex -%}<button class="badge badge--tag bibtex-toggle" type="button" aria-expanded="false">BibTeX</button>{%- endif -%}
+  </p>
+  {%- if p.bibtex -%}
+    <pre class="pub__bibtex" hidden><code>{{ p.bibtex | escape }}</code></pre>
+  {%- endif -%}
+</div>

@@ -1,0 +1,268 @@
+// ===========================================================================
+// NAV — two presentations of the same links.
+//   ≥720px : sticky top bar, everything visible, no hamburger.
+//   <720px : floating island docked bottom-centre; overflow unfolds upward.
+// ===========================================================================
+
+$bp-mobile: 719px;
+
+// --- Top bar (desktop) ----------------------------------------------------
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  // Deliberately NOT backdrop-filter: blurring a full-width sticky strip makes
+  // the compositor re-snapshot the page behind it every frame, which was the
+  // single most expensive paint on an otherwise ~40 KB page. A near-opaque
+  // background reads almost identically and costs nothing.
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+.topbar__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 1.4rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.brand:hover {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+// Landing page: the name already headlines the hero, so the bar omits it and
+// the links shift right. On mobile that would leave an empty bar — hide it.
+.topbar--bare .topbar__inner {
+  justify-content: flex-end;
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.topnav a {
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+}
+.topnav a:hover {
+  text-decoration: none;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.topnav a.is-active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+// --- Theme toggle (shared by bar and island popover) ----------------------
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+.icon-moon {
+  display: none;
+}
+:root[data-theme="dark"] .icon-sun {
+  display: none;
+}
+:root[data-theme="dark"] .icon-moon {
+  display: block;
+}
+
+// --- Island (mobile) ------------------------------------------------------
+.island {
+  display: none;
+}
+
+@media (max-width: $bp-mobile) {
+  .topnav,
+  .topbar__inner .theme-toggle {
+    display: none; // both live in the island instead
+  }
+  .topbar--bare {
+    display: none; // nothing left to show on the landing page
+  }
+
+  .island {
+    display: block;
+    position: fixed;
+    left: 50%;
+    bottom: 0.9rem;
+    transform: translateX(-50%);
+    z-index: 60;
+    transition:
+      transform 0.35s var(--ease),
+      opacity 0.25s var(--ease);
+  }
+  .island.is-hidden {
+    transform: translateX(-50%) translateY(180%);
+    opacity: 0;
+  }
+
+  // The pill: icon stacked over an always-visible label (~62px tall).
+  .island__bar {
+    display: flex;
+    align-items: stretch;
+    gap: 0.1rem;
+    padding: 0.3rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+    box-shadow: 0 6px 24px var(--shadow);
+    // Never wider than the viewport; items shrink before the pill overflows.
+    max-width: calc(100vw - 1.5rem);
+  }
+  .island__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: 0; // lets flex shrink the label instead of overflowing
+    padding: 0.45rem 0.6rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 0.78rem;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .island__item svg {
+    width: 20px;
+    height: 20px;
+    flex: none;
+  }
+
+  // The ⋮ control is icon-only, so it centres on the same height as the
+  // labelled items rather than sitting high with an empty label row.
+  .island__more {
+    justify-content: center;
+    padding-inline: 0.7rem;
+  }
+  .island__item > span {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .island__item:hover {
+    text-decoration: none;
+  }
+  .island__item.is-active {
+    color: var(--accent);
+    background: var(--accent-soft);
+    font-weight: 600;
+  }
+  .island__more[aria-expanded="true"] {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  // Very narrow phones: tighten before anything gets clipped.
+  @media (max-width: 359px) {
+    .island__item {
+      padding: 0.45rem 0.4rem;
+      font-size: 0.66rem;
+    }
+  }
+
+  // Overflow: unfolds upward out of the pill (not a full-screen drawer).
+  .island__popover {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 0.45rem);
+    transform: translateX(-50%) scale(0.9);
+    transform-origin: bottom center;
+    width: max-content;
+    min-width: 170px;
+    padding: 0.35rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--card);
+    box-shadow: 0 12px 32px var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.2s var(--ease),
+      transform 0.2s var(--ease),
+      visibility 0.2s;
+  }
+  .island__popover.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+  }
+  .island__popover a,
+  .island__popover button {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    text-align: left;
+    cursor: pointer;
+  }
+  .island__popover a:hover,
+  .island__popover button:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .island__popover a.is-active {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .island__popover svg {
+    width: 18px;
+    height: 18px;
+    flex: none;
+  }
+  .island__divider {
+    height: 1px;
+    margin: 0.3rem 0.4rem;
+    background: var(--line);
+  }
+}

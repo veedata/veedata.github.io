@@ -1,0 +1,78 @@
+{%- comment -%}
+  Desktop: sticky top bar, every link visible.
+  Mobile:  floating island — nav_primary as items + a "more" control that
+           unfolds nav_more + the theme toggle upward.
+  Active state is decided in nav-link.liquid (see the Liquid caveat there).
+{%- endcomment -%}
+{%- assign cur = page.url -%}
+
+{%- comment -%}
+  On the landing page the name already headlines the hero, so the bar drops the
+  brand ("--bare"): links shift right on desktop, bar hides entirely on mobile.
+{%- endcomment -%}
+{%- assign is_home = false -%}
+{%- if cur == '/' -%}{%- assign is_home = true -%}{%- endif -%}
+
+<header class="topbar{% if is_home %} topbar--bare{% endif %}">
+  <div class="topbar__inner">
+    {%- unless is_home -%}
+      <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    {%- endunless -%}
+
+    <nav class="topnav" aria-label="Primary">
+      {%- for item in site.nav_primary -%}
+        {% include nav-link.liquid item=item cur=cur %}
+      {%- endfor -%}
+      {%- for item in site.nav_more -%}
+        {% include nav-link.liquid item=item cur=cur %}
+      {%- endfor -%}
+
+      <button class="theme-toggle" id="theme-toggle" type="button" title="Toggle theme" aria-label="Toggle color theme">
+        <span class="icon-sun">{% include icon.liquid name="sun" %}</span>
+        <span class="icon-moon">{% include icon.liquid name="moon" %}</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile floating island -->
+{%- comment -%}
+  The bar holds at most `island_max` items so the labels stay legible. Anything
+  past that spills into the ⋮ menu, together with nav_more and the theme toggle.
+{%- endcomment -%}
+{%- assign imax = site.island_max | default: 3 -%}
+{%- assign primary_n = site.nav_primary | size -%}
+{%- assign spill = "" | split: "," -%}
+{%- if primary_n > imax -%}
+  {%- assign bar_items = site.nav_primary | slice: 0, imax -%}
+  {%- assign spill_n = primary_n | minus: imax -%}
+  {%- assign spill = site.nav_primary | slice: imax, spill_n -%}
+{%- else -%}
+  {%- assign bar_items = site.nav_primary -%}
+{%- endif -%}
+{%- assign more_items = spill | concat: site.nav_more -%}
+
+<nav class="island" id="island" aria-label="Primary mobile">
+  <div class="island__popover" id="island-more-panel" role="menu">
+    {%- for item in more_items -%}
+      {% include nav-link.liquid item=item cur=cur icon=true %}
+    {%- endfor -%}
+    {%- if more_items.size > 0 %}<div class="island__divider"></div>{% endif -%}
+    <button type="button" role="menuitem" id="theme-toggle-m">
+      <span class="icon-sun">{% include icon.liquid name="sun" %}</span>
+      <span class="icon-moon">{% include icon.liquid name="moon" %}</span>
+      <span>theme</span>
+    </button>
+  </div>
+
+  <div class="island__bar">
+    {%- for item in bar_items -%}
+      {% include nav-link.liquid item=item cur=cur icon=true class="island__item" %}
+    {%- endfor -%}
+    <button type="button" class="island__item island__more" id="island-more"
+            aria-expanded="false" aria-controls="island-more-panel"
+            aria-label="More navigation">
+      {% include icon.liquid name="more" %}
+    </button>
+  </div>
+</nav>

@@ -1,13 +1,13 @@
+# Jekyll build output and caches
 _site
-.bundle
-.sass-cache
 .jekyll-cache
 .jekyll-metadata
-.DS_store
-.ruby-version
-.tweet-cache
+.sass-cache
 Gemfile.lock
-assets/libs/
-node_modules/
+.bundle
 vendor
+
+# Editor / OS
+.DS_store
 .idea
+.ruby-version

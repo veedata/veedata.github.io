@@ -1,149 +1,56 @@
-<!-- Metadata, OpenGraph and Schema.org -->
-{% include metadata.liquid %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Bootstrap & MDB -->
-<link rel="stylesheet" href="{{ '/assets/css/bootstrap.min.css' | relative_url | bust_file_cache }}">
-<link
-  rel="stylesheet"
-  href="{{ site.third_party_libraries.mdb.url.css }}"
-  integrity="{{ site.third_party_libraries.mdb.integrity.css }}"
-  crossorigin="anonymous"
->
+  {%- if page.title and page.permalink != '/' -%}
+    {%- assign page_title = page.title | capitalize | append: ' · ' | append: site.title -%}
+  {%- else -%}
+    {%- assign page_title = site.title | append: ' — ' | append: site.subtitle -%}
+  {%- endif -%}
+  <title>{{ page_title }}</title>
 
-<!-- Bootstrap Table -->
-{% if page.pretty_table %}
-  <link
-    defer
-    rel="stylesheet"
-    href="{{ site.third_party_libraries.bootstrap-table.url.css }}"
-    integrity="{{ site.third_party_libraries.bootstrap-table.integrity.css }}"
-    crossorigin="anonymous"
-  >
-{% endif %}
+  {%- assign desc = page.description | default: site.description | strip_newlines -%}
+  <meta name="description" content="{{ desc | strip_html | truncate: 200 }}">
+  <meta name="author" content="{{ site.title }}">
+  {%- if site.keywords %}<meta name="keywords" content="{{ site.keywords }}">{% endif %}
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  {%- if page.noindex -%}<meta name="robots" content="noindex, nofollow">{%- endif -%}
 
-<!-- Fonts & Icons -->
-<link defer rel="stylesheet" href="{{ '/assets/css/academicons.min.css' | relative_url | bust_file_cache }}">
-<link
-  defer
-  rel="stylesheet"
-  type="text/css"
-  href="{{ site.third_party_libraries.google_fonts.url.fonts }}"
->
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ desc | strip_html | truncate: 200 }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta name="twitter:card" content="summary">
 
-<!-- Code Syntax Highlighting -->
-<link
-  defer
-  rel="stylesheet"
-  href="{{ '/assets/css/jekyll-pygments-themes-github.css' | relative_url | bust_file_cache }}"
-  media=""
-  id="highlight_theme_light"
->
+  <!-- Emoji favicon, no image asset needed -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ site.icon | default: '📄' }}</text></svg>">
 
-{% if page.toc and page.toc.sidebar %}
-  <!-- Sidebar Table of Contents -->
-  <link defer href="{{ '/assets/css/bootstrap-toc.min.css' | relative_url | bust_file_cache }}" rel="stylesheet">
-{% endif %}
-
-<!-- Styles -->
-
-<!-- pseudocode -->
-{% if page.pseudocode %}
-  <link
-    defer
-    rel="stylesheet"
-    href="{{ site.third_party_libraries.pseudocode.url.css }}"
-    integrity="{{ site.third_party_libraries.pseudocode.integrity.css }}"
-    crossorigin="anonymous"
-  >
-{% endif %}
-
-{% if site.icon.size <= 4 %}
-  <link
-    rel="shortcut icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ site.icon }}</text></svg>"
-  >
-{% elsif site.icon != blank %}
-  <link rel="shortcut icon" href="{{ site.icon | prepend: '/assets/img/' | relative_url | bust_file_cache}}">
-{% endif %}
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
-<link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
-
-<!-- Dark Mode -->
-<script src="{{ '/assets/js/theme.js' | relative_url | bust_file_cache }}"></script>
-{% if site.enable_darkmode %}
-  <link
-    defer
-    rel="stylesheet"
-    href="{{ '/assets/css/jekyll-pygments-themes-native.css' | relative_url | bust_file_cache }}"
-    media="none"
-    id="highlight_theme_dark"
-  >
+  <!-- Set theme before paint to avoid a flash -->
   <script>
-    initTheme();
+    (function () {
+      try {
+        var t = localStorage.getItem('theme') || 'dark'; // dark is the default
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
   </script>
-{% endif %}
 
-<!-- GeoJSON support via Leaflet -->
-{% if page.map %}
-  <link
-    defer
-    rel="stylesheet"
-    href="{{ site.third_party_libraries.leaflet.url.css }}"
-    integrity="{{ site.third_party_libraries.leaflet.integrity.css }}"
-    crossorigin="anonymous"
-  >
-{% endif %}
+  <!-- Fetch the display font in parallel with the CSS instead of after it -->
+  <link rel="preload" href="{{ '/assets/fonts/fraunces-variable.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
-<!-- diff2html -->
-{% if page.code_diff %}
-  <link
-    defer
-    rel="stylesheet"
-    href="{{ site.third_party_libraries.highlightjs.url.css.light }}"
-    integrity="{{ site.third_party_libraries.highlightjs.integrity.css.light }}"
-    crossorigin="anonymous"
-    media="screen and (prefers-color-scheme: light)"
-  >
-  <link
-    defer
-    rel="stylesheet"
-    href="{{ site.third_party_libraries.highlightjs.url.css.dark }}"
-    integrity="{{ site.third_party_libraries.highlightjs.integrity.css.dark }}"
-    crossorigin="anonymous"
-    media="screen and (prefers-color-scheme: dark)"
-  >
-  <link
-    defer
-    rel="stylesheet"
-    href="{{ site.third_party_libraries.diff2html.url.css }}"
-    integrity="{{ site.third_party_libraries.diff2html.integrity.css }}"
-    crossorigin="anonymous"
-  >
-{% endif %}
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
-{% if page.images %}
-  <!-- Image comparison slider -->
-  {% if page.images.compare %}
-    <link
-      defer
-      rel="stylesheet"
-      href="{{ site.third_party_libraries.img-comparison-slider.url.css }}"
-      integrity="{{ site.third_party_libraries.img-comparison-slider.integrity.css }}"
-      crossorigin="anonymous"
-    >
-  {% endif %}
-  <!-- Image slider -->
-  {% if page.images.slider %}
-    <link
-      defer
-      rel="stylesheet"
-      href="{{ site.third_party_libraries.swiper.url.css }}"
-      integrity="{{ site.third_party_libraries.swiper.integrity.css }}"
-      crossorigin="anonymous"
-    >
-  {% endif %}
-{% endif %}
-
-{% if page.tikzjax %}
-  <link defer rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
-{% endif %}
+  <!-- Instant navigation: the browser fully renders a same-origin page once a
+       click looks likely, so switching pages is near-zero-latency. Chromium
+       only; other browsers fall back to the hover-prefetch in site.js. -->
+  <script type="speculationrules">
+    {
+      "prerender": [{
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }]
+    }
+  </script>
+  {%- feed_meta -%}
+</head>

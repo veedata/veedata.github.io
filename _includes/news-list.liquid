@@ -1,0 +1,18 @@
+{%- comment -%}
+  Renders news items from _data/news.yml, newest first.
+  Each entry: { date: YYYY-MM-DD, text: "markdown", link: "optional url" }
+  include.limit (int) optionally caps the count.
+{%- endcomment -%}
+{%- assign items = site.data.news | sort: 'date' | reverse -%}
+{%- if include.limit -%}{% assign items = items | slice: 0, include.limit %}{%- endif -%}
+<ul class="news">
+  {%- for item in items -%}
+    <li class="news__item">
+      <time class="news__date" datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%b %-d, %Y' }}</time>
+      <div class="news__body">
+        {{ item.text | markdownify }}
+        {%- if item.link -%} <a href="{{ item.link }}" target="_blank" rel="noopener">→</a>{%- endif -%}
+      </div>
+    </li>
+  {%- endfor -%}
+</ul>

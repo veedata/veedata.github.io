@@ -1,0 +1,25 @@
+{%- comment -%}
+  One nav link, with the active state computed correctly.
+
+  NOTE: Liquid's `assign` cannot evaluate a comparison. Assigning the result of
+  `x == y` does NOT produce a boolean — it produces something always-truthy, so
+  every link ends up active. Active state must be decided inside a real if/elsif
+  block, as below. (Careful: Liquid parses tag syntax even inside comments, so
+  don't write tag delimiters in prose here.)
+
+  Params: include.item (the nav entry), include.cur (page.url),
+          include.class (extra classes), include.icon (true → render the icon).
+{%- endcomment -%}
+{%- assign item = include.item -%}
+{%- assign is_active = false -%}
+{%- if item.url == '/' -%}
+  {%- if include.cur == '/' -%}{%- assign is_active = true -%}{%- endif -%}
+{%- elsif include.cur contains item.url -%}
+  {%- assign is_active = true -%}
+{%- endif -%}
+<a href="{{ item.url | relative_url }}"
+   class="{{ include.class }}{% if is_active %} is-active{% endif %}"
+   {% if is_active %}aria-current="page"{% endif %}>
+  {%- if include.icon %}{% include icon.liquid name=item.icon %}{% endif -%}
+  <span>{{ item.name }}</span>
+</a>
