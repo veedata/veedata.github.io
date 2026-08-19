@@ -149,7 +149,7 @@
     - title: Harry Deccoco — M.S. Thesis Student
       year: 2024
       description: Optimizing post-deletion performance in LSM-KVS.
-    - title: Madhumita Sukumar & Kaushiki Singh — Undergrad Project Group; Jiaxin Dai — M.S. Project Group
+    - title: Madhumitha Sukumar & Kaushiki Singh — Undergrad Project Group; Jiaxin Dai — M.S. Project Group
       year: 2023
       description: LLM-driven tuning for LSM-KVS.
     - title: Anish Pawar, Kamal Rohra & Dhruv Joshi — Undergrad Robotics Club
@@ -159,8 +159,8 @@
 - title: Patents and Invention Disclosures
   type: list
   contents:
-    - 'John Bryne, <b>Viraj Thakkar</b>, Harumi Kuno, Sekwon Lee. "A Global, Strongly Consistent, Client-Sided Caching Mechanism." <i>Under HPE internal disclosure review; patent filing upon approval.</i>'
-    - 'John Bryne, <b>Viraj Thakkar</b>, Harumi Kuno, Sekwon Lee. "Federated Coherence Management for a Globally Shared Cache." <i>Under HPE internal disclosure review; patent filing upon approval.</i>'
+    - 'John Byrne, <b>Viraj Thakkar</b>, Harumi Kuno, Sekwon Lee. "A Global, Strongly Consistent, Client-Sided Caching Mechanism." <i>Under HPE internal disclosure review; patent filing upon approval.</i>'
+    - 'John Byrne, <b>Viraj Thakkar</b>, Harumi Kuno, Sekwon Lee. "Federated Coherence Management for a Globally Shared Cache." <i>Under HPE internal disclosure review; patent filing upon approval.</i>'
 
 - title: Other Interests
   type: list

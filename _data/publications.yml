@@ -13,7 +13,7 @@
 
 # ===== 2026 =====
 - title: "Probe Less, Learn More: Characterizing and Correcting eBPF Instrumentation Overhead"
-  authors: "<b>Viraj Thakkar</b>, Timo Sokler, John Bryne, MJ Son, Sekwon Lee, Harumi Kuno, Adita Dhakal"
+  authors: "<b>Viraj Thakkar</b>, Timo Sokler, John Byrne, MJ Son, Sekwon Lee, Harumi Kuno, Aditya Dhakal"
   venue: "ProTools Workshop @ SC (8th Workshop on Programming and Performance Visualization Tools)"
   year: 2026
   type: "preprint"
@@ -51,7 +51,7 @@
     }
 
 - title: "CacheFS: A Global, Strongly Consistent, Client-Sided Caching Filesystem"
-  authors: "John Bryne, <b>Viraj Thakkar</b>, Matthias Frank, Elias Klett, Harumi Kuno, Sekwon Lee, Clarete Crasta, Abhishek Dwaraki, David Emberson, Ramya Rao, Amitha C, Chinmay Ghosh, Prono Shome, Shreyas Basri"
+  authors: "John Byrne, <b>Viraj Thakkar</b>, Matthias Frank, Elias Klett, Harumi Kuno, Sekwon Lee, Clarete Crasta, Abhishek Dwaraki, David Emberson, Ramya Rao, Amitha C, Chinmay Ghosh, Prono Shome, Shreyas Basri"
   venue: "HPE TechCon (internal conference — 8% acceptance)"
   year: 2026
   type: "full paper"
@@ -69,14 +69,14 @@
   type: "abstract"
 
 - title: "Characterizing Sustained Low-Level Message Latency"
-  authors: "John Bryne, Myungjun Son, Harumi Kuno, Aditya Dhakal, Sekwon Lee, <b>Viraj Thakkar</b>, Clarete Crasta, David Emberson"
+  authors: "John Byrne, Myungjun Son, Harumi Kuno, Aditya Dhakal, Sekwon Lee, <b>Viraj Thakkar</b>, Clarete Crasta, David Emberson"
   venue: "Conference for the Cray User Group (CUG)"
   year: 2026
   type: "abstract"
 
 # ===== 2025 =====
 - title: "SHIELD: Encrypting Persistent Data of LSM-KVS from Monolithic to Disaggregated Storage"
-  authors: "<b>Viraj Thakkar</b>, Dongha Kim, Yingchun Lai, Hoekun Kim, Zhichao Cao"
+  authors: "<b>Viraj Thakkar</b>, Dongha Kim, Yingchun Lai, Hokeun Kim, Zhichao Cao"
   venue: "SIGMOD (Proc. ACM Manag. Data)"
   year: 2025
   type: "full paper"
@@ -86,7 +86,7 @@
   bibtex: |
     @inproceedings{thakkar2025shield,
       title     = {SHIELD: Encrypting Persistent Data of LSM-KVS from Monolithic to Disaggregated Storage},
-      author    = {Thakkar, Viraj and Kim, Dongha and Lai, Yingchun and Kim, Hoekun and Cao, Zhichao},
+      author    = {Thakkar, Viraj and Kim, Dongha and Lai, Yingchun and Kim, Hokeun and Cao, Zhichao},
       booktitle = {Proceedings of the ACM SIGMOD International Conference on Management of Data},
       year      = {2025},
       doi       = {10.1145/3725354}
