@@ -1,3 +1,6 @@
+# Build context is the repo root; only the Gemfile is actually needed.
 _site/
+.jekyll-cache/
 .git/
-assets/
+.github/
+Gemfile.lock
