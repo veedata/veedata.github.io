@@ -26,8 +26,194 @@
   font-size: 1.08rem;
   color: var(--muted);
 }
+// Guard against a bio that starts with a heading rather than a paragraph.
+.home-hero .bio > :first-child {
+  margin-top: 0;
+}
 .home-hero .bio strong {
   color: var(--ink);
+}
+
+// The research thesis, stated as labels rather than buried in the bio. Sits
+// ABOVE the bio, so it is read before the paragraph it summarises.
+//
+// Deliberately NOT .badge — badges are accent-filled and there is already an
+// accent eyebrow four lines up. The mono face does the differentiating instead
+// of colour, and --ink (not --muted) because this is a primary claim about the
+// work, not metadata about it.
+.research-areas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.9rem;
+  // Matches the lead's 1.4rem above it, so the row sits on the hero's existing
+  // vertical rhythm rather than introducing a second one.
+  margin: 0 0 1.4rem;
+  padding: 0;
+  list-style: none;
+}
+.research-areas li {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+// Hairline separator between labels, not a bullet — keeps the row on one
+// typographic plane. The ::before on the first item is suppressed.
+.research-areas li + li::before {
+  content: "·";
+  margin-right: 0.9rem;
+  color: var(--line-strong);
+}
+
+// --- Highlights strip -----------------------------------------------------
+// Three checkable results, banded between hairlines so the eye catches it on
+// the way past the hero. Typographic, not KPI cards: no boxes, no accent fills,
+// no oversized numerals — the content is impressive enough without the frame.
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem 1.5rem;
+  margin: 2.5rem 0;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  list-style: none;
+}
+// NOT `.highlight` — that class belongs to Rouge (see _config.yml
+// `css_class: highlight`), so a bare `.highlight` rule here leaked
+// `display: flex` onto every code block wrapper on the site.
+.highlights__item {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.highlights__label {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--ink);
+}
+.highlights__detail {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+// --- Research threads -----------------------------------------------------
+// Full-width stacked panels, NOT a 3-across card grid. Each thread carries a
+// ~25-word question, which at one-third of 880px would wrap to eight cramped
+// lines. Stacking also buys the scale variation the page was missing: these
+// read as the largest thing after the hero, which is the intent.
+.threads {
+  display: grid;
+  gap: 1rem;
+}
+// Flex, NOT grid. The first attempt used `grid-template-columns: auto 1fr` with
+// `grid-row: 1 / -1` on the icon — but with no explicit `grid-template-rows`
+// the explicit grid has zero rows, so `-1` resolves to line 1 and the span
+// collapses. The icon then never claimed column 1, the auto-placed question
+// took it instead, and `auto` sized that column to the question's 58ch measure:
+// question on the left, title and evidence stranded on the right.
+// A flex row with a single body wrapper cannot get into that state.
+.thread {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  padding: 1.35rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+.thread__icon {
+  flex: none;
+  display: block;
+  padding-top: 0.15rem;
+  line-height: 0; // no phantom descender space under the inline SVG
+  color: var(--accent);
+}
+.thread__icon svg {
+  width: 26px;
+  height: 26px;
+}
+.thread__body {
+  flex: 1;
+  min-width: 0; // lets the question wrap instead of stretching the panel
+}
+.thread__name {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+}
+// The question is the memorable line, so it gets --ink rather than --muted and
+// sits a step above body-adjacent metadata. No max-width: the evidence sidebar
+// beside it already holds the question to roughly a 63ch measure at the widest,
+// so capping it again would only strand whitespace in the middle of the panel.
+.thread__q {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+// Right sidebar: the proof points, set like margin notes against the claim on
+// the left. Fixed width rather than a fraction so the rule between the two
+// columns lands in the same place on every panel regardless of how much
+// evidence each thread carries.
+.thread__evidence {
+  flex: none;
+  width: 12.5rem;
+  margin: 0.15rem 0 0;
+  padding: 0 0 0 1rem;
+  border-left: 1px solid var(--line);
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.thread__evidence li {
+  margin: 0 0 0.3rem;
+}
+.thread__evidence li:last-child {
+  margin-bottom: 0;
+}
+// Below ~760px three columns stop fitting: the question drops under ~48ch and
+// starts reading as a narrow trench. Wrap the sidebar underneath instead, where
+// it becomes a full-width footer — the rule turns from a left border into a top
+// border so it still reads as a separate band. Icon and title stay side by side.
+@media (max-width: 760px) {
+  .thread {
+    flex-wrap: wrap;
+  }
+  .thread__evidence {
+    width: 100%;
+    margin: 0.9rem 0 0;
+    padding: 0.75rem 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}
+
+// Narrow phones: stack the icon above the text too, rather than squeezing the
+// question into a ~30ch trench beside it.
+@media (max-width: 520px) {
+  .thread {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.15rem 1.2rem;
+  }
+  .thread__icon {
+    padding-top: 0;
+  }
+  .thread__evidence {
+    margin-top: 0.35rem;
+  }
 }
 
 .quicklinks {
@@ -35,6 +221,10 @@
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 0.9rem;
   margin: 2.75rem 0;
+}
+// Inside a .section the heading already provides the top margin.
+.section .quicklinks {
+  margin: 0;
 }
 .quicklink {
   display: grid;
@@ -112,7 +302,7 @@
 }
 .badge--tag {
   background: transparent;
-  border-color: var(--line);
+  border-color: var(--line-strong); // the border IS the control boundary
   color: var(--muted);
   cursor: pointer;
 }
@@ -145,7 +335,7 @@
   place-items: center;
   width: 42px;
   height: 42px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong); // the border IS the control boundary
   border-radius: 999px;
   color: var(--ink);
 }
@@ -206,7 +396,7 @@
   align-items: baseline;
   gap: 0.4rem;
   padding: 0.4rem 0.95rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong); // the border IS the control boundary
   border-radius: 999px;
   background: transparent;
   color: var(--muted);
@@ -235,22 +425,44 @@
   opacity: 0.65;
   font-variant-numeric: tabular-nums;
 }
+// On the pressed chip the label is already cream-on-terracotta; dimming the
+// count on top of that dropped it to 2.8:1. The pressed chip carries its own
+// emphasis, so the count does not need to recede any further.
+.pub-filter[aria-pressed="true"] .pub-filter__count {
+  opacity: 1;
+}
 
+// Year headings are <h2> (see pub-list.liquid) so the page has real structure.
+// They group the titles beneath them, so they must not be QUIETER than those
+// titles — --muted here inverted the hierarchy.
 .pub-year {
-  margin: 2rem 0 0.75rem;
+  margin: 2.4rem 0 0.25rem;
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: var(--h2-section);
   font-weight: 600;
-  color: var(--muted);
+  color: var(--ink);
 }
 .pub {
   padding: 1.1rem 0;
   border-top: 1px solid var(--line);
 }
+// The rule is a SEPARATOR between rows, so the first row in any list never
+// draws one. Without this the home page opened "Selected publications" with a
+// hairline directly under the heading, while "Recent news" started flush.
+.pub:first-child,
+.pub-year + .pub {
+  border-top: 0;
+}
+// An <h3> for structure (see pub-item.liquid), but deliberately kept in the
+// sans stack: a page of 21 serif titles at 1.06rem reads as a wall of display
+// type and competes with the serif year headings that group them.
 .pub__title {
   margin: 0 0 0.2rem;
+  font-family: var(--font-sans);
   font-size: 1.06rem;
   font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
 }
 .pub__title a {
   color: var(--ink);
@@ -284,9 +496,8 @@
   font-size: 0.8rem;
   line-height: 1.5;
 }
+// background/border/padding are already zeroed by `pre code` in _base.scss.
 .pub__bibtex code {
-  background: none;
-  padding: 0;
   font-size: inherit;
 }
 
@@ -296,11 +507,47 @@
 }
 
 // --- 5. Project cards -----------------------------------------------------
+// Projects are grouped (see projects.liquid) because current research and a
+// 2019 robotics competition were competing for attention at identical weight.
+// The group heading carries the distinction; the cards stay uniform.
+.project-group {
+  margin: 2.6rem 0 0;
+}
+.project-group:first-of-type {
+  margin-top: 1.5rem;
+}
+.project-group__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  margin: 0 0 0.35rem;
+}
+.project-group__head h2 {
+  margin: 0;
+  font-size: var(--h2-section);
+}
+// Rule that fills whatever space the heading leaves, so the groups read as
+// bands down the page rather than as three unrelated card grids.
+.project-group__head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.project-group__note {
+  margin: 0 0 1.1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.2rem;
   margin: 1.5rem 0;
+}
+.project-group .cards {
+  margin: 0;
 }
 .card {
   display: flex;
@@ -378,7 +625,8 @@
   gap: 1rem;
   margin: 1.5rem 0;
 }
-.figs img {
+.figs img,
+.split img {
   width: 100%;
   border-radius: var(--radius-sm);
   box-shadow: 0 2px 12px var(--shadow);
@@ -398,11 +646,6 @@
   align-items: start;
   margin: 1.5rem 0;
 }
-.split img {
-  width: 100%;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 2px 12px var(--shadow);
-}
 .split .caption {
   margin: 0.5rem 0 0;
 }
@@ -419,11 +662,16 @@
 .cv-block {
   margin: 2.2rem 0;
 }
+// Section headings across the site sit on ONE scale. `.cv-block > h2` and
+// `.pub-year` both used to hardcode their own size (1.4 / 1.35rem) against a
+// base h2 of up to 1.9rem, so "section heading" meant three different sizes
+// depending on the page. --h2-section is the shared step for headings that
+// label a dense list rather than open a page section.
 .cv-block > h2 {
   margin: 0 0 1rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--line);
-  font-size: 1.4rem;
+  font-size: var(--h2-section);
 }
 .cv-map {
   display: grid;
@@ -484,7 +732,6 @@ figure.highlight {
 }
 .highlight pre,
 .prose > pre {
-  margin: 0;
   padding: 1rem 1.1rem;
   background: var(--card);
   overflow-x: auto;
@@ -492,10 +739,15 @@ figure.highlight {
   font-size: 0.86rem;
   line-height: 1.55;
 }
+// Inside a .highlight wrapper the border and radius are on the wrapper. A bare
+// <pre> in prose (no Rouge wrapper) has to draw its own.
+.highlight pre {
+  margin: 0;
+}
 .prose > pre {
+  margin: 1.5rem 0;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  margin: 1.5rem 0;
 }
 
 .copy-btn {
@@ -503,20 +755,27 @@ figure.highlight {
   top: 0.5rem;
   right: 0.5rem;
   padding: 0.25rem 0.55rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 6px;
   background: var(--bg);
   color: var(--muted);
   font-family: inherit;
   font-size: 0.72rem;
   cursor: pointer;
-  opacity: 0;
   transition: opacity 0.15s var(--ease);
 }
-div.highlight:hover .copy-btn,
-figure.highlight:hover .copy-btn,
-.copy-btn:focus-visible {
-  opacity: 1;
+// Reveal-on-hover ONLY where hover exists. Gating visibility on :hover alone
+// left the button permanently invisible on touch devices — i.e. unusable on
+// exactly the project pages that are mostly code.
+@media (hover: hover) {
+  .copy-btn {
+    opacity: 0;
+  }
+  div.highlight:hover .copy-btn,
+  figure.highlight:hover .copy-btn,
+  .copy-btn:focus-visible {
+    opacity: 1;
+  }
 }
 .copy-btn:hover {
   border-color: var(--accent);

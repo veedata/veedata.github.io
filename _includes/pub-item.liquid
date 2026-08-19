@@ -9,11 +9,17 @@
 {%- elsif p.type == 'workshop' -%}{% assign cat = 'workshop' %}
 {%- elsif p.type == 'poster' or p.type == 'abstract' -%}{% assign cat = 'abstract' %}
 {%- else -%}{% assign cat = 'conference' %}{%- endif -%}
+{%- case cat -%}
+{%- when 'workshop' -%}{%- assign cat_label = 'Workshop' -%}
+{%- when 'abstract' -%}{%- assign cat_label = 'Abstract' -%}
+{%- when 'preprint' -%}{%- assign cat_label = 'Preprint' -%}
+{%- else -%}{%- assign cat_label = 'Conference' -%}
+{%- endcase -%}
 <div class="pub" data-cat="{{ cat }}" data-year="{{ p.year }}">
-  <p class="pub__title">
+  <h3 class="pub__title">
     {%- if p.url -%}<a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.title }}</a>
     {%- else -%}{{ p.title }}{%- endif -%}
-  </p>
+  </h3>
   <p class="pub__authors">{{ p.authors }}</p>
   <p class="pub__meta">
     {%- if p.venue -%}{{ p.venue }}{%- endif -%}
@@ -27,15 +33,23 @@
     {%- endunless -%}
   </p>
   <p class="pub__links">
-    {%- if p.type -%}<span class="badge">{{ p.type }}</span>{%- endif -%}
+    {%- comment -%}
+      Category badge is suppressed on the publications page.
+      It stays on the home page, where there are no filters.
+    {%- endcomment -%}
+    {%- if include.compact -%}<span class="badge">{{ cat_label }}</span>{%- endif -%}
     {%- if st contains 'under review' -%}<span class="badge badge--status">Under review</span>{%- endif -%}
     {%- comment -%} Hand-set highlights, e.g. tags: ["Best Paper"]. {%- endcomment -%}
     {%- for t in p.tags -%}<span class="badge badge--flag">{{ t }}</span>{%- endfor -%}
     {%- if p.doi -%}<a class="badge badge--tag" href="{{ p.url | default: p.doi }}" target="_blank" rel="noopener">DOI</a>
-    {%- elsif p.url -%}<a class="badge badge--tag" href="{{ p.url }}" target="_blank" rel="noopener">link</a>{%- endif -%}
-    {%- if p.bibtex -%}<button class="badge badge--tag bibtex-toggle" type="button" aria-expanded="false">BibTeX</button>{%- endif -%}
+    {%- elsif p.url -%}<a class="badge badge--tag" href="{{ p.url }}" target="_blank" rel="noopener">Link</a>{%- endif -%}
+    {%- unless include.compact -%}
+      {%- if p.bibtex -%}<button class="badge badge--tag bibtex-toggle" type="button" aria-expanded="false">BibTeX</button>{%- endif -%}
+    {%- endunless -%}
   </p>
-  {%- if p.bibtex -%}
-    <pre class="pub__bibtex" hidden><code>{{ p.bibtex | escape }}</code></pre>
-  {%- endif -%}
+  {%- unless include.compact -%}
+    {%- if p.bibtex -%}
+      <pre class="pub__bibtex" hidden><code>{{ p.bibtex | escape }}</code></pre>
+    {%- endif -%}
+  {%- endunless -%}
 </div>

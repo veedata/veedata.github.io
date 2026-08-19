@@ -1,0 +1,11 @@
+# Home-page highlight strip — 3 things worth knowing in five seconds. 
+# Rendered by _layouts/home.liquid.
+
+- label: Best Paper Award
+  detail: HotStorage '24
+
+- label: 3× SIGMOD
+  detail: 2024 · 2025 · 2026
+
+- label: Google PhD Fellowship Nominee
+  detail: ASU nominee, 2026

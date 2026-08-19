@@ -1,0 +1,46 @@
+# Research threads — the featured block on the home page (_layouts/home.liquid).
+#
+# This is the site's answer to "what does this person actually work on?", and it
+# exists because the publication list alone does not answer it: 21 rows sorted
+# by year hide the fact that they fall into three quite different lines of work.
+#
+# Each entry:
+#   name     : the thread, in the fewest words that are still accurate
+#   question : what the work is ASKING. This is the line people remember, so it
+#              is written as a question, not as a topic label.
+#   evidence : 2-4 short proof points — venues, systems, outputs. Keep them terse;
+#              they are scanned, not read. Full citations live on /publications/.
+#   icon     : a name from _includes/icon.liquid
+#
+# Order is the order on the page. Put the thread you most want associated with
+# your name first.
+
+- name: Key-Value Stores under Disaggregation
+  question: >
+    What breaks when an LSM engine's storage moves away from its compute, and
+    can it stay fast, tunable, and encrypted once it does?
+  icon: database
+  evidence:
+    - 3× SIGMOD
+    - CaaS-LSM · SHIELD · O3-LSM
+    - Encryption & offloading
+
+- name: Filesystems and Distributed Caches
+  question: >
+    How do you hold a globally distributed, client-side cache coherent, and
+    what is the system underneath actually costing you?
+  icon: layers
+  evidence:
+    - CacheFS @ HPE Labs
+    - FUSE · RDMA · eBPF
+    - 2 patent under review
+
+- name: Language Models as Systems Operators
+  question: >
+    Can an LLM tune a storage engine end to end, and where exactly does that
+    capability stop?
+  icon: sparkle
+  evidence:
+    - HotStorage '24 — Best Paper
+    - SYSTOR '26
+    - ELMo-Tune · TellyTune
