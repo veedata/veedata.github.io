@@ -21,10 +21,10 @@ baseurl: ""
 
 # Primary items shown in the desktop bar AND the mobile floating island.
 nav_primary:
-  - { name: about, url: /, icon: user }
-  - { name: publications, url: /publications/, icon: doc }
-  - { name: cv, url: /cv/, icon: file }
-  - { name: projects, url: /projects/, icon: grid }
+  - { name: About, url: /, icon: user }
+  - { name: Publications, url: /publications/, icon: doc }
+  - { name: CV, url: /cv/, icon: file }
+  - { name: Projects, url: /projects/, icon: grid }
 
 # How many nav_primary items the mobile island shows before the rest spill into
 # the ⋮ menu. Reorder nav_primary to change WHICH ones make the cut.

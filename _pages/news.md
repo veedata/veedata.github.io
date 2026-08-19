@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /news/
-title: news
+title: News
 description: Announcements, milestones, and updates.
 ---
 

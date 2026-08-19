@@ -1,6 +1,6 @@
 ---
 layout: projects
 permalink: /projects/
-title: projects
+title: Projects
 description: Things I have built and researched.
 ---
