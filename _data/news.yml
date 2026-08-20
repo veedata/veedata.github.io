@@ -8,8 +8,17 @@
 - date: 2026-07-13
   text: 'Our paper "TellyTune: Exploring the Limits of LLM-Driven Tuning for LSM-Based Key-Value Stores" was accepted to SYSTOR 2026! 📄'
 
+- date: 2026-06-05
+  text: 'Received Invitation to attend the HPTS 2026 Conference! 🎉'
+
+- date: 2026-05-31
+  text: 'Presented "O3-LSM" and "ANCHOR" at ACM SIGMOD 2026! 🚀 + 🔐'
+
 - date: 2026-04-21
   text: 'Honored to be ASU''s nominee for the Google PhD Fellowship Award! 🎉'
+
+- date: 2026-04-14
+  text: 'Our paper "ANCHOR: A Vision for Secure Persistent Key-Value Stores in Disaggregated Data Centers" was accepted to SeQureDB 2026! 📄'
 
 - date: 2025-06-26
   text: 'Presented "SHIELD: Encrypting Persistent Data of LSM-KVS from Monolithic to Disaggregated Storage" at ACM SIGMOD 2025! 🔐'

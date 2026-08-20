@@ -7,7 +7,6 @@ source 'https://rubygems.org'
 # _config.yml's `plugins:`. Keep it lean — this is the whole dependency budget.
 group :jekyll_plugins do
   gem 'jekyll'
-  gem 'jekyll-feed'
   gem 'jekyll-sitemap'
   gem 'webrick'
 end

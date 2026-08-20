@@ -6,5 +6,4 @@ hero: >
   they spill their secrets.
 ---
 
-Hi, 👋 I'm a perpetually-curious CS Ph.D. student who gets *way* too
-excited about **LSM-based key-value stores**, **disaggregated infrastructure**, and **storage systems for AI/ML**. My favorite thing is taking a big, intimidating system apart just to see what makes it tick (sometimes literally), and then, on a good day, putting it back together a little bit better than I found it.
+Hi, I'm a perpetually-curious CS Ph.D. student who gets *way* too excited about taking a big, intimidating system apart (sometimes literally) just to see what makes it tick; and then, on a good day, I put it back together a little bit better than I found it.

@@ -60,10 +60,10 @@
   color: var(--ink);
 }
 // Hairline separator between labels, not a bullet — keeps the row on one
-// typographic plane. The ::before on the first item is suppressed.
-.research-areas li + li::before {
+// typographic plane.
+.research-areas li:not(:last-child)::after {
   content: "·";
-  margin-right: 0.9rem;
+  margin-left: 0.9rem;
   color: var(--line-strong);
 }
 

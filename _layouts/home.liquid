@@ -68,11 +68,7 @@ layout: default
     <h2>Recent news</h2>
     <a href="{{ '/news/' | relative_url }}">all news →</a>
   </div>
-  {%- comment -%}
-    Three, not six. The home page is a selection; /news/ is the archive. Six
-    entries reached back to 2023 and turned the section into a changelog.
-  {%- endcomment -%}
-  {% include news-list.liquid limit=3 %}
+  {% include news-list.liquid limit=5 %}
 </section>
 
 <div class="section__head">
