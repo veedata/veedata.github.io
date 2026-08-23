@@ -220,11 +220,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 0.9rem;
-  margin: 2.75rem 0;
-}
-// Inside a .section the heading already provides the top margin.
-.section .quicklinks {
-  margin: 0;
 }
 .quicklink {
   display: grid;
@@ -287,6 +282,25 @@
   width: 16px;
   height: 16px;
 }
+// Outline variant for Buttons.
+.btn--quiet {
+  border-color: var(--line-strong); // the border IS the control boundary
+  background: transparent;
+  color: var(--ink); // inherited by the SVG
+  font-weight: 400;
+}
+.btn--quiet span {
+  color: var(--muted);
+}
+.btn--quiet:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  opacity: 1; // .btn:hover dims a filled pill; an outline one has nothing to dim
+}
+.btn--quiet:hover span {
+  color: var(--accent); // label follows the icon on hover, or they split colours
+}
 
 .badge {
   display: inline-block;
@@ -324,13 +338,24 @@
   color: var(--accent);
 }
 
-.socials {
+// Socials
+.hero-cta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  align-items: center;
+  gap: 0.5rem;
   margin: 1.75rem 0 0;
 }
-.socials a {
+.hero-cta .btn {
+  white-space: nowrap; // never break "View Google Scholar" across two lines
+  padding-inline: 0.65rem;
+  font-size: clamp(0.75rem, 2.1vw, 0.85rem);
+}
+.hero-cta .btn svg {
+  width: 20px;
+  height: 20px;
+}
+.hero-cta__icon {
   display: inline-grid;
   place-items: center;
   width: 42px;
@@ -339,12 +364,12 @@
   border-radius: 999px;
   color: var(--ink);
 }
-.socials a:hover {
+.hero-cta__icon:hover {
   border-color: var(--accent);
   color: var(--accent);
   background: var(--accent-soft);
 }
-.socials svg {
+.hero-cta__icon svg {
   width: 20px;
   height: 20px;
 }
@@ -544,10 +569,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.2rem;
-  margin: 1.5rem 0;
-}
-.project-group .cards {
-  margin: 0;
 }
 .card {
   display: flex;
