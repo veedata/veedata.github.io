@@ -33,7 +33,7 @@
   evidence:
     - CacheFS @ HPE Labs
     - FUSE · RDMA · eBPF
-    - 2 patent under review
+    - 2 patents under review
 
 - name: Language Models as Systems Operators
   question: >
