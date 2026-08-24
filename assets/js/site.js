@@ -3,9 +3,12 @@
   function current() {
     return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   }
-  function apply(theme) {
+  function paint(theme) {
     if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     else document.documentElement.removeAttribute('data-theme');
+  }
+  function apply(theme) {
+    paint(theme);
     try { localStorage.setItem('theme', theme); } catch (e) {}
   }
   function toggle() { apply(current() === 'dark' ? 'light' : 'dark'); }
@@ -15,7 +18,19 @@
     if (el) el.addEventListener('click', toggle);
   });
 
-  // Dark is the deterministic default; OS preference is intentionally not auto-followed.
+  // Until the reader picks a side, track the OS preference live — if a reader
+  // theme flips at sunset, this should work.
+  if (window.matchMedia) {
+    var mq = window.matchMedia('(prefers-color-scheme: light)');
+    var onChange = function (e) {
+      var stored;
+      try { stored = localStorage.getItem('theme'); } catch (err) {}
+      if (stored === 'dark' || stored === 'light') return;
+      paint(e.matches ? 'light' : 'dark');
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else if (mq.addListener) mq.addListener(onChange);
+  }
 })();
 
 // Mobile floating island: unfolding "more" popover + hide-on-scroll-down.
@@ -152,36 +167,6 @@
     btn.addEventListener("click", function () {
       apply(btn.dataset.filter);
     });
-  });
-})();
-
-// Active-heading highlight for a table of contents (loaded only when page.toc).
-// Expects a <nav class="toc"> with anchor links to heading ids in .prose.
-(function () {
-  var toc = document.querySelector('.toc');
-  if (!toc) return;
-  var links = Array.prototype.slice.call(toc.querySelectorAll('a'));
-  if (!links.length) return;
-
-  var map = {};
-  links.forEach(function (a) {
-    var id = decodeURIComponent((a.getAttribute('href') || '').replace(/^#/, ''));
-    if (id) map[id] = a;
-  });
-
-  var obs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        links.forEach(function (l) { l.classList.remove('is-active'); });
-        var a = map[e.target.id];
-        if (a) a.classList.add('is-active');
-      }
-    });
-  }, { rootMargin: '0px 0px -75% 0px', threshold: 0 });
-
-  Object.keys(map).forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) obs.observe(el);
   });
 })();
 

@@ -21,10 +21,13 @@
   <!-- Set theme before paint to avoid a flash -->
   <script>
     (function () {
-      try {
-        var t = localStorage.getItem('theme') || 'dark'; // dark is the default
-        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-      } catch (e) {}
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'dark' && t !== 'light') {
+        // No explicit choice yet — follow the OS/browser preference.
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     })();
   </script>
 
@@ -39,7 +42,12 @@
   <script type="speculationrules">
     {
       "prerender": [{
-        "where": { "href_matches": "/*" },
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/assets/*" } }
+          ]
+        },
         "eagerness": "moderate"
       }]
     }
@@ -47,6 +55,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="site">
     <header class="topbar">
   <div class="topbar__inner"><a class="brand" href="/">Viraj Thakkar</a><nav class="topnav" aria-label="Primary"><a href="/"
@@ -105,7 +114,7 @@
   </div>
 </nav>
 
-    <main class="content" id="main">
+    <main class="content" id="main" tabindex="-1">
       <div class="container">
         <div class="page-header">
   <h1>TorChat</h1><p class="lead">Privacy centered chatting application that utilises the Tor Network to send and recieve messages and data.</p></div>

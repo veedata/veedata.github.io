@@ -21,10 +21,13 @@
   <!-- Set theme before paint to avoid a flash -->
   <script>
     (function () {
-      try {
-        var t = localStorage.getItem('theme') || 'dark'; // dark is the default
-        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-      } catch (e) {}
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'dark' && t !== 'light') {
+        // No explicit choice yet — follow the OS/browser preference.
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     })();
   </script>
 
@@ -39,7 +42,12 @@
   <script type="speculationrules">
     {
       "prerender": [{
-        "where": { "href_matches": "/*" },
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/assets/*" } }
+          ]
+        },
         "eagerness": "moderate"
       }]
     }
@@ -47,6 +55,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="site">
     <header class="topbar topbar--bare">
   <div class="topbar__inner"><nav class="topnav" aria-label="Primary"><a href="/"
@@ -105,7 +114,7 @@
   </div>
 </nav>
 
-    <main class="content" id="main">
+    <main class="content" id="main" tabindex="-1">
       <div class="container">
         <section class="home-hero">
   <p class="eyebrow">Ph.D. Student · Arizona State University</p>
@@ -117,22 +126,24 @@
 
   <div class="bio"><p>Hi, I’m a perpetually-curious CS Ph.D. student who gets <em>way</em> too excited about taking a big, intimidating system apart (sometimes literally) just to see what makes it tick; and then, on a good day, I put it back together a little bit better than I found it.</p>
 </div>
-  <div class="socials"><a href="mailto:viraj.online@asu.edu" title="email" aria-label="email"
-       >
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-    </a><a href="https://scholar.google.com/citations?user=0tSjYZkAAAAJ" title="Google Scholar" aria-label="Google Scholar"
-       target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 1 8.5l11 6.5 9-5.32V16h2V8.5L12 2z"/><path d="M6 13.2v3.6c0 1.66 2.69 3 6 3s6-1.34 6-3v-3.6l-6 3.55-6-3.55z"/></svg>
-    </a><a href="https://github.com/veedata" title="GitHub" aria-label="GitHub"
-       target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.5 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.05.78 2.13v3.16c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
-    </a><a href="https://www.linkedin.com/in/veedata" title="LinkedIn" aria-label="LinkedIn"
-       target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.2.8 24 1.77 24h20.45c.98 0 1.78-.8 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg>
-    </a><a href="https://stackoverflow.com/users/11215536/veedata" title="Stack Overflow" aria-label="Stack Overflow"
-       target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.36 20.2v-5.38h1.79V22H3.85v-7.18h1.79v5.38h11.72z"/><path d="m6.77 14.32 8.79 1.84.37-1.76-8.79-1.84-.37 1.76zm1.16-4.2 8.14 3.8.76-1.62-8.14-3.81-.76 1.63zm2.25-3.99 6.9 5.75 1.15-1.38-6.9-5.75-1.15 1.38zM14.77 2l-1.46 1.08 5.35 7.2 1.46-1.08L14.77 2zM6.59 18.44h8.98v-1.79H6.59v1.79z"/></svg>
-    </a></div>
+  <div class="hero-cta"><a class="btn btn--quiet" href="mailto:viraj.dt@asu.edu"
+     >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Email me</span>
+  </a><a class="btn btn--quiet" href="https://scholar.google.com/citations?user=0tSjYZkAAAAJ"
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 1 8.5l11 6.5 9-5.32V16h2V8.5L12 2z"/><path d="M6 13.2v3.6c0 1.66 2.69 3 6 3s6-1.34 6-3v-3.6l-6 3.55-6-3.55z"/></svg><span>View Google Scholar</span>
+  </a><a class="btn btn--quiet" href="/assets/pdf/Viraj_Resume.pdf" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg><span>Download CV</span>
+  </a><a class="hero-cta__icon" href="https://github.com/veedata" title="GitHub" aria-label="GitHub"
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.5 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.05.78 2.13v3.16c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+  </a><a class="hero-cta__icon" href="https://www.linkedin.com/in/veedata" title="LinkedIn" aria-label="LinkedIn"
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.2.8 24 1.77 24h20.45c.98 0 1.78-.8 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg>
+  </a><a class="hero-cta__icon" href="https://stackoverflow.com/users/11215536/veedata" title="Stack Overflow" aria-label="Stack Overflow"
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.36 20.2v-5.38h1.79V22H3.85v-7.18h1.79v5.38h11.72z"/><path d="m6.77 14.32 8.79 1.84.37-1.76-8.79-1.84-.37 1.76zm1.16-4.2 8.14 3.8.76-1.62-8.14-3.81-.76 1.63zm2.25-3.99 6.9 5.75 1.15-1.38-6.9-5.75-1.15 1.38zM14.77 2l-1.46 1.08 5.35 7.2 1.46-1.08L14.77 2zM6.59 18.44h8.98v-1.79H6.59v1.79z"/></svg>
+  </a></div>
 
 </section>
 
@@ -167,7 +178,7 @@
         <p class="thread__q">How do you hold a globally distributed, client-side cache coherent, and what is the system underneath actually costing you?
 </p>
       </div>
-      <ul class="thread__evidence"><li>CacheFS @ HPE Labs</li><li>FUSE · RDMA · eBPF</li><li>2 patent under review</li></ul>
+      <ul class="thread__evidence"><li>CacheFS @ HPE Labs</li><li>FUSE · RDMA · eBPF</li><li>2 patents under review</li></ul>
     </article><article class="thread">
       <span class="thread__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5l1.9 5.4 5.4 1.9-5.4 1.9L10 17.1l-1.9-5.4L2.7 9.8l5.4-1.9L10 2.5z"/><path d="M18 14.5l.85 2.4 2.4.85-2.4.85-.85 2.4-.85-2.4-2.4-.85 2.4-.85.85-2.4z"/></svg></span>
       <div class="thread__body">
@@ -236,26 +247,27 @@
 
 </section>
 
-<div class="section__head">
-  <h2>Explore</h2>
-</div>
-<nav class="quicklinks" aria-label="Explore the site">
-  <a class="quicklink" href="/publications/">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
-    <span class="quicklink__title">Publications</span>
-    <span class="quicklink__desc">Papers out of the mill</span>
-  </a>
-  <a class="quicklink" href="/projects/">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-    <span class="quicklink__title">Projects</span>
-    <span class="quicklink__desc">Things I've built &amp; broken</span>
-  </a>
-  <a class="quicklink" href="/cv/">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4"/><rect x="4" y="5" width="16" height="17" rx="2"/><path d="M8 11h8M8 15h5"/></svg>
-    <span class="quicklink__title">CV</span>
-    <span class="quicklink__desc">The long-form story</span>
-  </a>
-</nav>
+<section class="section">
+  <div class="section__head">
+    <h2>Explore</h2>
+  </div>
+  <nav class="quicklinks" aria-label="Explore the site">
+    <a class="quicklink" href="/publications/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
+      <span class="quicklink__title">Publications</span>
+      <span class="quicklink__desc">Papers and preprints</span>
+    </a>
+    <a class="quicklink" href="/cv/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4"/><rect x="4" y="5" width="16" height="17" rx="2"/><path d="M8 11h8M8 15h5"/></svg>
+      <span class="quicklink__title">CV</span>
+      <span class="quicklink__desc">The long-form story</span>
+    </a>
+    <a class="quicklink" href="/projects/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      <span class="quicklink__title">Projects</span>
+      <span class="quicklink__desc">Things I've built &amp; broken</span>
+    </a>
+  </nav>
 </section>
 
       </div>
