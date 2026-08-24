@@ -2,7 +2,7 @@
 # Order here is the order shown.
 #
 # `action:` renders an entry as a labelled pill instead of icon-only.
-- { name: email,          icon: email,    url: "mailto:viraj.online@asu.edu", action: "Email me" }
+- { name: email,          icon: email,    url: "mailto:viraj.dt@asu.edu", action: "Email me" }
 - { name: Google Scholar, icon: scholar,  url: "https://scholar.google.com/citations?user=0tSjYZkAAAAJ", action: "View Google Scholar" }
 - { name: GitHub,         icon: github,   url: "https://github.com/veedata" }
 - { name: LinkedIn,       icon: linkedin, url: "https://www.linkedin.com/in/veedata" }
