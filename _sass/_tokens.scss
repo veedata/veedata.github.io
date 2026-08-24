@@ -4,6 +4,10 @@
 // ===========================================================================
 
 :root {
+  // Tells the browser which way to paint the things we don't style: scrollbars,
+  // form controls, the flash before CSS lands. Mirrors the active palette.
+  color-scheme: light;
+
   // --- Palette: 4 roles ---------------------------------------------------
   --bg: #f5f1ea; // page background (warm cream)
   --ink: #1f1b16; // body text (brown-black)
@@ -38,6 +42,8 @@
 
 // --- Palette: dark --------------------------------------------------------
 :root[data-theme="dark"] {
+  color-scheme: dark;
+
   --bg: #17140f;
   --ink: #ede6da;
   --muted: #a69b8c;

@@ -1,9 +1,23 @@
 {%- comment -%} Inline-SVG social row from _data/socials.yml {%- endcomment -%}
-<div class="socials">
-  {%- for s in site.data.socials -%}
-    <a href="{{ s.url }}" title="{{ s.name }}" aria-label="{{ s.name }}"
-       {% unless s.icon == 'email' %}target="_blank" rel="noopener"{% endunless %}>
-      {% include icon.liquid name=s.icon %}
-    </a>
-  {%- endfor -%}
+<div class="hero-cta">
+  {%- for s in site.data.socials -%}{%- if s.action -%}
+  <a class="btn btn--quiet" href="{{ s.url }}"
+     {% unless s.icon == 'email' %}target="_blank" rel="noopener"{% endunless %}>
+    {% include icon.liquid name=s.icon %}<span>{{ s.action }}</span>
+  </a>
+  {%- endif -%}{%- endfor -%}
+
+  {%- assign cv_page = site.pages | where: "permalink", "/cv/" | first -%}
+  {%- if cv_page.cv_pdf -%}
+  <a class="btn btn--quiet" href="{{ '/assets/pdf/' | append: cv_page.cv_pdf | relative_url }}" target="_blank" rel="noopener">
+    {% include icon.liquid name="download" %}<span>Download CV</span>
+  </a>
+  {%- endif -%}
+
+  {%- for s in site.data.socials -%}{%- unless s.action -%}
+  <a class="hero-cta__icon" href="{{ s.url }}" title="{{ s.name }}" aria-label="{{ s.name }}"
+     {% unless s.icon == 'email' %}target="_blank" rel="noopener"{% endunless %}>
+    {% include icon.liquid name=s.icon %}
+  </a>
+  {%- endunless -%}{%- endfor -%}
 </div>

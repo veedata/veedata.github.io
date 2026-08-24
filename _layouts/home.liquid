@@ -71,24 +71,25 @@ layout: default
   {% include news-list.liquid limit=5 %}
 </section>
 
-<div class="section__head">
-  <h2>Explore</h2>
-</div>
-<nav class="quicklinks" aria-label="Explore the site">
-  <a class="quicklink" href="{{ '/publications/' | relative_url }}">
-    {% include icon.liquid name="doc" %}
-    <span class="quicklink__title">Publications</span>
-    <span class="quicklink__desc">Papers out of the mill</span>
-  </a>
-  <a class="quicklink" href="{{ '/projects/' | relative_url }}">
-    {% include icon.liquid name="grid" %}
-    <span class="quicklink__title">Projects</span>
-    <span class="quicklink__desc">Things I've built &amp; broken</span>
-  </a>
-  <a class="quicklink" href="{{ '/cv/' | relative_url }}">
-    {% include icon.liquid name="file" %}
-    <span class="quicklink__title">CV</span>
-    <span class="quicklink__desc">The long-form story</span>
-  </a>
-</nav>
+<section class="section">
+  <div class="section__head">
+    <h2>Explore</h2>
+  </div>
+  <nav class="quicklinks" aria-label="Explore the site">
+    <a class="quicklink" href="{{ '/publications/' | relative_url }}">
+      {% include icon.liquid name="doc" %}
+      <span class="quicklink__title">Publications</span>
+      <span class="quicklink__desc">Papers and preprints</span>
+    </a>
+    <a class="quicklink" href="{{ '/cv/' | relative_url }}">
+      {% include icon.liquid name="file" %}
+      <span class="quicklink__title">CV</span>
+      <span class="quicklink__desc">The long-form story</span>
+    </a>
+    <a class="quicklink" href="{{ '/projects/' | relative_url }}">
+      {% include icon.liquid name="grid" %}
+      <span class="quicklink__title">Projects</span>
+      <span class="quicklink__desc">Things I've built &amp; broken</span>
+    </a>
+  </nav>
 </section>

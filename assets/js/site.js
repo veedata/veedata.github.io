@@ -10,5 +10,4 @@ layout: null
 {% include js/copy-code.js %}
 {% include js/bibtex.js %}
 {% include js/pub-filter.js %}
-{% include js/toc.js %}
 {% include js/prefetch.js %}
