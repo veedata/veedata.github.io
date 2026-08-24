@@ -2,9 +2,10 @@
 <html lang="{{ site.lang | default: 'en' }}">
 {% include head.liquid %}
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="site">
     {% include nav.liquid %}
-    <main class="content" id="main">
+    <main class="content" id="main" tabindex="-1">
       <div class="container">
         {{ content }}
       </div>
