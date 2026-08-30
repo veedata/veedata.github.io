@@ -1,0 +1,36 @@
+# Patents and invention disclosures — hand-maintained.
+# Read by BOTH /publications/ (merged into the main list, under the "Patents"
+# filter) and /cv/ (the `type: patents` section). This file is the only place to
+# edit them; nothing is derived from anywhere else.
+#
+# Fields mirror _data/publications.yml on purpose, so _includes/pub-item.liquid
+# renders these with no special-casing:
+#   type      : must stay "patent" — type alone decides the filter bucket
+#   venue     : the assignee, shown where a paper shows its venue
+#   status    : italic note after the venue. Unlike a publication, an "under
+#               review" status here is NOT swapped for a badge, so the full
+#               wording survives — see the cat != 'patent' guards in
+#               _includes/pub-item.liquid.
+#   year      : decides which year group it lands in on /publications/
+# Highlight the author's own name with <b>…</b>, as in publications.yml.
+
+- title: "System for Observability using eBPF"
+  authors: "Harumi Kuno, <b>Viraj Thakkar</b>, John Byrne, Timo Soekler, Myungjun Son, Sekwon Lee, Aditya Dhakal"
+  venue: "HPE"
+  year: 2026
+  type: "patent"
+  status: "Under HPE internal disclosure review; patent filing upon approval"
+
+- title: "A Global, Strongly Consistent, Client-Sided Caching Mechanism"
+  authors: "John Byrne, <b>Viraj Thakkar</b>, Harumi Kuno, Sekwon Lee"
+  venue: "HPE"
+  year: 2025
+  type: "patent"
+  status: "Under HPE internal disclosure review; patent filing upon approval"
+
+- title: "Federated Coherence Management for a Globally Shared Cache"
+  authors: "John Byrne, <b>Viraj Thakkar</b>, Harumi Kuno, Sekwon Lee"
+  venue: "HPE"
+  year: 2025
+  type: "patent"
+  status: "Under HPE internal disclosure review; patent filing upon approval"

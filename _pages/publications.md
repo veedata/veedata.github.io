@@ -2,5 +2,5 @@
 layout: publications
 permalink: /publications/
 title: Publications
-description: Papers, Posters, and Preprints.
+description: Papers, Posters, and More.
 ---
