@@ -4,16 +4,12 @@
 {%- endcomment -%}
 {%- assign p = include.p -%}
 {%- assign st = p.status | default: '' | downcase -%}
-{%- if p.category -%}{% assign cat = p.category %}
-{%- elsif p.type == 'preprint' or st contains 'under review' -%}{% assign cat = 'preprint' %}
-{%- elsif p.type == 'workshop' -%}{% assign cat = 'workshop' %}
-{%- elsif p.type == 'poster' or p.type == 'abstract' -%}{% assign cat = 'abstract' %}
-{%- else -%}{% assign cat = 'conference' %}{%- endif -%}
-{%- case cat -%}
-{%- when 'workshop' -%}{%- assign cat_label = 'Workshop' -%}
-{%- when 'abstract' -%}{%- assign cat_label = 'Abstract' -%}
-{%- when 'preprint' -%}{%- assign cat_label = 'Preprint' -%}
-{%- else -%}{%- assign cat_label = 'Conference' -%}
+{%- case p.type -%}
+{%- when 'workshop' -%}{%- assign cat = 'workshop' -%}{%- assign cat_label = 'Workshop' -%}
+{%- when 'poster' or 'abstract' -%}{%- assign cat = 'abstract' -%}{%- assign cat_label = 'Abstract' -%}
+{%- when 'preprint' -%}{%- assign cat = 'preprint' -%}{%- assign cat_label = 'Preprint' -%}
+{%- when 'patent' -%}{%- assign cat = 'patent' -%}{%- assign cat_label = 'Patent' -%}
+{%- else -%}{%- assign cat = 'conference' -%}{%- assign cat_label = 'Conference' -%}
 {%- endcase -%}
 <div class="pub" data-cat="{{ cat }}" data-year="{{ p.year }}">
   <h3 class="pub__title">
@@ -28,7 +24,7 @@
       "Under review" becomes a badge below, so it is not repeated here as an
       italic note. Any other status (e.g. "To appear") still shows inline.
     {%- endcomment -%}
-    {%- unless st contains 'under review' -%}
+    {%- unless cat != 'patent' and st contains 'under review' -%}
       {%- if p.status %} · <em>{{ p.status }}</em>{% endif -%}
     {%- endunless -%}
   </p>
@@ -38,11 +34,12 @@
       It stays on the home page, where there are no filters.
     {%- endcomment -%}
     {%- if include.compact -%}<span class="badge">{{ cat_label }}</span>{%- endif -%}
-    {%- if st contains 'under review' -%}<span class="badge badge--status">Under review</span>{%- endif -%}
+    {%- if cat != 'patent' and st contains 'under review' -%}<span class="badge badge--status">Under review</span>{%- endif -%}
     {%- comment -%} Hand-set highlights, e.g. tags: ["Best Paper"]. {%- endcomment -%}
     {%- for t in p.tags -%}<span class="badge badge--flag">{{ t }}</span>{%- endfor -%}
     {%- if p.doi -%}<a class="badge badge--tag" href="{{ p.url | default: p.doi }}" target="_blank" rel="noopener">DOI</a>
     {%- elsif p.url -%}<a class="badge badge--tag" href="{{ p.url }}" target="_blank" rel="noopener">Link</a>{%- endif -%}
+    {%- if p.code -%}<a class="badge badge--tag" href="{{ p.code }}" target="_blank" rel="noopener">Code</a>{%- endif -%}
     {%- unless include.compact -%}
       {%- if p.bibtex -%}<button class="badge badge--tag bibtex-toggle" type="button" aria-expanded="false">BibTeX</button>{%- endif -%}
     {%- endunless -%}

@@ -1,20 +1,27 @@
 {%- comment -%}
-  Publications from _data/publications.yml.
+  Publications from _data/publications.yml, plus disclosures/patents from
+  _data/patents.yml. 
 
-  include.selected == true → only `selected: true` papers, flat, no filters.
+  include.selected == true → only `selected: true` entries, flat, no filters.
   Otherwise → filter buttons + year-grouped list.
 
-  Filter category is derived from `type` unless the entry sets `category:`:
-    preprint   ← preprint, or any status containing "under review"
+  Filter bucket is derived from `type`:
     workshop   ← workshop
     abstract   ← poster, abstract
+    preprint   ← preprint
+    patent     ← patent (all of _data/patents.yml)
     conference ← everything else (full paper, chapter, thesis)
+
+  `status` is display only. It can raise an "Under review" badge.
 {%- endcomment -%}
 {%- assign pubs = site.data.publications -%}
+{%- assign blank_array = "" | split: "," -%}
+{%- assign patents = site.data.patents | default: blank_array -%}
+{%- assign all = pubs | concat: patents -%}
 
 {%- if include.selected -%}
   <div class="pubs">
-    {%- for p in pubs -%}
+    {%- for p in all -%}
       {%- if p.selected -%}{% include pub-item.liquid p=p compact=true %}{%- endif -%}
     {%- endfor -%}
   </div>
@@ -25,17 +32,15 @@
   {%- assign n_abstract = 0 -%}
   {%- assign n_conference = 0 -%}
   {%- assign n_preprint = 0 -%}
-  {%- for p in pubs -%}
-    {%- assign st = p.status | default: '' | downcase -%}
-    {%- if p.category -%}{% assign c = p.category %}
-    {%- elsif p.type == 'preprint' or st contains 'under review' -%}{% assign c = 'preprint' %}
-    {%- elsif p.type == 'workshop' -%}{% assign c = 'workshop' %}
-    {%- elsif p.type == 'poster' or p.type == 'abstract' -%}{% assign c = 'abstract' %}
-    {%- else -%}{% assign c = 'conference' %}{%- endif -%}
-    {%- if c == 'workshop' -%}{% assign n_workshop = n_workshop | plus: 1 %}
-    {%- elsif c == 'abstract' -%}{% assign n_abstract = n_abstract | plus: 1 %}
-    {%- elsif c == 'preprint' -%}{% assign n_preprint = n_preprint | plus: 1 %}
-    {%- else -%}{% assign n_conference = n_conference | plus: 1 %}{%- endif -%}
+  {%- assign n_patent = 0 -%}
+  {%- for p in all -%}
+    {%- case p.type -%}
+    {%- when 'workshop' -%}{% assign n_workshop = n_workshop | plus: 1 %}
+    {%- when 'poster' or 'abstract' -%}{% assign n_abstract = n_abstract | plus: 1 %}
+    {%- when 'preprint' -%}{% assign n_preprint = n_preprint | plus: 1 %}
+    {%- when 'patent' -%}{% assign n_patent = n_patent | plus: 1 %}
+    {%- else -%}{% assign n_conference = n_conference | plus: 1 %}
+    {%- endcase -%}
   {%- endfor -%}
 
   {%- comment -%}
@@ -43,21 +48,24 @@
     as a leading space and offsets the text inside the chip.
   {%- endcomment -%}
   <div class="pub-filters" role="group" aria-label="Filter publications by type">
-    <button class="pub-filter" type="button" data-filter="all" aria-pressed="true"><span>All</span><span class="pub-filter__count">{{ pubs.size }}</span></button>
-    <button class="pub-filter" type="button" data-filter="workshop" aria-pressed="false"><span>Workshop</span><span class="pub-filter__count">{{ n_workshop }}</span></button>
+    <button class="pub-filter" type="button" data-filter="all" aria-pressed="true"><span>All</span><span class="pub-filter__count">{{ all.size }}</span></button>
     <button class="pub-filter" type="button" data-filter="conference" aria-pressed="false"><span>Conference</span><span class="pub-filter__count">{{ n_conference }}</span></button>
+    <button class="pub-filter" type="button" data-filter="workshop" aria-pressed="false"><span>Workshop</span><span class="pub-filter__count">{{ n_workshop }}</span></button>
     <button class="pub-filter" type="button" data-filter="abstract" aria-pressed="false"><span>Abstract</span><span class="pub-filter__count">{{ n_abstract }}</span></button>
     {%- if n_preprint > 0 %}<button class="pub-filter" type="button" data-filter="preprint" aria-pressed="false"><span>Preprint</span><span class="pub-filter__count">{{ n_preprint }}</span></button>{% endif -%}
+    {%- if n_patent > 0 %}<button class="pub-filter" type="button" data-filter="patent" aria-pressed="false"><span>Patent</span><span class="pub-filter__count">{{ n_patent }}</span></button>{% endif -%}
   </div>
 
-  {%- assign last_year = '' -%}
+  {%- assign years = all | map: "year" | uniq | sort | reverse -%}
   <div class="pubs" id="pub-list">
-    {%- for p in pubs -%}
-      {%- if p.year != last_year -%}
-        <h2 class="pub-year" data-year="{{ p.year }}">{{ p.year }}</h2>
-        {%- assign last_year = p.year -%}
-      {%- endif -%}
-      {% include pub-item.liquid p=p %}
+    {%- for y in years -%}
+      <h2 class="pub-year" data-year="{{ y }}">{{ y }}</h2>
+      {%- for p in pubs -%}
+        {%- if p.year == y -%}{% include pub-item.liquid p=p %}{%- endif -%}
+      {%- endfor -%}
+      {%- for p in patents -%}
+        {%- if p.year == y -%}{% include pub-item.liquid p=p %}{%- endif -%}
+      {%- endfor -%}
     {%- endfor -%}
   </div>
   <p class="pub-empty" hidden>No publications in this category.</p>

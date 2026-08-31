@@ -408,6 +408,261 @@
 }
 
 // --- 4. Publications ------------------------------------------------------
+// The stats card is shared: `.pub-stats` is the Scholar block and `.repo-stats`
+// the GitHub block, side by side at the top of /publications/. Paired selectors
+// rather than a second copy of the block, so the two cards cannot drift apart.
+.impact-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 0.85rem;
+  margin: 0 0 1.1rem;
+}
+// Both rules are scoped to the same breakpoint because they are the same
+// decision — the cards are wide enough to sit side by side. Stacking the
+// Research Software tiles one per row only makes sense while that card is a
+// narrow column; once the cards drop to one per row on a phone, that same stack
+// spends the full screen width on a label and a single digit, so the tiles go
+// back to the 3-up row the base rule gives them.
+@media (min-width: 46em) {
+  .impact-row {
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  }
+  .impact-row > .repo-stats > .repo-stats__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.impact-row > .pub-stats,
+.impact-row > .repo-stats {
+  margin: 0;
+}
+
+.pub-stats,
+.repo-stats {
+  margin: 0 0 1.1rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+// The tooltip anchors to the head, not to the little `i` — anchoring it to the
+// button lets it hang off the card's left edge on narrow screens.
+.pub-stats__head,
+.repo-stats__head {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem 0.85rem;
+}
+.pub-stats__title,
+.repo-stats__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+}
+.pub-stats__info,
+.repo-stats__info {
+  display: grid;
+  place-items: center;
+  width: 1.18rem;
+  height: 1.18rem;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-serif);
+  font-size: 0.68rem;
+  line-height: 1;
+  cursor: help;
+}
+.pub-stats__info:hover,
+.repo-stats__info:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.pub-stats__info:focus-visible,
+.repo-stats__info:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.pub-stats__tooltip,
+.repo-stats__tooltip {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.45rem);
+  width: max-content;
+  max-width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  box-shadow: 0 8px 20px var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.15s var(--ease),
+    transform 0.15s var(--ease),
+    visibility 0s linear 0.15s;
+}
+// Invisible bridge across the gap, so the pointer can travel from the `i` down
+// to the panel without the panel closing under it.
+.pub-stats__tooltip::before,
+.repo-stats__tooltip::before {
+  content: "";
+  position: absolute;
+  inset: -0.5rem 0 auto;
+  height: 0.5rem;
+}
+.pub-stats__tooltip a,
+.repo-stats__tooltip a {
+  color: var(--accent);
+}
+.pub-stats__info:hover + .pub-stats__tooltip,
+.pub-stats__info:focus + .pub-stats__tooltip,
+.pub-stats__tooltip:hover,
+.pub-stats__tooltip:focus-within,
+.repo-stats__info:hover + .repo-stats__tooltip,
+.repo-stats__info:focus + .repo-stats__tooltip,
+.repo-stats__tooltip:hover,
+.repo-stats__tooltip:focus-within {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+// Three short numbers stay on one row at every width — wrapping them cost three
+// stacked rows on a phone for no gain in legibility.
+// The margin used to come from the meta paragraph that sat here; with that gone
+// the grid has to carry its own separation from the head.
+.pub-stats__grid,
+.repo-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+}
+// Flat in the sense of short, not bare: the box stays, but label and number sit
+// on ONE baseline instead of stacked, which is what was making each tile twice
+// as tall as the text it held. flex-wrap is the escape hatch — on a narrow phone
+// column "Contributors 2" drops the number to a second line rather than
+// overflowing the box.
+.pub-stats__item,
+.repo-stats__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.1rem 0.6rem;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+.pub-stats__label,
+.repo-stats__label {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(0.68rem, 2.4vw, 0.78rem);
+}
+// No top margin: the label is beside the number now, not above it, so the old
+// stacking gap would only push the row off its own baseline.
+.pub-stats__value,
+.repo-stats__value {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 1.12rem;
+  color: var(--ink);
+}
+
+// The per-repo `.repo-list` that used to sit under the aggregate tiles is gone:
+// each repo is now a "Code" chip on its own paper, so the list was the same four
+// names twice on one page.
+
+// Year-over-year citation columns. One series, so one hue (--accent) and no
+// legend; columns touch so their bottom borders form a single baseline, and the
+// air between bars comes from the bar being narrower than its column.
+.pub-chart {
+  margin: 0.7rem 0 0;
+}
+// Phone-only control. At desktop width the chart is always open and the label is
+// dropped entirely: years along the bottom, counts above the bars, one series —
+// a caption there is telling the reader something the chart already says.
+// Hiding a <summary> normally traps a disclosure shut, which is fine only
+// because the markup ships `open` and the script never closes it above this
+// breakpoint. Keep the two in step; see _includes/js/chart-collapse.js.
+.pub-chart__summary {
+  width: fit-content;
+  color: var(--muted);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.pub-chart__summary:hover {
+  color: var(--ink);
+}
+.pub-chart__summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+// The plot carries this gap rather than the summary carrying a bottom margin,
+// so a collapsed chart is exactly the height of its one-line control.
+.pub-chart__disclosure[open] > .pub-chart__plot {
+  margin-top: 0.35rem;
+}
+@media (min-width: 46em) {
+  .pub-chart__summary {
+    display: none;
+  }
+}
+.pub-chart__plot {
+  display: flex;
+  align-items: flex-end;
+}
+.pub-chart__col {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+}
+// padding-top reserves the value-label band: bar heights are a percentage of
+// the content box, so the tallest bar's label rides in the padding instead of
+// pushing the column into the stat grid above.
+.pub-chart__track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 78px;
+  padding-top: 1.05rem;
+  border-bottom: 1px solid var(--line-strong);
+}
+.pub-chart__bar {
+  flex: 0 0 auto;
+  width: calc(100% - 8px);
+  max-width: 24px;
+  border-radius: 4px 4px 0 0;
+  background: var(--accent);
+}
+.pub-chart__value,
+.pub-chart__year {
+  display: block;
+  color: var(--muted);
+  font-size: clamp(0.58rem, 2.1vw, 0.7rem);
+  font-variant-numeric: tabular-nums;
+}
+.pub-chart__value {
+  margin-bottom: 0.2rem;
+}
+.pub-chart__year {
+  margin-top: 0.15rem;
+}
+
 .pub-filters {
   display: flex;
   flex-wrap: wrap;

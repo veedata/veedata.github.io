@@ -6,4 +6,4 @@ hero: >
   they spill their secrets.
 ---
 
-Hi, I'm a perpetually-curious CS Ph.D. student who gets *way* too excited about taking a big, intimidating system apart (sometimes literally) just to see what makes it tick; and then, on a good day, I put it back together a little bit better than I found it.
+Hi, I'm a perpetually curious person who gets *way* too excited about taking big, intimidating systems apart (sometimes literally) to see what makes it tick. Then, on a good day, I put them back together a little bit better than I found them.

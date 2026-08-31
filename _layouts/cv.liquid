@@ -49,6 +49,15 @@ layout: default
     {%- endfor -%}
     </div>
 
+  {%- when 'patents' -%}
+    <div class="cv-list">
+      <ul>
+      {%- for p in site.data.patents -%}
+        <li>{{ p.authors }}. "{{ p.title }}."{% if p.status %} <i>{{ p.status }}.</i>{% endif %}</li>
+      {%- endfor -%}
+      </ul>
+    </div>
+
   {%- else -%}{%- comment -%} list {%- endcomment -%}
     <div class="cv-list">
       <ul>{%- for it in section.contents -%}<li>{{ it }}</li>{%- endfor -%}</ul>

@@ -6,6 +6,113 @@ layout: default
   <p class="lead">{{ page.description | default: 'Peer-reviewed papers, workshop papers, and theses.' }}</p>
 </div>
 
+{%- comment -%}
+  Two impact cards, side by side on desktop and stacked on a phone (see
+  .impact-row). Either both cards are shown or nothing is.
+{%- endcomment -%}
+{%- assign scholar = site.data.scholar_stats -%}
+{%- assign gh = site.data.github_stats -%}
+{%- assign show_impact = false -%}
+{%- if scholar.available and gh.available -%}{%- assign show_impact = true -%}{%- endif -%}
+
+{%- if show_impact -%}
+<div class="impact-row">
+  <section class="pub-stats" aria-label="Google Scholar metrics">
+    <div class="pub-stats__head">
+      <h2 class="pub-stats__title">Research Impact</h2>
+      <span class="pub-stats__tooltip-wrap">
+        <button type="button" class="pub-stats__info" aria-describedby="scholar-stats-tip">
+          <span aria-hidden="true">i</span>
+          <span class="visually-hidden">Where these numbers come from</span>
+        </button>
+        <span class="pub-stats__tooltip" id="scholar-stats-tip">
+          From my <a href="{{ scholar.source_url }}" target="_blank" rel="noopener">Google Scholar</a> page.
+          {%- if scholar.updated_at %}<br>Last updated {{ scholar.updated_at | date: "%b %-d, %Y" }}{% endif -%}
+        </span>
+      </span>
+    </div>
+    <div class="pub-stats__grid">
+      <article class="pub-stats__item">
+        <p class="pub-stats__label">Citations</p>
+        <p class="pub-stats__value">{{ scholar.citations | default: 0 }}</p>
+      </article>
+      <article class="pub-stats__item">
+        <p class="pub-stats__label">h-index</p>
+        <p class="pub-stats__value">{{ scholar.h_index | default: 0 }}</p>
+      </article>
+      <article class="pub-stats__item">
+        <p class="pub-stats__label">i10-index</p>
+        <p class="pub-stats__value">{{ scholar.i10_index | default: 0 }}</p>
+      </article>
+    </div>
+
+    {%- assign graph = scholar.graph -%}
+    {%- assign by_size = graph | sort: "citations" -%}
+    {%- assign peak = by_size | last -%}
+    {%- if graph.size > 1 and peak.citations > 0 -%}
+      <figure class="pub-chart">
+        <details class="pub-chart__disclosure" open>
+          <summary class="pub-chart__summary">Citations by year</summary>
+          <div class="pub-chart__plot">
+            {%- for point in graph -%}
+              {%- assign height = point.citations | times: 100.0 | divided_by: peak.citations | round: 1 -%}
+              <div class="pub-chart__col" title="{{ point.year }} · {{ point.citations }} citations">
+                <div class="pub-chart__track">
+                  <span class="pub-chart__value">{{ point.citations }}</span>
+                  <span class="pub-chart__bar" style="height: {{ height }}%"></span>
+                </div>
+                <span class="pub-chart__year">{{ point.year }}</span>
+              </div>
+            {%- endfor -%}
+          </div>
+        </details>
+        <table class="visually-hidden">
+          <caption>Citations by year, from Google Scholar</caption>
+          <thead>
+            <tr><th scope="col">Year</th><th scope="col">Citations</th></tr>
+          </thead>
+          <tbody>
+            {%- for point in graph -%}
+              <tr><th scope="row">{{ point.year }}</th><td>{{ point.citations }}</td></tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </figure>
+    {%- endif -%}
+  </section>
+
+  <section class="repo-stats" aria-label="GitHub repository metrics">
+    <div class="repo-stats__head">
+      <h2 class="repo-stats__title">Research Software</h2>
+      <span class="repo-stats__tooltip-wrap">
+        <button type="button" class="repo-stats__info" aria-describedby="github-stats-tip">
+          <span aria-hidden="true">i</span>
+          <span class="visually-hidden">Where these numbers come from</span>
+        </button>
+        <span class="repo-stats__tooltip" id="github-stats-tip">
+          Aggregated across the artifact for my publications.
+          {%- if gh.updated_at %} Last updated {{ gh.updated_at | date: "%b %-d, %Y" }}{% endif -%}
+        </span>
+      </span>
+    </div>
+    <div class="repo-stats__grid">
+      <article class="repo-stats__item">
+        <p class="repo-stats__label">Artifacts</p>
+        <p class="repo-stats__value">{{ gh.totals.repos | default: 0 }}</p>
+      </article>
+      <article class="repo-stats__item">
+        <p class="repo-stats__label">Stars</p>
+        <p class="repo-stats__value">{{ gh.totals.stars | default: 0 }}</p>
+      </article>
+      <article class="repo-stats__item">
+        <p class="repo-stats__label">Forks</p>
+        <p class="repo-stats__value">{{ gh.totals.forks | default: 0 }}</p>
+      </article>
+    </div>
+  </section>
+</div>
+{%- endif -%}
+
 {% include pub-list.liquid %}
 
 {{ content }}
