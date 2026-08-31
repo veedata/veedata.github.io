@@ -39,6 +39,7 @@
     {%- for t in p.tags -%}<span class="badge badge--flag">{{ t }}</span>{%- endfor -%}
     {%- if p.doi -%}<a class="badge badge--tag" href="{{ p.url | default: p.doi }}" target="_blank" rel="noopener">DOI</a>
     {%- elsif p.url -%}<a class="badge badge--tag" href="{{ p.url }}" target="_blank" rel="noopener">Link</a>{%- endif -%}
+    {%- if p.code -%}<a class="badge badge--tag" href="{{ p.code }}" target="_blank" rel="noopener">Code</a>{%- endif -%}
     {%- unless include.compact -%}
       {%- if p.bibtex -%}<button class="badge badge--tag bibtex-toggle" type="button" aria-expanded="false">BibTeX</button>{%- endif -%}
     {%- endunless -%}

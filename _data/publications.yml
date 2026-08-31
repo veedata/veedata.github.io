@@ -1,12 +1,17 @@
 # Publications — hand-maintained (replaces jekyll-scholar / BibTeX).
 # Highlight the author's own name with <b>…</b>.
 #   type      : full paper | workshop | poster | abstract | preprint | thesis | chapter
+#               This decides the filter bucket: workshop → Workshop,
+#               poster/abstract → Abstract, preprint → Preprint, everything else
+#               (full paper, thesis, chapter) → Conference.
 #   selected  : surfaces the paper on the home page (no visible "selected" tag)
 #   status    : optional italic note after the venue (e.g. "To appear").
-#               "Under review" is special: it renders as a badge instead of an
-#               italic note, and files the paper under the Preprint filter.
+#               "Under review" renders as a badge instead of an italic note. 
 #   tags      : extra badges, hand-set per entry (e.g. tags: ["Best Paper"])
 #   doi / url : links; doi also renders a DOI chip
+#   code      : repo URL; renders a "Code" chip if present. Each distinct github.com
+#               here is also what .github/scripts/fetch_github_stats.py fetches
+#               to fill the aggregate tiles at the top of the publications page.
 #   bibtex    : shown in a collapsible, copyable block on the publications page
 # The order of this file IS the order on the page — nothing sorts it. Keep
 # entries grouped by year (newest first) so each year heading appears once.
@@ -16,7 +21,7 @@
   authors: "<b>Viraj Thakkar</b>, Timo Sokler, John Byrne, MJ Son, Sekwon Lee, Harumi Kuno, Aditya Dhakal"
   venue: "ProTools Workshop @ SC (8th Workshop on Programming and Performance Visualization Tools)"
   year: 2026
-  type: "preprint"
+  type: "workshop"
   status: "Under review"
 
 - title: "TellyTune: Exploring the Limits of LLM-Driven Tuning for LSM-Based Key-Value Stores"
@@ -26,6 +31,7 @@
   type: "full paper"
   status: "To appear"
   selected: true
+  code: "https://github.com/asu-idi/TellyTune"
 
 - title: "ANCHOR: A Vision for Secure Persistent Key-Value Stores in Disaggregated Data Centers"
   authors: "<b>Viraj Thakkar</b>, Dongha Kim, Hokeun Kim, Zhichao Cao"
@@ -41,6 +47,7 @@
   type: "full paper"
   doi: "10.1145/3802093"
   url: "https://doi.org/10.1145/3802093"
+  code: "https://github.com/asu-idi/O3-LSM"
   bibtex: |
     @article{lin2026o3lsm,
       title   = {O3-LSM: Maximizing Disaggregated LSM Write Performance via Three-Layer Offloading},
@@ -83,6 +90,7 @@
   selected: true
   doi: "10.1145/3725354"
   url: "https://doi.org/10.1145/3725354"
+  code: "https://github.com/asu-idi/SHIELD"
   bibtex: |
     @inproceedings{thakkar2025shield,
       title     = {SHIELD: Encrypting Persistent Data of LSM-KVS from Monolithic to Disaggregated Storage},
@@ -104,6 +112,7 @@
   year: 2025
   type: "preprint"
   url: "https://arxiv.org/abs/2502.17606"
+  code: "https://github.com/asu-idi/ELMo-Tune-V2"
   bibtex: |
     @article{thakkar2025elmotunev2,
       title   = {ELMo-Tune-V2: LLM-Assisted Full-Cycle Auto-Tuning to Optimize LSM-Based Key-Value Stores},
@@ -134,6 +143,7 @@
   type: "full paper"
   doi: "10.1145/3654927"
   url: "https://doi.org/10.1145/3654927"
+  code: "https://github.com/asu-idi/CaaS-LSM"
   bibtex: |
     @article{yu2024caaslsm,
       title   = {CaaS-LSM: Compaction-as-a-Service for LSM-based Key-Value Stores in Storage Disaggregated Infrastructure},
@@ -154,6 +164,7 @@
   doi: "10.1145/3655038.3665954"
   url: "https://doi.org/10.1145/3655038.3665954"
   selected: true
+  code: "https://github.com/asu-idi/ELMo-Tune"
   bibtex: |
     @inproceedings{thakkar2024llmtune,
       title     = {Can Modern LLMs Tune and Configure LSM-based Key-Value Stores?},
@@ -190,19 +201,15 @@
     }
 
 - title: "Optimizing Consistency and Performance Trade-off in Distributed Log-Structured Merge-Tree-based Key-Value Stores"
-  authors: "<b>Viraj Deven Thakkar</b>"
+  authors: "<b>Viraj Thakkar</b>"
   venue: "M.S. Thesis, Arizona State University"
   year: 2023
   type: "thesis"
-  # No DOI; this is the ASU KEEP repository record, taken from the resume.
-  # NOTE: `keep-dev` is the library's dev host. It serves the item, but the
-  # production `keep.lib.asu.edu/items/189344` currently errors — worth
-  # re-checking later and switching over once it works.
-  url: "https://keep-dev.lib.asu.edu/items/189344"
+  url: "https://www.proquest.com/docview/2850936175"
   bibtex: |
     @mastersthesis{thakkar2023optimizing,
       title  = {Optimizing Consistency and Performance Trade-off in Distributed Log-Structured Merge-Tree-based Key-Value Stores},
-      author = {Thakkar, Viraj Deven},
+      author = {Thakkar, Viraj},
       school = {Arizona State University},
       year   = {2023}
     }
