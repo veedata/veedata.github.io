@@ -7,6 +7,10 @@ Gemfile.lock
 .bundle
 vendor
 
+# Fetched fresh by .github/scripts/fetch_*_stats.py on every deploy.
+_data/github_stats.yml
+_data/scholar_stats.yml
+
 # Editor / OS
 .DS_store
 .idea

@@ -8,9 +8,16 @@ on:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    - cron: "47 5 * * 0"
 
 permissions:
   contents: write
+
+# Keep the later of the two in case of 2 consequent pushes.
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -24,6 +31,25 @@ jobs:
         with:
           ruby-version: "4.0"
           bundler-cache: true
+
+      - name: Setup Python
+        if: github.event_name != 'pull_request'
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      # Run the scripts to generate _data/*_stats.yml.
+      - name: Fetch GitHub stats
+        if: github.event_name != 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/scripts/fetch_github_stats.py
+
+      - name: Fetch Scholar stats
+        if: github.event_name != 'pull_request'
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+        run: python3 .github/scripts/fetch_scholar_stats.py
 
       - name: Install and Build 🔧
         run: |
