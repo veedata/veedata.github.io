@@ -57,14 +57,20 @@
   </div>
 
   {%- assign years = all | map: "year" | uniq | sort | reverse -%}
-  <div class="pubs" id="pub-list">
+  {%- comment -%}
+    data-filter mirrors the pressed chip so CSS can show the category badge
+    under "All" only. The numbers in .pub__num are written by pub-filter.js:
+    they count DOWN over the currently visible rows, so the newest paper always
+    carries the highest number and the list ends at 1.
+  {%- endcomment -%}
+  <div class="pubs" id="pub-list" data-filter="all">
     {%- for y in years -%}
       <h2 class="pub-year" data-year="{{ y }}">{{ y }}</h2>
       {%- for p in pubs -%}
-        {%- if p.year == y -%}{% include pub-item.liquid p=p %}{%- endif -%}
+        {%- if p.year == y -%}{% include pub-item.liquid p=p numbered=true %}{%- endif -%}
       {%- endfor -%}
       {%- for p in patents -%}
-        {%- if p.year == y -%}{% include pub-item.liquid p=p %}{%- endif -%}
+        {%- if p.year == y -%}{% include pub-item.liquid p=p numbered=true %}{%- endif -%}
       {%- endfor -%}
     {%- endfor -%}
   </div>

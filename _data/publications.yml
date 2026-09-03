@@ -4,9 +4,14 @@
 #               This decides the filter bucket: workshop → Workshop,
 #               poster/abstract → Abstract, preprint → Preprint, everything else
 #               (full paper, thesis, chapter) → Conference.
+#   venue     : the full, formal name. NOT printed on the page — it is the
+#               hover title on the pill, and what BibTeX-less readers copy.
+#   short     : what the pill actually shows, e.g. "Conference · SIGMOD 2026".
+#               Keep it to ~20 characters; it is the venue AT A GLANCE, so use
+#               whichever of the acronym or the name people would recognise.
+#               Falls back to `venue` if omitted — which will look too long.
 #   selected  : surfaces the paper on the home page (no visible "selected" tag)
-#   status    : optional italic note after the venue (e.g. "To appear").
-#               "Under review" renders as a badge instead of an italic note. 
+#   status    : e.g. "To appear" / "Under review" — renders as its own badge.
 #   tags      : extra badges, hand-set per entry (e.g. tags: ["Best Paper"])
 #   doi / url : links; doi also renders a DOI chip
 #   code      : repo URL; renders a "Code" chip if present. Each distinct github.com
@@ -20,22 +25,40 @@
 - title: "Probe Less, Learn More: Characterizing and Correcting eBPF Instrumentation Overhead"
   authors: "<b>Viraj Thakkar</b>, Timo Sokler, John Byrne, MJ Son, Sekwon Lee, Harumi Kuno, Aditya Dhakal"
   venue: "ProTools Workshop @ SC (8th Workshop on Programming and Performance Visualization Tools)"
+  short: "ProTools @ SC"
   year: 2026
   type: "workshop"
   status: "Under review"
 
 - title: "TellyTune: Exploring the Limits of LLM-Driven Tuning for LSM-Based Key-Value Stores"
-  authors: "<b>Viraj Thakkar</b>, Qi Lin, Kenanya Prasetyo, Raden Wisjnunandono, Jin Wang, Achmad Kistijantoro, Reza Rachmadi, Zhichao Cao"
+  authors: "<b>Viraj Thakkar</b>, Qi Lin, Kenanya Prasetyo, Raden Wisjnunandono, Jin Wang, Achmad Imam Kistijantoro, Reza Faud Rachmadi, Zhichao Cao"
   venue: "SYSTOR (19th ACM International Systems and Storage Conference)"
+  short: "SYSTOR"
   year: 2026
   type: "full paper"
-  status: "To appear"
   selected: true
+  url: "https://doi.org/10.1145/3793230.3839381"
+  doi: "https://doi.org/10.1145/3793230.3839381"
   code: "https://github.com/asu-idi/TellyTune"
+  bibtex: |
+      @inproceedings{10.1145/3793230.3839381,
+        author = {Thakkar, Viraj and Lin, Qi and Prasetyo, Kenanya and Wisjnunandono, Haryosatyo and Wang, Jin and Kistijantoro, Achmad Imam and Rachmadi, Reza Fuad and Cao, Zhichao},
+        title = {TellyTune: Exploring the Limits of LLM-Assisted Tuning for LSM-Based Key-Value Stores},
+        year = {2026},
+        isbn = {9798400724732},
+        publisher = {Association for Computing Machinery},
+        address = {New York, NY, USA},
+        url = {https://doi.org/10.1145/3793230.3839381},
+        doi = {10.1145/3793230.3839381},
+        pages = {81–96},
+        numpages = {16},
+        series = {SYSTOR '26}
+      }
 
 - title: "ANCHOR: A Vision for Secure Persistent Key-Value Stores in Disaggregated Data Centers"
   authors: "<b>Viraj Thakkar</b>, Dongha Kim, Hokeun Kim, Zhichao Cao"
   venue: "SeQureDB Workshop @ ACM SIGMOD"
+  short: "SeQureDB @ SIGMOD"
   year: 2026
   type: "workshop"
   status: "To appear"
@@ -43,6 +66,7 @@
 - title: "O3-LSM: Maximizing Disaggregated LSM Write Performance via Three-Layer Offloading"
   authors: "Qi Lin, Gangqi Huang, Te Guo, Chang Guo, <b>Viraj Thakkar</b>, Zhichen Zhu, Jianguo Wang, Zhichao Cao"
   venue: "SIGMOD (Proc. ACM Manag. Data)"
+  short: "SIGMOD"
   year: 2026
   type: "full paper"
   doi: "10.1145/3802093"
@@ -60,24 +84,28 @@
 - title: "CacheFS: A Global, Strongly Consistent, Client-Sided Caching Filesystem"
   authors: "John Byrne, <b>Viraj Thakkar</b>, Matthias Frank, Elias Klett, Harumi Kuno, Sekwon Lee, Clarete Crasta, Abhishek Dwaraki, David Emberson, Ramya Rao, Amitha C, Chinmay Ghosh, Prono Shome, Shreyas Basri"
   venue: "HPE TechCon (internal conference — 8% acceptance)"
+  short: "HPE TechCon"
   year: 2026
   type: "full paper"
 
 - title: "Broad Reasoning but Narrow Control for an End-to-End KVS Tuner"
   authors: "<b>Viraj Thakkar</b>"
   venue: "HPTS (21st International Workshop on High Performance Transaction Systems)"
+  short: "HPTS"
   year: 2026
   type: "abstract"
 
 - title: "Beyond ARC — Introducing LLM-driven Adaptive Policy Replacement"
   authors: "Zhenjie Sun, <b>Viraj Thakkar</b>, Avani Wildani, Zhichao Cao"
   venue: "USENIX FAST Work-In-Progress"
+  short: "FAST WiP"
   year: 2026
   type: "abstract"
 
 - title: "Characterizing Sustained Low-Level Message Latency"
   authors: "John Byrne, Myungjun Son, Harumi Kuno, Aditya Dhakal, Sekwon Lee, <b>Viraj Thakkar</b>, Clarete Crasta, David Emberson"
   venue: "Conference for the Cray User Group (CUG)"
+  short: "CUG"
   year: 2026
   type: "abstract"
 
@@ -85,6 +113,7 @@
 - title: "SHIELD: Encrypting Persistent Data of LSM-KVS from Monolithic to Disaggregated Storage"
   authors: "<b>Viraj Thakkar</b>, Dongha Kim, Yingchun Lai, Hokeun Kim, Zhichao Cao"
   venue: "SIGMOD (Proc. ACM Manag. Data)"
+  short: "SIGMOD"
   year: 2025
   type: "full paper"
   selected: true
@@ -103,12 +132,14 @@
 - title: "NetLSM: Enabling an In-Network Approach for Scheduling LSM-KVS Operations"
   authors: "Yibo Zhao, <b>Viraj Thakkar</b>, Zhichao Cao, Zaoxing Liu"
   venue: "USENIX FAST Work-In-Progress"
+  short: "FAST WiP"
   year: 2025
   type: "abstract"
 
 - title: "ELMo-Tune-V2: LLM-Assisted Full-Cycle Auto-Tuning to Optimize LSM-Based Key-Value Stores"
   authors: "<b>Viraj Thakkar</b>, Qi Lin, Kenanya Keandra Adriel Prasetyo, Raden Haryosatyo Wisjnunandono, Achmad Imam Kistijantoro, Reza Fuad Rachmadi, Zhichao Cao"
   venue: "arXiv preprint arXiv:2502.17606"
+  short: "arXiv"
   year: 2025
   type: "preprint"
   url: "https://arxiv.org/abs/2502.17606"
@@ -124,6 +155,7 @@
 - title: "StorageXTuner: An LLM Agent-Driven Automatic Tuning Framework for Heterogeneous Storage Systems"
   authors: "Qi Lin, Zhenyu Zhang, <b>Viraj Thakkar</b>, Zhenjie Sun, Mai Zheng, Zhichao Cao"
   venue: "arXiv preprint arXiv:2510.25017"
+  short: "arXiv"
   year: 2025
   type: "preprint"
   url: "https://arxiv.org/abs/2510.25017"
@@ -139,6 +171,7 @@
 - title: "CaaS-LSM: Compaction-as-a-Service for LSM-based Key-Value Stores in Storage Disaggregated Infrastructure"
   authors: "Qiaolin Yu, Chang Guo, Jay Zhuang, <b>Viraj Thakkar</b>, Jianguo Wang, Zhichao Cao"
   venue: "SIGMOD (Proc. ACM Manag. Data)"
+  short: "SIGMOD"
   year: 2024
   type: "full paper"
   doi: "10.1145/3654927"
@@ -158,6 +191,7 @@
 - title: "Can Modern LLMs Tune and Configure LSM-based Key-Value Stores?"
   authors: "<b>Viraj Thakkar</b>, Madhumitha Sukumar, Jiaxin Dai, Kaushiki Singh, Zhichao Cao"
   venue: "HotStorage '24 (16th ACM Workshop on Hot Topics in Storage and File Systems)"
+  short: "HotStorage"
   year: 2024
   type: "workshop"
   tags: ["Best Paper"]
@@ -178,6 +212,7 @@
 - title: "LLM-assisted Automatic-Configuration and Tuning Framework for LSM-based Key-Value Stores"
   authors: "Madhumitha Sukumar, Jiaxin Dai, Kaushiki Singh, Vikriti Lokegaonkar, <b>Viraj Thakkar</b>, Zhichao Cao"
   venue: "USENIX FAST Work-In-Progress"
+  short: "FAST WiP"
   year: 2024
   type: "abstract"
 
@@ -185,6 +220,7 @@
 - title: "FLASH: Web-Form's Logical Analysis & Session Handling — Automatic Form Classification and Filling on Surface and Dark Web"
   authors: "Ashwini Dalvi, <b>Viraj Thakkar</b>, Smit Moradiya, Aditya Vedpathak, Irfan Siddavatam, Faruk Kazi, S. G. Bhirud"
   venue: "Robotic Process Automation (Wiley)"
+  short: "Robotic Process Automation, Wiley"
   year: 2023
   type: "chapter"
   doi: "10.1002/9781394166954.ch5"
@@ -203,6 +239,7 @@
 - title: "Optimizing Consistency and Performance Trade-off in Distributed Log-Structured Merge-Tree-based Key-Value Stores"
   authors: "<b>Viraj Thakkar</b>"
   venue: "M.S. Thesis, Arizona State University"
+  short: "Arizona State University"
   year: 2023
   type: "thesis"
   url: "https://www.proquest.com/docview/2850936175"
@@ -218,6 +255,7 @@
 - title: "ML-enabled Informed Intervention for Crowdsourcing-based Optimization of Medical Resources"
   authors: "Irfan Siddavatam, Ashwini Dalvi, Abhishek Patel, Aditya Panchal, Aditya S. Vedpathak, <b>Viraj Thakkar</b>"
   venue: "Handbook of Research on Applied Intelligence for Health and Clinical Informatics (IGI Global)"
+  short: "IGI Global Handbook"
   year: 2022
   type: "chapter"
   doi: "10.4018/978-1-7998-7709-7.ch017"
@@ -235,6 +273,7 @@
 - title: "Recognizing Child Unsafe Apps through User Reviews on the Google Play Store"
   authors: "Ashwini Dalvi, Irfan Siddavatam, <b>Viraj Thakkar</b>, Aditya Vedpathak, Abhishek Patel"
   venue: "Advanced Computing and Intelligent Technologies (Springer)"
+  short: "Springer ACIT"
   year: 2022
   type: "full paper"
   doi: "10.1007/978-981-16-2164-2_9"
@@ -254,6 +293,7 @@
 - title: "Link Harvesting on the Dark Web"
   authors: "Ashwini Dalvi, Irfan Siddavatam, <b>Viraj Thakkar</b>, Apoorva Jain, Faruk Kazi, Sunil Bhirud"
   venue: "IEEE Bombay Section Signature Conference (IBSSC)"
+  short: "IBSSC"
   year: 2021
   type: "full paper"
   doi: "10.1109/IBSSC53889.2021.9673428"
@@ -271,6 +311,7 @@
 - title: "Explainability using Decision Trees and Monte Carlo Simulations"
   authors: "Irfan Siddavatam, Ashwini Dalvi, <b>Viraj Thakkar</b>, Aditya Vedpathak, Smit Moradiya, Apoorva Jain"
   venue: "4th Int'l Conference on Advances in Science & Technology (ICAST)"
+  short: "ICAST"
   year: 2021
   type: "full paper"
   doi: "10.2139/ssrn.3868707"

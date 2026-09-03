@@ -72,14 +72,11 @@ kramdown:
 sass:
   style: compressed
 
-permalink: /blog/:year/:title/   # only relevant if the (parked) blog is re-enabled
-
 include: ["_pages"]
 # Everything here exists in the repo; dotfiles (.git, .dockerignore …)
 # are excluded by Jekyll automatically and don't need listing.
 exclude:
   - README.md
-  - REDESIGN_PLAN.md
   - LICENSE
   - Gemfile
   - vendor/
