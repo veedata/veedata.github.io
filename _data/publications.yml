@@ -31,14 +31,29 @@
   status: "Under review"
 
 - title: "TellyTune: Exploring the Limits of LLM-Driven Tuning for LSM-Based Key-Value Stores"
-  authors: "<b>Viraj Thakkar</b>, Qi Lin, Kenanya Prasetyo, Raden Wisjnunandono, Jin Wang, Achmad Kistijantoro, Reza Rachmadi, Zhichao Cao"
+  authors: "<b>Viraj Thakkar</b>, Qi Lin, Kenanya Prasetyo, Raden Wisjnunandono, Jin Wang, Achmad Imam Kistijantoro, Reza Faud Rachmadi, Zhichao Cao"
   venue: "SYSTOR (19th ACM International Systems and Storage Conference)"
   short: "SYSTOR"
   year: 2026
   type: "full paper"
-  status: "To appear"
   selected: true
+  url: "https://doi.org/10.1145/3793230.3839381"
+  doi: "https://doi.org/10.1145/3793230.3839381"
   code: "https://github.com/asu-idi/TellyTune"
+  bibtex: |
+      @inproceedings{10.1145/3793230.3839381,
+        author = {Thakkar, Viraj and Lin, Qi and Prasetyo, Kenanya and Wisjnunandono, Haryosatyo and Wang, Jin and Kistijantoro, Achmad Imam and Rachmadi, Reza Fuad and Cao, Zhichao},
+        title = {TellyTune: Exploring the Limits of LLM-Assisted Tuning for LSM-Based Key-Value Stores},
+        year = {2026},
+        isbn = {9798400724732},
+        publisher = {Association for Computing Machinery},
+        address = {New York, NY, USA},
+        url = {https://doi.org/10.1145/3793230.3839381},
+        doi = {10.1145/3793230.3839381},
+        pages = {81–96},
+        numpages = {16},
+        series = {SYSTOR '26}
+      }
 
 - title: "ANCHOR: A Vision for Secure Persistent Key-Value Stores in Disaggregated Data Centers"
   authors: "<b>Viraj Thakkar</b>, Dongha Kim, Hokeun Kim, Zhichao Cao"
