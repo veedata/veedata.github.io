@@ -6,11 +6,11 @@
 # Fields mirror _data/publications.yml on purpose, so _includes/pub-item.liquid
 # renders these with no special-casing:
 #   type      : must stay "patent" — type alone decides the filter bucket
-#   venue     : the assignee, shown where a paper shows its venue
-#   status    : italic note after the venue. Unlike a publication, an "under
-#               review" status here is NOT swapped for a badge, so the full
-#               wording survives — see the cat != 'patent' guards in
-#               _includes/pub-item.liquid.
+#   venue     : the assignee; appears in the pill, e.g. "Patent · HPE 2026".
+#               Add a `short` only if an assignee name is ever too long.
+#   status    : italic line UNDER the pill. Unlike a publication's two-word
+#               status, this is a full sentence and would not fit a badge —
+#               see the cat != 'patent' guards in _includes/pub-item.liquid.
 #   year      : decides which year group it lands in on /publications/
 # Highlight the author's own name with <b>…</b>, as in publications.yml.
 

@@ -1,40 +1,55 @@
 {%- comment -%}
   A single publication row. Expects include.p.
-  data-cat drives the filter buttons — see the mapping in pub-list.liquid.
+
+  TWO labels come out of `type`, and they are not the same thing:
+
+    cat        — the FILTER bucket (5 of them). data-cat drives the buttons;
+                 see the mapping in pub-list.liquid.
+    kind_label — what the PILL says. Finer-grained, because "Conference · …"
+                 on a book chapter or a master's thesis is simply false, even
+                 though both are filed under the Conference filter.
+
+  The pill ("Workshop · ProTools @ SC 2026") replaces the old venue line: kind,
+  venue and year were three facts on two lines, and they are one fact about
+  where the paper landed. The formal venue name survives as the hover title.
 {%- endcomment -%}
 {%- assign p = include.p -%}
-{%- assign st = p.status | default: '' | downcase -%}
 {%- case p.type -%}
-{%- when 'workshop' -%}{%- assign cat = 'workshop' -%}{%- assign cat_label = 'Workshop' -%}
-{%- when 'poster' or 'abstract' -%}{%- assign cat = 'abstract' -%}{%- assign cat_label = 'Abstract' -%}
-{%- when 'preprint' -%}{%- assign cat = 'preprint' -%}{%- assign cat_label = 'Preprint' -%}
-{%- when 'patent' -%}{%- assign cat = 'patent' -%}{%- assign cat_label = 'Patent' -%}
-{%- else -%}{%- assign cat = 'conference' -%}{%- assign cat_label = 'Conference' -%}
+{%- when 'workshop' -%}{%- assign cat = 'workshop' -%}{%- assign kind_label = 'Workshop' -%}
+{%- when 'poster' or 'abstract' -%}{%- assign cat = 'abstract' -%}{%- assign kind_label = 'Abstract' -%}
+{%- when 'preprint' -%}{%- assign cat = 'preprint' -%}{%- assign kind_label = 'Preprint' -%}
+{%- when 'patent' -%}{%- assign cat = 'patent' -%}{%- assign kind_label = 'Patent' -%}
+{%- when 'chapter' -%}{%- assign cat = 'conference' -%}{%- assign kind_label = 'Book Chapter' -%}
+{%- when 'thesis' -%}{%- assign cat = 'conference' -%}{%- assign kind_label = 'Thesis' -%}
+{%- else -%}{%- assign cat = 'conference' -%}{%- assign kind_label = 'Conference' -%}
 {%- endcase -%}
-<div class="pub" data-cat="{{ cat }}" data-year="{{ p.year }}">
+{%- assign venue_short = p.short | default: p.venue -%}
+<div class="pub{% if include.numbered %} pub--numbered{% endif %}" data-cat="{{ cat }}" data-year="{{ p.year }}">
+  {%- if include.numbered -%}<span class="pub__num" aria-hidden="true"></span>{%- endif -%}
   <h3 class="pub__title">
     {%- if p.url -%}<a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.title }}</a>
     {%- else -%}{{ p.title }}{%- endif -%}
   </h3>
   <p class="pub__authors">{{ p.authors }}</p>
-  <p class="pub__meta">
-    {%- if p.venue -%}{{ p.venue }}{%- endif -%}
-    {%- if p.year %} · {{ p.year }}{% endif -%}
-    {%- comment -%}
-      "Under review" becomes a badge below, so it is not repeated here as an
-      italic note. Any other status (e.g. "To appear") still shows inline.
-    {%- endcomment -%}
-    {%- unless cat != 'patent' and st contains 'under review' -%}
-      {%- if p.status %} · <em>{{ p.status }}</em>{% endif -%}
-    {%- endunless -%}
-  </p>
   <p class="pub__links">
     {%- comment -%}
-      Category badge is suppressed on the publications page.
-      It stays on the home page, where there are no filters.
+      .pub__kind is hidden by CSS once a specific filter is pressed — every row
+      in that view shares one kind, so repeating it 9 times says nothing. The
+      separator lives in the span (as ::after) so it leaves with it.
     {%- endcomment -%}
-    {%- if include.compact -%}<span class="badge">{{ cat_label }}</span>{%- endif -%}
-    {%- if cat != 'patent' and st contains 'under review' -%}<span class="badge badge--status">Under review</span>{%- endif -%}
+    {%- comment -%}
+      Plain text, NOT a chip. It appears on every row, so as a chip it was
+      furniture; the chips beside it are reserved for things that only some
+      papers have. No stray whitespace between the tags — a newline before the
+      venue renders as a leading space and offsets the "·" from ::after.
+    {%- endcomment -%}
+    <span class="pub__venue"{% if p.venue and p.venue != venue_short %} title="{{ p.venue }}"{% endif %}><span class="pub__kind">{{ kind_label }}</span>{%- if venue_short -%}{{ venue_short }}{%- endif -%}{%- if p.year %} {{ p.year }}{% endif -%}</span>
+    {%- comment -%}
+      Publication statuses are two words ("To appear" / "Under review") and fit
+      a badge. A patent's status is a sentence about disclosure review, so it
+      stays a line below — see the guard on .pub__meta.
+    {%- endcomment -%}
+    {%- if p.status and cat != 'patent' -%}<span class="badge badge--status">{{ p.status }}</span>{%- endif -%}
     {%- comment -%} Hand-set highlights, e.g. tags: ["Best Paper"]. {%- endcomment -%}
     {%- for t in p.tags -%}<span class="badge badge--flag">{{ t }}</span>{%- endfor -%}
     {%- if p.doi -%}<a class="badge badge--tag" href="{{ p.url | default: p.doi }}" target="_blank" rel="noopener">DOI</a>
@@ -44,6 +59,9 @@
       {%- if p.bibtex -%}<button class="badge badge--tag bibtex-toggle" type="button" aria-expanded="false">BibTeX</button>{%- endif -%}
     {%- endunless -%}
   </p>
+  {%- if p.status and cat == 'patent' -%}
+    <p class="pub__meta"><em>{{ p.status }}</em></p>
+  {%- endif -%}
   {%- unless include.compact -%}
     {%- if p.bibtex -%}
       <pre class="pub__bibtex" hidden><code>{{ p.bibtex | escape }}</code></pre>

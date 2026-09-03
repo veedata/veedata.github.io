@@ -716,30 +716,84 @@
 // They group the titles beneath them, so they must not be QUIETER than those
 // titles — --muted here inverted the hierarchy.
 .pub-year {
-  margin: 2.4rem 0 0.25rem;
+  // Top margin trimmed to account for the 1.4rem the preceding entry now adds;
+  // the bottom opens up slightly since there is no rule pinning the year to the
+  // first entry under it.
+  margin: 1.9rem 0 0.7rem;
   font-family: var(--font-serif);
   font-size: var(--h2-section);
   font-weight: 600;
   color: var(--ink);
 }
+// No separator rules. Each entry already reads as one block — title, authors,
+// venue, badges — and a hairline between them cut a continuous list into two
+// dozen boxes. Whitespace does the grouping: the gap BETWEEN entries is larger
+// than any gap inside one, which is all the eye needs.
 .pub {
-  padding: 1.1rem 0;
-  border-top: 1px solid var(--line);
+  padding: 0 0 0.7rem;
 }
-// The rule is a SEPARATOR between rows, so the first row in any list never
-// draws one. Without this the home page opened "Selected publications" with a
-// hairline directly under the heading, while "Recent news" started flush.
-.pub:first-child,
-.pub-year + .pub {
-  border-top: 0;
+.pub:last-child {
+  padding-bottom: 0;
+}
+// Numbered rows (publications page) reserve a left gutter for the count. The
+// number sits in the margin so titles keep a single flush left edge.
+.pub--numbered {
+  position: relative;
+  padding-left: 2.4rem;
+}
+.pub__num {
+  position: absolute;
+  left: 0;
+  top: 0.16rem; // aligns with the cap height of .pub__title
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+// "Workshop · SYSTOR 2026" — TEXT, not a chip, sharing the row with the chips.
+// Every paper has a venue, so as a chip it was pure furniture: six outlined
+// pills per row meant none of them signalled anything. A chip on this page now
+// means "not every paper has this" — a status, a flag, a link. The venue reads
+// as the metadata line it replaced, just moved inline.
+.pub__venue {
+  margin-right: 0.15rem; // the flex gap alone runs text and chip together
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+.pub__kind::after {
+  content: " · ";
+}
+// Under a specific filter every row shares one kind, so printing it nine times
+// says nothing — the pill drops back to "SYSTOR 2026". It only earns its label
+// in the "All" view, which is the one place the list is mixed.
+#pub-list:not([data-filter="all"]) .pub__kind {
+  display: none;
+}
+// On a phone the gutter costs more than it gives, so the number rejoins the
+// text column and sits above the title.
+@media (max-width: 520px) {
+  .pub--numbered {
+    padding-left: 0;
+  }
+  .pub__num {
+    position: static;
+    display: block;
+    margin-bottom: 0.1rem;
+  }
 }
 // An <h3> for structure (see pub-item.liquid), but deliberately kept in the
 // sans stack: a page of 21 serif titles at 1.06rem reads as a wall of display
 // type and competes with the serif year headings that group them.
+// The list keeps growing, so the entry type steps DOWN while .pub-year holds
+// its size: the year headings do the scanning work, the entries are detail.
 .pub__title {
-  margin: 0 0 0.2rem;
+  // Tight to the authors: title + authors are ONE unit (what the paper is and
+  // who wrote it), and the air goes below them, before the venue/links row. An
+  // even 0.28 / 0.1 / 0.35 rhythm made the entry read as three equal facts.
+  margin: 0 0 0.1rem;
   font-family: var(--font-sans);
-  font-size: 1.06rem;
+  font-size: 1.043rem; // 0.97rem + 7.5%
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: 0;
@@ -751,19 +805,30 @@
   color: var(--accent);
 }
 .pub__authors {
-  margin: 0 0 0.15rem;
-  font-size: 0.92rem;
-}
-.pub__meta {
   margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+// Now carries only a patent's disclosure-review status, which sits BELOW the
+// pill row rather than above it — hence the top margin.
+.pub__meta {
+  margin: 0.35rem 0 0;
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
 }
 .pub__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0.4rem 0 0;
+  align-items: center;
+  gap: 0.35rem;
+  // The one real gap inside an entry — it separates the paper from the facts
+  // about the paper. Still smaller than the 1.4rem BETWEEN entries.
+  margin: 0.2rem 0 0;
+}
+.pub__links .badge {
+  padding: 0.1rem 0.5rem;
+  font-size: 0.68rem;
 }
 .pub__bibtex {
   margin: 0.7rem 0 0;
