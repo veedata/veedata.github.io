@@ -758,7 +758,8 @@
 .pub__venue {
   margin-right: 0.15rem; // the flex gap alone runs text and chip together
   color: var(--muted);
-  font-size: 0.82rem;
+  // Set against the 0.68rem pills, because a pill carries padding/border.
+  font-size: 0.88rem;
   font-variant-numeric: tabular-nums;
 }
 .pub__kind::after {
@@ -770,16 +771,10 @@
 #pub-list:not([data-filter="all"]) .pub__kind {
   display: none;
 }
-// On a phone the gutter costs more than it gives, so the number rejoins the
-// text column and sits above the title.
+// The gutter narrows on a phone.
 @media (max-width: 520px) {
   .pub--numbered {
-    padding-left: 0;
-  }
-  .pub__num {
-    position: static;
-    display: block;
-    margin-bottom: 0.1rem;
+    padding-left: 1.5rem;
   }
 }
 // An <h3> for structure (see pub-item.liquid), but deliberately kept in the
@@ -806,7 +801,7 @@
 }
 .pub__authors {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.91rem;
   line-height: 1.45;
 }
 // Now carries only a patent's disclosure-review status, which sits BELOW the
@@ -1121,13 +1116,4 @@ figure.highlight {
 .copy-btn:hover {
   border-color: var(--accent);
   color: var(--accent);
-}
-
-// --- Article (blog, dormant) ---------------------------------------------
-.article-header {
-  margin-bottom: 2rem;
-}
-.article-header .meta {
-  color: var(--muted);
-  font-size: 0.9rem;
 }
