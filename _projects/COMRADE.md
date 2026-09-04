@@ -4,6 +4,7 @@ title: COMRADE
 description: Crowdsourcing based Optimisation of Medical Resources Attending Demand Equalisation.
 img: assets/img/comrade-thumbnail.jpg
 importance: 10
+group: applied
 ---
 
 During a pandemic like COVID, hospital staff needs to dedicate time for data collection and analysis to find out the trends in the hospital and take the next steps. Taking this time away from patient care is not ideal for any healthcare system, and neither is the unavailability of medical reports or healthcare equipment.

@@ -54,6 +54,24 @@ collections:
   projects:
     output: true
     permalink: /projects/:name/
+
+# Project groups are rendered in THIS order.
+# Make sure to include a group for all projects to make them appear.
+project_groups:
+  - key: research
+    name: Systems Research
+    # `highlight: true` is for the "Current focus" badge. 
+    highlight: true
+    note: The systems behind the Ph.D. — each one has a paper, a prototype, and usually both.
+  - key: applied
+    name: Applied Research
+    note: Research projects and tooling built alongside published work.
+  - key: engineering
+    name: Systems & Engineering
+    note: Things built to be used, not to be published.
+  - key: earlier
+    name: Earlier Work
+    note: Undergraduate projects and competition engineering, kept for the record.
 # (news is hand-maintained in _data/news.yml)
 
 # -----------------------------------------------------------------------------

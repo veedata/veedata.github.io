@@ -880,6 +880,28 @@
   font-size: 0.88rem;
 }
 
+// The group set w/ `highlight: true` in _config.yml is set as a tinted panel.
+.project-group--featured {
+  padding: 1.4rem 1.5rem 1.6rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--accent) 5%, var(--bg));
+}
+// The panel already supplies the separation the rule was drawing.
+.project-group--featured .project-group__head::after {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+@media (max-width: 560px) {
+  .project-group--featured {
+    padding: 1.1rem 0 0;
+    border: 0;
+    border-top: 2px solid var(--accent);
+    border-radius: 0;
+    background: none;
+  }
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
