@@ -28,7 +28,7 @@
   short: "ProTools @ SC"
   year: 2026
   type: "workshop"
-  status: "Under review"
+  status: "To Appear"
 
 - title: "TellyTune: Exploring the Limits of LLM-Driven Tuning for LSM-Based Key-Value Stores"
   authors: "<b>Viraj Thakkar</b>, Qi Lin, Kenanya Prasetyo, Raden Wisjnunandono, Jin Wang, Achmad Imam Kistijantoro, Reza Faud Rachmadi, Zhichao Cao"
@@ -61,7 +61,8 @@
   short: "SeQureDB @ SIGMOD"
   year: 2026
   type: "workshop"
-  status: "To appear"
+  status: "To Appear"
+  url: "https://arxiv.org/abs/2608.27819"
 
 - title: "O3-LSM: Maximizing Disaggregated LSM Write Performance via Three-Layer Offloading"
   authors: "Qi Lin, Gangqi Huang, Te Guo, Chang Guo, <b>Viraj Thakkar</b>, Zhichen Zhu, Jianguo Wang, Zhichao Cao"
