@@ -13,9 +13,7 @@
   <meta property="og:image" content="https://veedata.github.io/assets/img/og-card.png"><meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
   <meta property="og:image:alt" content="Viraj Thakkar — Computer Science Ph.D. Candidate at Arizona State University.">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://veedata.github.io/assets/img/og-card.png">
-
-  <!-- Emoji favicon, no image asset needed -->
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://veedata.github.io/assets/img/og-card.png"><!-- Emoji favicon, no image asset needed -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
 
   <!-- Set theme before paint to avoid a flash -->
@@ -161,9 +159,17 @@
 <section class="section">
   <div class="section__head">
     <h2>What I Work On</h2>
-    <a href="/publications/">the papers →</a>
+    <a href="/projects/">the work →</a>
   </div>
   <div class="threads"><article class="thread">
+      <span class="thread__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5l1.9 5.4 5.4 1.9-5.4 1.9L10 17.1l-1.9-5.4L2.7 9.8l5.4-1.9L10 2.5z"/><path d="M18 14.5l.85 2.4 2.4.85-2.4.85-.85 2.4-.85-2.4-2.4-.85 2.4-.85.85-2.4z"/></svg></span>
+      <div class="thread__body">
+        <h3 class="thread__name">Language Models as Systems Operators</h3>
+        <p class="thread__q">Can an LLM tune a storage engine end to end, and where exactly does that capability stop?
+</p>
+      </div>
+      <ul class="thread__evidence"><li>HotStorage '24 — Best Paper</li><li>SYSTOR '26</li><li>ELMo-Tune · TellyTune</li></ul>
+    </article><article class="thread">
       <span class="thread__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/><path d="M4 11.5v7c0 1.66 3.58 3 8 3s8-1.34 8-3v-7"/></svg></span>
       <div class="thread__body">
         <h3 class="thread__name">Key-Value Stores under Disaggregation</h3>
@@ -179,20 +185,12 @@
 </p>
       </div>
       <ul class="thread__evidence"><li>CacheFS @ HPE Labs</li><li>FUSE · RDMA · eBPF</li><li>2 patents under review</li></ul>
-    </article><article class="thread">
-      <span class="thread__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5l1.9 5.4 5.4 1.9-5.4 1.9L10 17.1l-1.9-5.4L2.7 9.8l5.4-1.9L10 2.5z"/><path d="M18 14.5l.85 2.4 2.4.85-2.4.85-.85 2.4-.85-2.4-2.4-.85 2.4-.85.85-2.4z"/></svg></span>
-      <div class="thread__body">
-        <h3 class="thread__name">Language Models as Systems Operators</h3>
-        <p class="thread__q">Can an LLM tune a storage engine end to end, and where exactly does that capability stop?
-</p>
-      </div>
-      <ul class="thread__evidence"><li>HotStorage '24 — Best Paper</li><li>SYSTOR '26</li><li>ELMo-Tune · TellyTune</li></ul>
     </article></div>
 </section>
 
 <section class="section">
   <div class="section__head">
-    <h2>Selected Publications</h2>
+    <h2>Highlighted Publication</h2>
     <a href="/publications/">all publications →</a>
   </div>
   <div class="pubs"><div class="pub" data-cat="conference" data-year="2026"><h3 class="pub__title"><a href="https://doi.org/10.1145/3793230.3839381" target="_blank" rel="noopener">TellyTune: Exploring the Limits of LLM-Driven Tuning for LSM-Based Key-Value Stores</a></h3>
@@ -213,6 +211,11 @@
     <a href="/news/">all news →</a>
   </div>
   <ul class="news"><li class="news__item">
+      <time class="news__date" datetime="2026-09-04T00:00:00+00:00">Sep 4, 2026</time>
+      <div class="news__body">
+        <p>“Probe Less, Learn More: Characterizing and Correcting eBPF Instrumentation Overhead” was accepted to the ProTools 2026 workshop! 📄</p>
+</div>
+    </li><li class="news__item">
       <time class="news__date" datetime="2026-07-13T00:00:00+00:00">Jul 13, 2026</time>
       <div class="news__body">
         <p>Our paper “TellyTune: Exploring the Limits of LLM-Driven Tuning for LSM-Based Key-Value Stores” was accepted to SYSTOR 2026! 📄</p>
@@ -231,11 +234,6 @@
       <time class="news__date" datetime="2026-04-21T00:00:00+00:00">Apr 21, 2026</time>
       <div class="news__body">
         <p>Honored to be ASU’s nominee for the Google PhD Fellowship Award! 🎉</p>
-</div>
-    </li><li class="news__item">
-      <time class="news__date" datetime="2026-04-14T00:00:00+00:00">Apr 14, 2026</time>
-      <div class="news__body">
-        <p>Our paper “ANCHOR: A Vision for Secure Persistent Key-Value Stores in Disaggregated Data Centers” was accepted to SeQureDB 2026! 📄</p>
 </div>
     </li></ul>
 
@@ -269,7 +267,7 @@
     <footer class="site-footer">
   <div class="container">
     <span>© 2026 Viraj Thakkar</span>
-    <span>Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> · hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></span>
+    <span>Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> · Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></span>
   </div>
 </footer>
 

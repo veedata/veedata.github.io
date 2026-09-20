@@ -13,9 +13,26 @@
   <meta property="og:image" content="https://veedata.github.io/assets/img/og-card.png"><meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
   <meta property="og:image:alt" content="Viraj Thakkar — Computer Science Ph.D. Candidate at Arizona State University.">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://veedata.github.io/assets/img/og-card.png">
-
-  <!-- Emoji favicon, no image asset needed -->
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://veedata.github.io/assets/img/og-card.png"><!-- Breadcrumbs. To give the page a nice-looking URL for crawlers. -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Viraj Thakkar",
+          "item": "https://veedata.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "News",
+          "item": "https://veedata.github.io/news/"
+        }]
+    }
+  </script><!-- Emoji favicon, no image asset needed -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
 
   <!-- Set theme before paint to avoid a flash -->
@@ -121,6 +138,11 @@
 
 <div class="prose">
   <ul class="news"><li class="news__item">
+      <time class="news__date" datetime="2026-09-04T00:00:00+00:00">Sep 4, 2026</time>
+      <div class="news__body">
+        <p>“Probe Less, Learn More: Characterizing and Correcting eBPF Instrumentation Overhead” was accepted to the ProTools 2026 workshop! 📄</p>
+</div>
+    </li><li class="news__item">
       <time class="news__date" datetime="2026-07-13T00:00:00+00:00">Jul 13, 2026</time>
       <div class="news__body">
         <p>Our paper “TellyTune: Exploring the Limits of LLM-Driven Tuning for LSM-Based Key-Value Stores” was accepted to SYSTOR 2026! 📄</p>
@@ -210,7 +232,7 @@
     <footer class="site-footer">
   <div class="container">
     <span>© 2026 Viraj Thakkar</span>
-    <span>Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> · hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></span>
+    <span>Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> · Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></span>
   </div>
 </footer>
 

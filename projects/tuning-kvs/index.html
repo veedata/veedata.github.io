@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><title>Mapping Online Child Exploitation · Viraj Thakkar</title><meta name="description" content="Crawls the dark web to measure online child abuse across India, for a submission to India's Parliament.">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><title>Language Models as Systems Operators · Viraj Thakkar</title><meta name="description" content="Closes an LLM-driven observe-decide-apply loop over RocksDB's configuration, then maps where that ability runs out.">
   <meta name="author" content="Viraj Thakkar"><meta name="keywords" content="viraj thakkar, asu, hpe, lsm-kvs, storage systems, rocksdb, phd">
-  <link rel="canonical" href="https://veedata.github.io/projects/landscape-analysis/"><!-- Open Graph --><meta property="og:type" content="website">
+  <link rel="canonical" href="https://veedata.github.io/projects/tuning-kvs/"><!-- Open Graph --><meta property="og:type" content="website">
   <meta property="og:site_name" content="Viraj Thakkar">
   <meta property="og:locale" content="en">
-  <meta property="og:title" content="Mapping Online Child Exploitation · Viraj Thakkar">
-  <meta property="og:description" content="Crawls the dark web to measure online child abuse across India, for a submission to India's Parliament.">
-  <meta property="og:url" content="https://veedata.github.io/projects/landscape-analysis/">
+  <meta property="og:title" content="Language Models as Systems Operators · Viraj Thakkar">
+  <meta property="og:description" content="Closes an LLM-driven observe-decide-apply loop over RocksDB's configuration, then maps where that ability runs out.">
+  <meta property="og:url" content="https://veedata.github.io/projects/tuning-kvs/">
   <meta property="og:image" content="https://veedata.github.io/assets/img/og-card.png"><meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
   <meta property="og:image:alt" content="Viraj Thakkar — Computer Science Ph.D. Candidate at Arizona State University.">
@@ -34,8 +34,8 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Mapping Online Child Exploitation",
-          "item": "https://veedata.github.io/projects/landscape-analysis/"
+          "name": "Language Models as Systems Operators",
+          "item": "https://veedata.github.io/projects/tuning-kvs/"
         }]
     }
   </script><!-- Emoji favicon, no image asset needed -->
@@ -140,31 +140,32 @@
     <main class="content" id="main" tabindex="-1">
       <div class="container">
         <div class="page-header">
-  <h1>Mapping Online Child Exploitation</h1><p class="lead">Crawls the dark web to measure online child abuse across India, for a submission to India's Parliament.</p><ul class="page-topics"><li class="topic">Web crawling</li><li class="topic">Child safety</li><li class="topic">Policy</li></ul></div>
+  <h1>Language Models as Systems Operators</h1><p class="lead">Closes an LLM-driven observe-decide-apply loop over RocksDB's configuration, then maps where that ability runs out.</p><ul class="page-topics"><li class="topic">Key-value stores</li><li class="topic">LLM agents</li><li class="topic">Auto-tuning</li></ul></div>
 
 <div class="prose">
-  <p>Publicly available data on the internet, both surface web and deep web, is an efficient source of information for understanding Online Child Sexual Abuse (OCSA) and Online Child Sexual Exploitation (OCSE). The Landscape report is a snapshot of reported incidence and of the forms that abuse has taken as online technology has spread: which platforms are most prevalent, how far they reach, and how often each has been an enabler.</p>
+  <p>An LSM-based key-value store like RocksDB exposes more than 200 interrelated configuration options. Getting them right requires understanding both the workload and the internals of the engine, and the right answer changes as the workload does. Tuning is therefore expert work that is never finished.</p>
 
-<p>The program ran at Somaiya Vidyavihar with <strong>USD 91,666.80</strong> in funding from the Children’s Investment Fund Foundation (CIFF), U.K., where I worked as a Junior Researcher leading a team of six. Beyond the report itself, the work contributed to a submission to the National Commission for Protection of Child Rights, which was placed before the Rajya Sabha of the Indian Parliament.</p>
+<p>The question is how to tune a system like this at all: what an automated tuner has to observe, how it decides what to change, and how it knows whether the change helped. That question is older than any particular technique, and it outlives them. Large Language models are the instrument I have been using to probe this question. They are a convenient one, since they arrive already carrying the documentation and folklore that a human expert would otherwise supply, which makes it possible to build a closed loop quickly and then study the loop itself. Other instruments, including learned models trained directly on the engine’s own behaviour, are the next step; that work is in progress.</p>
 
-<p>Saying anything defensible about reach and incidence meant actually going and looking. That split the work in two: building the crawling stack that could reach the data at all, and making what came back stand up as evidence.</p>
+<p>The line runs in two directions: build a tuner that closes the loop without a human in it, then push on it hard enough to see which parts of tuning it actually solves and which parts it only appears to.</p>
 
-<h3 id="reaching-the-data">Reaching the data</h3>
+<h3 id="elmo-tune-creating-the-loop">ELMo-Tune: creating the loop</h3>
 
-<p>The dark web has no complete index, and most of what a crawler wants on it sits behind a form. Both had to be solved before anything could be counted.</p>
+<p>The framework ingests the store’s documentation, source, and runtime telemetry, proposes a configuration, benchmarks it, reads the resulting logs, and iterates. A full observe-decide-apply cycle with no human in between.</p>
 
 <ul>
-  <li><strong>Link Harvesting on the Dark Web</strong>, the discovery layer: harvesting links to Tor hidden services at scale, following them outward, and mapping the structure that results. It defines the population everything else in the program measures. <em>IBSSC ‘21.</em> <a href="https://doi.org/10.1109/IBSSC53889.2021.9673428">DOI</a></li>
-  <li><strong>FLASH</strong>, Web-Form’s Logical Analysis &amp; Session Handling: classifies a form by what it is asking for, fills it appropriately, and handles the session that follows, on both the surface web and Tor hidden services. The crawling substrate the program’s data collection ran on. <em>Robotic Process Automation, Wiley, 2023.</em> <a href="https://doi.org/10.1002/9781394166954.ch5">DOI</a></li>
+  <li><strong>ELMo-Tune</strong>, the original study: <em>Can</em> Modern LLMs Tune and Configure LSM-based Key-Value Stores? HotStorage ‘24, where it received the <strong>SK Hynix Best Paper Award</strong>. <a href="https://github.com/asu-idi/ELMo-Tune">Code</a>, <a href="https://dl.acm.org/doi/10.1145/3655038.3665954">Paper</a></li>
+  <li><strong>ELMo-Tune-V2</strong>, full-cycle auto-tuning, from workload observation through configuration application and re-evaluation. <a href="https://github.com/asu-idi/ELMo-Tune-V2">Code</a> · <a href="https://arxiv.org/abs/2502.17606">Paper</a></li>
 </ul>
 
-<h3 id="making-it-hold-up-as-evidence">Making it hold up as evidence</h3>
+<h3 id="tellytune-finding-the-edge">TellyTune: finding the edge</h3>
 
-<p>A finding headed for a national commission has to name a harm, and has to be able to say <em>why</em> it reached its conclusion.</p>
+<p>If an LLM can tune a storage engine, the more useful question is where that ability runs out. TellyTune pushes LLM-driven tuning across workloads, engines, and configuration surfaces to find the boundary between what the model genuinely reasons about and what it merely pattern-matches.</p>
+
+<p>The short version, <strong>broad reasoning, but narrow control</strong>. The model is good at reading a workload and naming the knob that matters. It is simply worse at holding a long-horizon control loop stable once the knobs interact.</p>
 
 <ul>
-  <li><strong>Recognizing Child Unsafe Apps through User Reviews</strong>, treating the Google Play Store review corpus as a signal channel: learns to recognize child-unsafe apps from what users actually report (grooming through chat, unmoderated content, predatory monetization), without depending on the developer’s self-declared age rating. <em>Advanced Computing and Intelligent Technologies, Springer, 2022.</em> <a href="https://doi.org/10.1007/978-981-16-2164-2_9">DOI</a></li>
-  <li><strong>Explainability using Decision Trees and Monte Carlo Simulations</strong>, pairing trees for a structure a human can follow with simulation for how stable that structure stays under variation, rather than on one fixed dataset. <em>ICAST ‘21.</em> <a href="https://doi.org/10.2139/ssrn.3868707">DOI</a></li>
+  <li><strong>TellyTune</strong>, published at SYSTOR ‘26 (19th ACM International Systems and Storage Conference). <a href="https://github.com/asu-idi/TellyTune">Code</a>, <a href="https://dl.acm.org/doi/10.1145/3793230.3839381">Paper</a></li>
 </ul>
 
 </div>

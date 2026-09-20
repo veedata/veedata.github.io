@@ -2,20 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><title>TorChat · Viraj Thakkar</title><meta name="description" content="Privacy centered chatting application that utilises the Tor Network to send and recieve messages and data.">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><title>TorChat · Viraj Thakkar</title><meta name="description" content="Privacy centered chatting application that utilizes the Tor Network to send and receive messages and data.">
   <meta name="author" content="Viraj Thakkar"><meta name="keywords" content="viraj thakkar, asu, hpe, lsm-kvs, storage systems, rocksdb, phd">
   <link rel="canonical" href="https://veedata.github.io/projects/torchat/"><!-- Open Graph --><meta property="og:type" content="website">
   <meta property="og:site_name" content="Viraj Thakkar">
   <meta property="og:locale" content="en">
   <meta property="og:title" content="TorChat · Viraj Thakkar">
-  <meta property="og:description" content="Privacy centered chatting application that utilises the Tor Network to send and recieve messages and data.">
+  <meta property="og:description" content="Privacy centered chatting application that utilizes the Tor Network to send and receive messages and data.">
   <meta property="og:url" content="https://veedata.github.io/projects/torchat/">
   <meta property="og:image" content="https://veedata.github.io/assets/img/og-card.png"><meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
   <meta property="og:image:alt" content="Viraj Thakkar — Computer Science Ph.D. Candidate at Arizona State University.">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://veedata.github.io/assets/img/og-card.png">
-
-  <!-- Emoji favicon, no image asset needed -->
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://veedata.github.io/assets/img/og-card.png"><!-- Breadcrumbs. To give the page a nice-looking URL for crawlers. -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Viraj Thakkar",
+          "item": "https://veedata.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://veedata.github.io/projects/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "TorChat",
+          "item": "https://veedata.github.io/projects/torchat/"
+        }]
+    }
+  </script><!-- Emoji favicon, no image asset needed -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
 
   <!-- Set theme before paint to avoid a flash -->
@@ -117,10 +140,12 @@
     <main class="content" id="main" tabindex="-1">
       <div class="container">
         <div class="page-header">
-  <h1>TorChat</h1><p class="lead">Privacy centered chatting application that utilises the Tor Network to send and recieve messages and data.</p></div>
+  <h1>TorChat</h1><p class="lead">Privacy centered chatting application that utilizes the Tor Network to send and receive messages and data.</p><ul class="page-topics"><li class="topic">Privacy</li><li class="topic">Anonymity networks</li></ul></div>
 
 <div class="prose">
-  <p>A chatting web application where all the messages are routed through The Onion Routing (TOR) service. Each user can talk anonymously to anyone. Every user’s display name is also randomized to ensure that users do not risk their privacy by keeping their real name. Messages are auto-deleted upon refresh; thus no information is stored at the server-side. Chat rooms can be created, and the code can be shared to chat with known people but with their messages being routed through the TOR service.</p>
+  <p>Most chat applications ask users to trust a central service with both their identity and their conversation. TorChat was an early experiment in reducing that trust: people could share a room code and talk without attaching their real names to the exchange.</p>
+
+<p>Connections were routed through the Tor network, display names were randomized, and messages disappeared when the session ended instead of being retained by the server. The project was less about adding another messenger and more about asking how little a conversation service truly needs to know about the people using it.</p>
 
 </div>
 
@@ -129,7 +154,7 @@
     <footer class="site-footer">
   <div class="container">
     <span>© 2026 Viraj Thakkar</span>
-    <span>Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> · hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></span>
+    <span>Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> · Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></span>
   </div>
 </footer>
 

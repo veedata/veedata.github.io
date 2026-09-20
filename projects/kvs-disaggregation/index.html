@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><title>Mapping Online Child Exploitation · Viraj Thakkar</title><meta name="description" content="Crawls the dark web to measure online child abuse across India, for a submission to India's Parliament.">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><title>Key-Value Stores under Disaggregation · Viraj Thakkar</title><meta name="description" content="Offloads the LSM write path across the disaggregated stack and builds encryption into the engine itself.">
   <meta name="author" content="Viraj Thakkar"><meta name="keywords" content="viraj thakkar, asu, hpe, lsm-kvs, storage systems, rocksdb, phd">
-  <link rel="canonical" href="https://veedata.github.io/projects/landscape-analysis/"><!-- Open Graph --><meta property="og:type" content="website">
+  <link rel="canonical" href="https://veedata.github.io/projects/kvs-disaggregation/"><!-- Open Graph --><meta property="og:type" content="website">
   <meta property="og:site_name" content="Viraj Thakkar">
   <meta property="og:locale" content="en">
-  <meta property="og:title" content="Mapping Online Child Exploitation · Viraj Thakkar">
-  <meta property="og:description" content="Crawls the dark web to measure online child abuse across India, for a submission to India's Parliament.">
-  <meta property="og:url" content="https://veedata.github.io/projects/landscape-analysis/">
+  <meta property="og:title" content="Key-Value Stores under Disaggregation · Viraj Thakkar">
+  <meta property="og:description" content="Offloads the LSM write path across the disaggregated stack and builds encryption into the engine itself.">
+  <meta property="og:url" content="https://veedata.github.io/projects/kvs-disaggregation/">
   <meta property="og:image" content="https://veedata.github.io/assets/img/og-card.png"><meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
   <meta property="og:image:alt" content="Viraj Thakkar — Computer Science Ph.D. Candidate at Arizona State University.">
@@ -34,8 +34,8 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Mapping Online Child Exploitation",
-          "item": "https://veedata.github.io/projects/landscape-analysis/"
+          "name": "Key-Value Stores under Disaggregation",
+          "item": "https://veedata.github.io/projects/kvs-disaggregation/"
         }]
     }
   </script><!-- Emoji favicon, no image asset needed -->
@@ -140,31 +140,30 @@
     <main class="content" id="main" tabindex="-1">
       <div class="container">
         <div class="page-header">
-  <h1>Mapping Online Child Exploitation</h1><p class="lead">Crawls the dark web to measure online child abuse across India, for a submission to India's Parliament.</p><ul class="page-topics"><li class="topic">Web crawling</li><li class="topic">Child safety</li><li class="topic">Policy</li></ul></div>
+  <h1>Key-Value Stores under Disaggregation</h1><p class="lead">Offloads the LSM write path across the disaggregated stack and builds encryption into the engine itself.</p><ul class="page-topics"><li class="topic">Key-value stores</li><li class="topic">Disaggregation</li><li class="topic">Data confidentiality</li></ul></div>
 
 <div class="prose">
-  <p>Publicly available data on the internet, both surface web and deep web, is an efficient source of information for understanding Online Child Sexual Abuse (OCSA) and Online Child Sexual Exploitation (OCSE). The Landscape report is a snapshot of reported incidence and of the forms that abuse has taken as online technology has spread: which platforms are most prevalent, how far they reach, and how often each has been an enabler.</p>
+  <p>Disaggregation puts a network between an LSM tree’s compute, memory, and storage; and two of the engine’s oldest assumptions stop holding at once. First, the entire write path now runs over that network, so what used to be local disk bandwidth becomes network traffic. And second, data that used to sit on a single trusted machine now crosses tenants and hardware that were never in its threat model.</p>
 
-<p>The program ran at Somaiya Vidyavihar with <strong>USD 91,666.80</strong> in funding from the Children’s Investment Fund Foundation (CIFF), U.K., where I worked as a Junior Researcher leading a team of six. Beyond the report itself, the work contributed to a submission to the National Commission for Protection of Child Rights, which was placed before the Rajya Sabha of the Indian Parliament.</p>
+<p>This work takes those two in turn: keeping the data confidential once it has crossed the boundary, and moving write-path work off the critical path to wherever it is cheapest to run.</p>
 
-<p>Saying anything defensible about reach and incidence meant actually going and looking. That split the work in two: building the crawling stack that could reach the data at all, and making what came back stand up as evidence.</p>
+<h3 id="confidentiality-across-the-boundary">Confidentiality across the boundary</h3>
 
-<h3 id="reaching-the-data">Reaching the data</h3>
-
-<p>The dark web has no complete index, and most of what a crawler wants on it sits behind a form. Both had to be solved before anything could be counted.</p>
+<p>Encrypting an LSM-KVS naively is expensive for a reason specific to the data structure: the engine rewrites its own data continuously through compaction, so every byte is encrypted and decrypted many times over its lifetime. Doing this well means the engine has to participate, rather than having a cipher bolted onto its I/O path.</p>
 
 <ul>
-  <li><strong>Link Harvesting on the Dark Web</strong>, the discovery layer: harvesting links to Tor hidden services at scale, following them outward, and mapping the structure that results. It defines the population everything else in the program measures. <em>IBSSC ‘21.</em> <a href="https://doi.org/10.1109/IBSSC53889.2021.9673428">DOI</a></li>
-  <li><strong>FLASH</strong>, Web-Form’s Logical Analysis &amp; Session Handling: classifies a form by what it is asking for, fills it appropriately, and handles the session that follows, on both the surface web and Tor hidden services. The crawling substrate the program’s data collection ran on. <em>Robotic Process Automation, Wiley, 2023.</em> <a href="https://doi.org/10.1002/9781394166954.ch5">DOI</a></li>
+  <li><strong>SHIELD</strong>, encryption that survives compaction: a scalable, decentralized design for both monolithic and disaggregated settings, embedded into the engine’s components so that compaction, flush, and recovery each stay aware of what they are handling, and key rotation remains possible without rewriting the store. SIGMOD ‘25. <a href="https://github.com/asu-idi/SHIELD">Code</a> · <a href="https://doi.org/10.1145/3725354">DOI</a></li>
+  <li><strong>ANCHOR</strong>, secure by construction: the follow-on vision paper, on what a persistent key-value store designed for confidentiality <em>from the start</em> should look like in a disaggregated data center, rather than one retrofitted for it. 1st SeQureDB Workshop, co-located with SIGMOD ‘26.</li>
 </ul>
 
-<h3 id="making-it-hold-up-as-evidence">Making it hold up as evidence</h3>
+<h3 id="offloading-the-write-path">Offloading the write path</h3>
 
-<p>A finding headed for a national commission has to name a harm, and has to be able to say <em>why</em> it reached its conclusion.</p>
+<p>If write-path work has to cross the network anyway, the question becomes where it should run, and the same question keeps returning at three different distances from the engine: beside the storage, spread across the stack, and inside the network itself. These systems are led by collaborators.</p>
 
 <ul>
-  <li><strong>Recognizing Child Unsafe Apps through User Reviews</strong>, treating the Google Play Store review corpus as a signal channel: learns to recognize child-unsafe apps from what users actually report (grooming through chat, unmoderated content, predatory monetization), without depending on the developer’s self-declared age rating. <em>Advanced Computing and Intelligent Technologies, Springer, 2022.</em> <a href="https://doi.org/10.1007/978-981-16-2164-2_9">DOI</a></li>
-  <li><strong>Explainability using Decision Trees and Monte Carlo Simulations</strong>, pairing trees for a structure a human can follow with simulation for how stable that structure stays under variation, rather than on one fixed dataset. <em>ICAST ‘21.</em> <a href="https://doi.org/10.2139/ssrn.3868707">DOI</a></li>
+  <li><strong>CaaS-LSM</strong>, compaction-as-a-service: turns compaction into a stateless, disaggregated service that runs next to the data instead of next to the query engine. SIGMOD ‘24. <a href="https://github.com/asu-idi/CaaS-LSM">Code</a> · <a href="https://doi.org/10.1145/3654927">DOI</a></li>
+  <li><strong>O3-LSM</strong>, three-layer offloading: asks <em>how much</em> and <em>to where</em>, distributing write-path work across three layers of the disaggregated stack rather than treating offloading as a single all-or-nothing move. SIGMOD ‘26. <a href="https://github.com/asu-idi/O3-LSM">Code</a> · <a href="https://doi.org/10.1145/3802093">DOI</a></li>
+  <li><strong>NetLSM</strong>, into the network: a controller on programmable switches (P4) that watches traffic as it passes and schedules LSM-KVS operations and online configuration changes before the requests land, instead of reacting at the server once the latency cost is already paid. USENIX FAST ‘25, work-in-progress.</li>
 </ul>
 
 </div>

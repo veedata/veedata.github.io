@@ -13,9 +13,26 @@
   <meta property="og:image" content="https://veedata.github.io/assets/img/og-card.png"><meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
   <meta property="og:image:alt" content="Viraj Thakkar — Computer Science Ph.D. Candidate at Arizona State University.">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://veedata.github.io/assets/img/og-card.png">
-
-  <!-- Emoji favicon, no image asset needed -->
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://veedata.github.io/assets/img/og-card.png"><!-- Breadcrumbs. To give the page a nice-looking URL for crawlers. -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Viraj Thakkar",
+          "item": "https://veedata.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://veedata.github.io/projects/"
+        }]
+    }
+  </script><!-- Emoji favicon, no image asset needed -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
 
   <!-- Set theme before paint to avoid a flash -->
@@ -119,65 +136,77 @@
         <div class="page-header">
   <h1>Projects</h1>
   <p class="lead">Things I have built and researched.</p>
-</div><div class="cards"><a class="card" href="/projects/landscape-analysis/"><div class="card__media">
-      <img src="/assets/img/landscape-analysis-thumbnail.jpg" alt="Landscape Analysis of OCSE and OCSA" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">Landscape Analysis of OCSE and OCSA</h3>
-    <p class="card__desc">Reports the most prevalent online technologies, their reach and spread and the reported incidence of these technologi...</p>
+</div><section class="project-group project-group--featured">
+    <div class="project-group__head">
+      <h2>Systems Research</h2><span class="badge">Current focus</span></div><p class="project-group__note">Making storage systems faster, safer, and easier to operate.</p><div class="threads"><a class="thread thread--link" href="/projects/tuning-kvs/">
+          <span class="thread__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5l1.9 5.4 5.4 1.9-5.4 1.9L10 17.1l-1.9-5.4L2.7 9.8l5.4-1.9L10 2.5z"/><path d="M18 14.5l.85 2.4 2.4.85-2.4.85-.85 2.4-.85-2.4-2.4-.85 2.4-.85.85-2.4z"/></svg></span>
+          <div class="thread__body">
+            <h3 class="thread__name">Language Models as Systems Operators</h3>
+            <p class="thread__q">Can an LLM tune a storage engine end to end, and where exactly does that capability stop?
+</p>
+          </div><ul class="thread__evidence"><li>HotStorage '24 — Best Paper</li><li>SYSTOR '26</li><li>ELMo-Tune · TellyTune</li></ul></a><a class="thread thread--link" href="/projects/kvs-disaggregation/">
+          <span class="thread__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/><path d="M4 11.5v7c0 1.66 3.58 3 8 3s8-1.34 8-3v-7"/></svg></span>
+          <div class="thread__body">
+            <h3 class="thread__name">Key-Value Stores under Disaggregation</h3>
+            <p class="thread__q">What breaks when an LSM engine's storage moves away from its compute, and can it stay fast, tunable, and encrypted once it does?
+</p>
+          </div><ul class="thread__evidence"><li>3× SIGMOD</li><li>CaaS-LSM · SHIELD · O3-LSM</li><li>Encryption & offloading</li></ul></a><a class="thread thread--link" href="/projects/cachefs/">
+          <span class="thread__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2.5 9.5 5-9.5 5-9.5-5 9.5-5z"/><path d="m2.5 12.5 9.5 5 9.5-5"/><path d="m2.5 17 9.5 5 9.5-5"/></svg></span>
+          <div class="thread__body">
+            <h3 class="thread__name">Filesystems and Distributed Caches</h3>
+            <p class="thread__q">How do you hold a globally distributed, client-side cache coherent, and what is the system underneath actually costing you?
+</p>
+          </div><ul class="thread__evidence"><li>CacheFS @ HPE Labs</li><li>FUSE · RDMA · eBPF</li><li>2 patents under review</li></ul></a></div></section><section class="project-group">
+    <div class="project-group__head">
+      <h2>Applied Research</h2></div><p class="project-group__note">Research shaped by immediate needs in healthcare, child safety, and public policy.</p><div class="cards"><a class="card" href="/projects/landscape-analysis/"><div class="card__body">
+    <h3 class="card__title">Mapping Online Child Exploitation</h3><ul class="card__topics"><li class="topic">Web crawling</li><li class="topic">Child safety</li><li class="topic">Policy</li></ul><p class="card__desc">Crawls the dark web to measure online child abuse across India, for a submission to India&#39;s Parliament.</p>
   </div>
 </a>
-<a class="card" href="/projects/coview/"><div class="card__media">
-      <img src="/assets/img/coview-thumbnail.jpg" alt="CoView" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">CoView</h3>
-    <p class="card__desc">An application to assist in hospital & patient data summarization and visualization during COVID-19 pandemic.</p>
+<a class="card" href="/projects/comrade/"><div class="card__body">
+    <h3 class="card__title">A Dashboard for Hospital Capacity</h3><ul class="card__topics"><li class="topic">Healthcare</li><li class="topic">Forecasting</li></ul><p class="card__desc">Pulls patient records, disease progression, and capacity into one view with hospital inventory forecasting.</p>
   </div>
 </a>
-<a class="card" href="/projects/memories/"><div class="card__media">
-      <img src="/assets/img/memories-thumbnail.jpg" alt="Memories" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">Memories</h3>
-    <p class="card__desc">Memories is an easy to use package that helps to seperate clustered images from files and helps add metadata to files.</p>
+<a class="card" href="/projects/covid-cpf/"><div class="card__body">
+    <h3 class="card__title">Spotting Pandemic Phishing Pages</h3><ul class="card__topics"><li class="topic">Security</li><li class="topic">Scam detection</li></ul><p class="card__desc">Investigates a suspicious COVID-19 URL and returns a plain report on it before you decide to trust it.</p>
   </div>
 </a>
-<a class="card" href="/projects/tkr19-matlab/"><div class="card__media">
-      <img src="/assets/img/shagai-throwing-thumbnail.png" alt="Physical simulations for Mobile Robots" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">Physical simulations for Mobile Robots</h3>
-    <p class="card__desc">Simulation made while in Team KJSCE Robocon for mobile robots and their mechanisms. Simulations include path planning...</p>
+</div></section><section class="project-group">
+    <div class="project-group__head">
+      <h2>Systems & Engineering</h2></div><p class="project-group__note">Things built to be used, not to be published.</p><div class="cards"><a class="card" href="/projects/coview/"><div class="card__body">
+    <h3 class="card__title">CoView</h3><ul class="card__topics"><li class="topic">Healthcare</li><li class="topic">Data visualization</li></ul><p class="card__desc">A live dashboard of COVID-19 cases, outcomes, and records for KEM Hospital, reachable from any device.</p>
   </div>
 </a>
-<a class="card" href="/projects/comrade/"><div class="card__media">
-      <img src="/assets/img/comrade-thumbnail.jpg" alt="COMRADE" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">COMRADE</h3>
-    <p class="card__desc">Crowdsourcing based Optimisation of Medical Resources Attending Demand Equalisation.</p>
+<a class="card" href="/projects/memories/"><div class="card__body">
+    <h3 class="card__title">Memories</h3><ul class="card__topics"><li class="topic">Tooling</li><li class="topic">Image clustering</li></ul><p class="card__desc">A small package that splits scanned album pages and restores their dates.</p>
   </div>
 </a>
-<a class="card" href="/projects/covid-cpf/"><div class="card__media">
-      <img src="/assets/img/covid-19-scam-thumbnail.jpg" alt="COVID-19 online scam detection" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">COVID-19 online scam detection</h3>
-    <p class="card__desc">Designed architecture to discover malicious URLs, android applications & UPI IDs.</p>
+<a class="card" href="/projects/cgroup-monitor/"><div class="card__body">
+    <h3 class="card__title">cgroup-monitor</h3><ul class="card__topics"><li class="topic">Linux systems</li><li class="topic">Benchmarking</li><li class="topic">Tooling</li></ul><p class="card__desc">Resource limits and measurements that live in the same script.</p>
   </div>
 </a>
-<a class="card" href="/projects/torchat/"><div class="card__media">
-      <img src="/assets/img/torchat-thumbnail.jpg" alt="TorChat" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">TorChat</h3>
-    <p class="card__desc">Privacy centered chatting application that utilises the Tor Network to send and recieve messages and data.</p>
+</div></section><section class="project-group">
+    <div class="project-group__head">
+      <h2>Earlier Work</h2></div><p class="project-group__note">Undergraduate projects and competition engineering, kept for the record.</p><div class="cards"><a class="card" href="/projects/tkr19-matlab/"><div class="card__body">
+    <h3 class="card__title">Simulating Mobile Robots</h3><ul class="card__topics"><li class="topic">Robotics</li><li class="topic">Simulation</li><li class="topic">Path planning</li></ul><p class="card__desc">Simulation to find bad and unreliable paths before touching hardware.</p>
   </div>
 </a>
-<a class="card" href="/projects/ingredient-recommender/"><div class="card__media">
-      <img src="/assets/img/ingredient-recommender-thumbnail.png" alt="Ingredient Recommendation Engine" loading="lazy">
-    </div><div class="card__body">
-    <h3 class="card__title">Ingredient Recommendation Engine</h3>
-    <p class="card__desc">ML based engine that recommends ingredients to existing recipes, adding a new layer of flavour.</p>
+<a class="card" href="/projects/team-kjsce-robocon/"><div class="card__body">
+    <h3 class="card__title">Building a Robocon Robot</h3><ul class="card__topics"><li class="topic">Robotics</li><li class="topic">Teamwork</li></ul><p class="card__desc">Two years on a forty-person team building two robots every year.</p>
   </div>
 </a>
-</div>
-
-
+<a class="card" href="/projects/investor-startup-platform/"><div class="card__body">
+    <h3 class="card__title">From Investors to Startups</h3><ul class="card__topics"><li class="topic">Full-stack web</li><li class="topic">Hackathon</li></ul><p class="card__desc">Matches founders with investors by having both describe what they want in the same structured terms.</p>
+  </div>
+</a>
+<a class="card" href="/projects/torchat/"><div class="card__body">
+    <h3 class="card__title">TorChat</h3><ul class="card__topics"><li class="topic">Privacy</li><li class="topic">Anonymity networks</li></ul><p class="card__desc">Privacy centered chatting application that utilizes the Tor Network to send and receive messages and data.</p>
+  </div>
+</a>
+<a class="card" href="/projects/ingredient-recommender/"><div class="card__body">
+    <h3 class="card__title">Ingredient Recommender</h3><ul class="card__topics"><li class="topic">Machine learning</li><li class="topic">Recommender systems</li></ul><p class="card__desc">ML-based engine that recommends ingredients to add to an existing recipe, for a new layer of flavor.</p>
+  </div>
+</a>
+</div></section>
 
 
       </div>
@@ -185,7 +214,7 @@
     <footer class="site-footer">
   <div class="container">
     <span>© 2026 Viraj Thakkar</span>
-    <span>Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> · hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></span>
+    <span>Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> · Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></span>
   </div>
 </footer>
 
