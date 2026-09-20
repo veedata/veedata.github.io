@@ -62,10 +62,10 @@ project_groups:
     name: Systems Research
     # `highlight: true` is for the "Current focus" badge. 
     highlight: true
-    note: The systems behind the Ph.D. — each one has a paper, a prototype, and usually both.
+    note: Making storage systems faster, safer, and easier to operate.
   - key: applied
     name: Applied Research
-    note: Research projects and tooling built alongside published work.
+    note: Research shaped by immediate needs in healthcare, child safety, and public policy.
   - key: engineering
     name: Systems & Engineering
     note: Things built to be used, not to be published.

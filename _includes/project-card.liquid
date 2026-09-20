@@ -4,6 +4,9 @@
 {%- endcomment -%}
 {%- assign proj = include.project -%}
 <a class="card" href="{{ proj.url | relative_url }}">
+  {%- comment -%}
+    Card covers temporarily disabled.
+
   {%- if proj.img -%}
     <div class="card__media">
       <img src="{{ proj.img | relative_url }}" alt="{{ proj.title }}" loading="lazy">
@@ -27,8 +30,16 @@
       <span>{{ mark | upcase }}</span>
     </div>
   {%- endif -%}
+  {%- endcomment -%}
   <div class="card__body">
     <h3 class="card__title">{{ proj.title }}</h3>
-    <p class="card__desc">{{ proj.description | strip_html | truncate: 120 }}</p>
+    {%- if proj.topics -%}
+      <ul class="card__topics">
+        {%- for topic in proj.topics limit: 3 -%}
+          <li class="topic">{{ topic }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    <p class="card__desc">{{ proj.description | strip_html | escape }}</p>
   </div>
 </a>

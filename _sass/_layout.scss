@@ -33,6 +33,9 @@ main.content {
   margin-top: 0;
 }
 .page-header .lead {
+  // The magin bottom is for the individual project pages.
+  // Brings the subtitle and the tags slightly closer together. 
+  margin-bottom: 0;
   color: var(--muted);
   font-size: 1.1rem;
 }
