@@ -4,6 +4,11 @@ layout: default
 <div class="page-header">
   <h1>{{ page.title }}</h1>
   {%- if page.description -%}<p class="lead">{{ page.description }}</p>{%- endif -%}
+  {%- if page.topics -%}
+    <ul class="page-topics">
+      {%- for topic in page.topics -%}<li class="topic">{{ topic }}</li>{%- endfor -%}
+    </ul>
+  {%- endif -%}
 </div>
 
 <div class="prose">

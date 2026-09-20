@@ -6,11 +6,53 @@ layout: default
   <p class="lead">{{ page.description | default: 'Selected things I have built and researched.' }}</p>
 </div>
 
-{%- assign projects = site.projects | sort: 'importance' -%}
-<div class="cards">
-  {%- for project in projects -%}
-    {% include project-card.liquid project=project index=forloop.index0 %}
-  {%- endfor -%}
-</div>
+{%- assign all_projects = site.projects | sort: 'importance' -%}
+{%- assign groups = site.project_groups -%}
+{%- assign group_keys = groups | map: 'key' -%}
+
+{%- comment -%}
+  Research projects render as the home page's thread panels; every other group
+  renders as cards.
+{%- endcomment -%}
+{%- for g in groups -%}
+  {%- assign in_group = all_projects | where: 'group', g.key -%}
+  {%- if in_group.size > 0 -%}
+  <section class="project-group{% if g.highlight %} project-group--featured{% endif %}">
+    <div class="project-group__head">
+      <h2>{{ g.name }}</h2>
+      {%- if g.highlight %}<span class="badge">Current focus</span>{% endif -%}
+    </div>
+    {%- if g.note %}<p class="project-group__note">{{ g.note }}</p>{% endif -%}
+
+    {%- if g.key == 'research' -%}
+    <div class="threads">
+      {%- for project in in_group -%}
+        {%- comment -%} include params take no filters, so resolve fallbacks first. {%- endcomment -%}
+        {%- assign mark = project.icon | default: 'database' -%}
+        {%- assign rail = project.evidence | default: project.topics -%}
+        <a class="thread thread--link" href="{{ project.url | relative_url }}">
+          <span class="thread__icon" aria-hidden="true">{% include icon.liquid name=mark %}</span>
+          <div class="thread__body">
+            <h3 class="thread__name">{{ project.title }}</h3>
+            <p class="thread__q">{{ project.question | default: project.description }}</p>
+          </div>
+          {%- if rail -%}
+          <ul class="thread__evidence">
+            {%- for e in rail -%}<li>{{ e }}</li>{%- endfor -%}
+          </ul>
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+    </div>
+    {%- else -%}
+    <div class="cards">
+      {%- for project in in_group -%}
+        {% include project-card.liquid project=project index=forloop.index0 %}
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </section>
+  {%- endif -%}
+{%- endfor -%}
 
 {{ content }}

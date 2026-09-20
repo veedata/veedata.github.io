@@ -5,6 +5,9 @@
 #   link : optional URL → renders a small "→" at the end
 # Newest-first here is just for readability; the template sorts by date.
 
+- date: 2026-09-04
+  text: '"Probe Less, Learn More: Characterizing and Correcting eBPF Instrumentation Overhead" was accepted to the ProTools 2026 workshop! 📄'
+
 - date: 2026-07-13
   text: 'Our paper "TellyTune: Exploring the Limits of LLM-Driven Tuning for LSM-Based Key-Value Stores" was accepted to SYSTOR 2026! 📄'
 

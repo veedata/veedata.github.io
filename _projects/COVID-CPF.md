@@ -1,11 +1,15 @@
 ---
 layout: page
-title: COVID-19 online scam detection
-description: Designed architecture to discover malicious URLs, android applications & UPI IDs.
+title: Spotting Pandemic Phishing Pages
+description: Investigates a suspicious COVID-19 URL and returns a plain report on it before you decide to trust it.
 img: assets/img/covid-19-scam-thumbnail.jpg
 importance: 11
+group: applied
+topics:
+  - Security
+  - Scam detection
 ---
 
-For the given a URL, the project facilitates functionality to check if the website located by the URL is malicious. The website could be a phishing page, a fraud page or could even have some malicious code which may leak out one’s sensitive information. A report is generated on the status of URL.
+COVID-19 created ideal conditions for online fraud: people were anxious, reliable information changed quickly, and unfamiliar links arrived every day. A convincing page could steal credentials or payment information before a victim had time to question it.
 
-
+This project gave people a quick way to investigate a suspicious URL and receive a clear report before deciding whether to trust it.

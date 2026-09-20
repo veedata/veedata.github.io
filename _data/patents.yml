@@ -14,6 +14,13 @@
 #   year      : decides which year group it lands in on /publications/
 # Highlight the author's own name with <b>…</b>, as in publications.yml.
 
+- title: "Shared-Daemon Offload Path for FUSE-Established Files Backed by Remote Memory"
+  authors: "Harumi Kuno, <b>Viraj Thakkar</b>, John Byrne, Sekwon Lee"
+  venue: "HPE"
+  year: 2026
+  type: "patent"
+  status: "Under HPE internal disclosure review; patent filing upon approval"
+
 - title: "System for Observability using eBPF"
   authors: "Harumi Kuno, <b>Viraj Thakkar</b>, John Byrne, Timo Soekler, Myungjun Son, Sekwon Lee, Aditya Dhakal"
   venue: "HPE"

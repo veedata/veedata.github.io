@@ -127,6 +127,63 @@
   border-radius: var(--radius);
   background: var(--card);
 }
+// Compact variant for /projects/, where the panels are a list to scan rather
+// than the page's centrepiece. Scoped to `--link` so the home page is unchanged.
+// Spacing values here are the card's, so the two halves of /projects/ sit on
+// one scale: `.cards` gap, and `.card__body` padding and internal rhythm.
+.project-group .threads {
+  gap: 0.45rem;
+}
+.thread--link {
+  gap: 0.85rem;
+  padding: 0.7rem 0.8rem 0.75rem;
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+.thread--link:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px var(--shadow);
+  text-decoration: none;
+}
+.thread--link .thread__icon {
+  padding-top: 0;
+}
+.thread--link .thread__icon svg {
+  width: 20px;
+  height: 20px;
+}
+// The panel is the link, so the title must not pick up the global anchor color.
+.thread--link .thread__name {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  color: var(--ink);
+}
+.thread--link:hover .thread__name {
+  color: var(--accent);
+}
+.thread--link .thread__q {
+  font-size: 0.855rem;
+  line-height: 1.45;
+}
+// Wide enough that the longest rail entry — "HotStorage '24 — Best Paper" —
+// sits on one line. Below this the rail wraps to four lines and becomes the
+// tallest thing in the panel, which is what was setting the row height.
+// `align-self` overrides the `align-items: flex-start` on `.thread`, so the
+// rail centres against the title and question beside it instead of hanging
+// from the top edge with all its slack below.
+.thread--link .thread__evidence {
+  align-self: center;
+  width: 13.5rem;
+  margin-top: 0;
+  padding-left: 0.85rem;
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+.thread--link .thread__evidence li {
+  margin-bottom: 0.18rem;
+}
+
 .thread__icon {
   flex: none;
   display: block;
@@ -198,6 +255,11 @@
     border-left: 0;
     border-top: 1px solid var(--line);
   }
+  .thread--link .thread__evidence {
+    width: 100%;
+    margin-top: 0.7rem;
+    padding: 0.6rem 0 0;
+  }
 }
 
 // Narrow phones: stack the icon above the text too, rather than squeezing the
@@ -207,6 +269,10 @@
     flex-direction: column;
     gap: 0.6rem;
     padding: 1.15rem 1.2rem;
+  }
+  .thread--link {
+    gap: 0.45rem;
+    padding: 0.7rem 0.8rem 0.75rem;
   }
   .thread__icon {
     padding-top: 0;
@@ -851,10 +917,10 @@
 // 2019 robotics competition were competing for attention at identical weight.
 // The group heading carries the distinction; the cards stay uniform.
 .project-group {
-  margin: 2.6rem 0 0;
+  margin: 1.9rem 0 0;
 }
 .project-group:first-of-type {
-  margin-top: 1.5rem;
+  margin-top: 1.1rem;
 }
 .project-group__head {
   display: flex;
@@ -875,15 +941,38 @@
   background: var(--line);
 }
 .project-group__note {
-  margin: 0 0 1.1rem;
+  margin: 0 0 0.7rem;
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+// The group set w/ `highlight: true` in _config.yml is set as a tinted panel.
+.project-group--featured {
+  padding: 0.9rem 1rem 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--accent) 5%, var(--bg));
+}
+// The panel already supplies the separation the rule was drawing.
+.project-group--featured .project-group__head::after {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+@media (max-width: 560px) {
+  .project-group--featured {
+    padding: 1.1rem 0 0;
+    border: 0;
+    border-top: 2px solid var(--accent);
+    border-radius: 0;
+    background: none;
+  }
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.75rem;
 }
 .card {
   display: flex;
@@ -893,14 +982,12 @@
   background: var(--card);
   overflow: hidden;
   transition:
-    transform 0.2s var(--ease),
     border-color 0.2s var(--ease),
     box-shadow 0.2s var(--ease);
 }
 .card:hover {
-  transform: translateY(-3px);
   border-color: var(--accent);
-  box-shadow: 0 10px 30px var(--shadow);
+  box-shadow: 0 4px 16px var(--shadow);
   text-decoration: none;
 }
 .card__media {
@@ -937,20 +1024,76 @@
   color: color-mix(in srgb, var(--accent) 80%, var(--ink));
   opacity: 0.9;
 }
+// One vertical rhythm for the whole card: title, topics, blurb are spaced by a
+// single step, so nothing inside a card needs its own margin reasoning.
 .card__body {
-  padding: 1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.7rem 0.8rem 0.75rem;
 }
 .card__title {
-  margin: 0 0 0.3rem;
+  margin: 0;
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.02rem;
   font-weight: 600;
+  line-height: 1.3;
   color: var(--ink);
 }
+// The description is a caption under the title, not body copy: it keeps the
+// page's 1.65 line-height away so two lines of blurb do not out-measure the
+// title they belong to. Clamped rather than truncated in Liquid so the cut
+// lands on a rendered line, never mid-word.
 .card__desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
   margin: 0;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.855rem;
+  line-height: 1.45;
+}
+
+// Topic chips: a qualifier on the title, so they sit directly under it. Capped
+// at three by the include, and kept small enough to stay subordinate to both
+// the title above and the blurb below.
+.card__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+// `margin: 0` is load-bearing: the global `li` rule in _base.scss adds 0.25rem
+// top and bottom, which on a chip row reads as a stray half-line of air.
+.topic {
+  margin: 0;
+  padding: 0.08rem 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+// Same chips, used as a topic line under the title on a project's own page.
+.page-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.page-topics .topic {
+  background: var(--card);
+  font-size: 0.7rem;
 }
 
 // --- 6. Figures (project markdown) ---------------------------------------

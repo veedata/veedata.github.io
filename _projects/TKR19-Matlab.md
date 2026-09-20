@@ -1,9 +1,14 @@
 ---
 layout: page
-title: Physical simulations for Mobile Robots
-description: Simulation made while in Team KJSCE Robocon for mobile robots and their mechanisms. Simulations include path planning and projectile motion.
+title: Simulating Mobile Robots
+description: Simulation to find bad and unreliable paths before touching hardware.
 img: assets/img/shagai-throwing-thumbnail.png
 importance: 9
+group: earlier
+topics:
+  - Robotics
+  - Simulation
+  - Path planning
 ---
 
 Simulations made at Team KJSCE Robocon for the Robocon-2019 competition. Simulations include path planning for a swerve drive system and a projectile mechanism.

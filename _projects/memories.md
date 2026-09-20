@@ -1,30 +1,29 @@
 ---
 layout: page
 title: Memories
-description: Memories is an easy to use package that helps to seperate clustered images from files and helps add metadata to files.
+description: A small package that splits scanned album pages and restores their dates.
 img: assets/img/memories-thumbnail.jpg
 importance: 8
+group: engineering
+topics:
+  - Tooling
+  - Image clustering
 ---
 
-### Installation and Features
+Digitizing an old photo album often produces a scan containing several photos, stripped of the dates and organization that gave them context. I built Memories to make that cleanup less tedious: split a scanned page into individual images, restore useful metadata, and prepare the results for browsing or sharing.
 
-Install the Python package::
+### What it does
 
-    pip install memories
+Install the package with `pip install memories`. Its small API covers the repetitive parts of restoring a scanned collection:
 
-There are 8 functions at the time being:
+- `open_image` loads an image for processing.
+- `divided_crop` separates a page scan into individual photos.
+- `add_date` and `bulk_add_date` restore capture dates to one image or a folder.
+- `save_image` converts an image to another format.
+- `make_page` arranges a collection as an HTML yearbook page.
+- `make_border` and `rotate_image` handle common cleanup steps.
 
-- ``open_image``: Open an image as a numpy array
-- ``divided_crop``: Takes 3 inputs, the path to the image, the path where the outful folder should be and the number of images present in the input file. It performs the task of dividing a single image into multiple smaller ones. 
-- ``add_date``: Takes input as the image path and the datetime to be added. it will add date when the image was originally taken.
-- ``bulk_add_date``: Same as addDate, except it will add date to all images in a folder. The inputs are the folder path and datetime.
-- ``save_image``: Converts a single image into another format
-- ``make_page``: Creates a year book like page in HTML
-- ``make_border``: Creates a border around the image
-- ``rotate_image``: Returns a rotated image
-
-
-### Using memories
+### Example
 
 **Importing memories**
 

@@ -1,14 +1,18 @@
 ---
 layout: page
-title: COMRADE
-description: Crowdsourcing based Optimisation of Medical Resources Attending Demand Equalisation.
+title: A Dashboard for Hospital Capacity
+description: Pulls patient records, disease progression, and capacity into one view with hospital inventory forecasting.
 img: assets/img/comrade-thumbnail.jpg
 importance: 10
+group: applied
+topics:
+  - Healthcare
+  - Forecasting
 ---
 
 During a pandemic like COVID, hospital staff needs to dedicate time for data collection and analysis to find out the trends in the hospital and take the next steps. Taking this time away from patient care is not ideal for any healthcare system, and neither is the unavailability of medical reports or healthcare equipment.
 
-The concept for COMRADE has risen form the same problem. Starting with a dashboard that shows the current statistics of the hospital and its patients. Maintaining the patient records and reports with a track of all the medicines a patient has consumed. It also provides hospitals with predicted future inventory requirements and introduces the concept of inventory sharing using crowdsourcing amongst partner hospitals. 
+The concept for COMRADE has arisen form the same problem. Starting with a dashboard that shows the current statistics of the hospital and its patients. Maintaining the patient records and reports with a track of all the medicines a patient has consumed. It also provides hospitals with predicted future inventory requirements and introduces the concept of inventory sharing using crowdsourcing amongst partner hospitals. 
 
 <div class="figs">
   {% include figure.liquid path="assets/img/COMRADE_Poster.jpg" alt="COMRADE project poster" %}

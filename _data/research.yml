@@ -15,6 +15,16 @@
 # Order is the order on the page. Put the thread you most want associated with
 # your name first.
 
+- name: Language Models as Systems Operators
+  question: >
+    Can an LLM tune a storage engine end to end, and where exactly does that
+    capability stop?
+  icon: sparkle
+  evidence:
+    - HotStorage '24 — Best Paper
+    - SYSTOR '26
+    - ELMo-Tune · TellyTune
+
 - name: Key-Value Stores under Disaggregation
   question: >
     What breaks when an LSM engine's storage moves away from its compute, and
@@ -34,13 +44,3 @@
     - CacheFS @ HPE Labs
     - FUSE · RDMA · eBPF
     - 2 patents under review
-
-- name: Language Models as Systems Operators
-  question: >
-    Can an LLM tune a storage engine end to end, and where exactly does that
-    capability stop?
-  icon: sparkle
-  evidence:
-    - HotStorage '24 — Best Paper
-    - SYSTOR '26
-    - ELMo-Tune · TellyTune
